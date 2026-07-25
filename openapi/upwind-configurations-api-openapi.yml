@@ -1,0 +1,3151 @@
+openapi: 3.0.3
+info:
+  title: Upwind Management REST API v1 access-management configurations API
+  version: '1.0'
+  description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
+  contact:
+    name: Upwind Support
+    email: support@upwind.io
+    url: https://docs.upwind.io/
+  x-apievangelist:
+    generated: '2026-07-21'
+    method: searched
+    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+servers:
+- url: https://api.upwind.io
+  description: Production endpoint (US)
+- url: https://api.eu.upwind.io
+  description: Production endpoint (EU)
+- url: https://api.me.upwind.io
+  description: Production endpoint (ME)
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: configurations
+paths:
+  /v1/organizations/{organization-id}/configuration-rules:
+    post:
+      operationId: createCustomRule
+      summary: Create a rule
+      description: A `POST` request sent to this endpoint creates a Configuration Rule object that is associated with the specified organization. Configuration rules define custom compliance checks using Rego policy language to evaluate your cloud resources against security and governance requirements. To learn more about Configuration Rules, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                asset_kind:
+                  type: string
+                  description: Primary resource type to evaluate.
+                  example: AWS_S3_BUCKET
+                  minLength: 1
+                category:
+                  type: string
+                  description: Category for the rule.
+                description:
+                  type: string
+                  description: Short description of the rule.
+                framework_id:
+                  type: string
+                  description: If this rule is linked to a framework.
+                name:
+                  type: string
+                  description: Display name for the rule.
+                  example: EnsureS3BucketsAreEncrypted
+                  minLength: 1
+                rego_policy:
+                  type: string
+                  description: Rego policy logic used to evaluate the rule.
+                  example: is_pass(input_item) := false { input_item.public_access == true } else := true
+                  minLength: 1
+                related_asset_kinds:
+                  type: array
+                  description: Secondary asset kinds if the rule correlates multiple resources.
+                  items:
+                    type: string
+                severity:
+                  type: string
+                  default: MEDIUM
+                  description: Severity for the rule. Defaults to MEDIUM.
+                  enum:
+                  - LOW
+                  - MEDIUM
+                  - HIGH
+                  - CRITICAL
+              required:
+              - asset_kind
+              - name
+              - rego_policy
+              title: CreateConfigurationRuleRequest
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response schema for creating a configuration rule
+                properties:
+                  category:
+                    type: string
+                    description: The category of this configuration rule.
+                  create_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this configuration rule was created.
+                  description:
+                    type: string
+                    description: The description of this configuration rule.
+                  frameworks:
+                    type: array
+                    description: The frameworks associated with this configuration rule.
+                    items:
+                      type: object
+                      properties:
+                        cloud_provider:
+                          type: string
+                          description: The cloud provider this framework is associated with.
+                        description:
+                          type: string
+                          description: A detailed description of the framework.
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration framework.
+                        revision:
+                          type: string
+                          description: The revision of this configuration framework.
+                        status:
+                          type: string
+                          description: The current status of the framework.
+                          enum:
+                          - ENABLED
+                          - DISABLED
+                        title:
+                          type: string
+                          description: The title of this configuration framework.
+                        version:
+                          type: string
+                          description: The version of this configuration framework.
+                      title: ConfigurationFramework
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration rule.
+                  inventory_query:
+                    description: The inventory query associated with this configuration rule.
+                  name:
+                    type: string
+                    description: The name of this configuration rule.
+                  rego_policy:
+                    type: string
+                    description: The Rego policy logic for this configuration rule.
+                  risk_category:
+                    type: string
+                    description: The risk category of this configuration rule.
+                  severity:
+                    type: string
+                    description: The severity level of this configuration rule.
+                    enum:
+                    - LOW
+                    - MEDIUM
+                    - HIGH
+                    - CRITICAL
+                  update_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this configuration rule was last updated.
+                title: CreateConfigurationRuleResponse
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+    get:
+      operationId: getCustomRules
+      summary: List rules
+      description: A `GET` request sent to the endpoint root returns a list of Configuration Rule objects that are associated with the specified organization. This endpoint allows you to search and filter configuration rules based on various criteria such as framework, name, and findings status. To learn more about Configurations, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The page number to retrieve. Used for pagination along with the `per-page` parameter.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - description: Specifies how many results are returned on a page.
+        in: query
+        name: per-page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      - description: Filters rules by the specified framework.
+        in: query
+        name: framework
+        required: false
+        schema:
+          type: string
+      - description: Filters rules by the specified rule name.
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      - description: Filters rules by whether they have associated findings.
+        in: query
+        name: has-findings
+        required: false
+        schema:
+          type: boolean
+      - description: Filters rules by the earliest creation timestamp (in ISO8601 format).
+        in: query
+        name: min-create-time
+        required: false
+        schema:
+          type: string
+      - description: Filters rules by the latest creation timestamp (in ISO8601 format).
+        in: query
+        name: max-create-time
+        required: false
+        schema:
+          type: string
+      - description: Filters rules by the earliest update timestamp (in ISO8601 format).
+        in: query
+        name: min-update-time
+        required: false
+        schema:
+          type: string
+      - description: Filters rules by the latest update timestamp (in ISO8601 format).
+        in: query
+        name: max-update-time
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    create_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when this configuration rule was created.
+                    findings_count:
+                      type: integer
+                      format: int32
+                      description: The number of findings associated with this configuration rule.
+                    framework:
+                      type: string
+                      description: The framework associated with this configuration rule.
+                    id:
+                      type: string
+                      description: The unique identifier for this configuration rule.
+                    name:
+                      type: string
+                      description: The name of this configuration rule.
+                    update_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when this configuration rule was last updated.
+                  title: ConfigurationRule
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/configuration-frameworks:
+    post:
+      operationId: createFramework
+      summary: Create a framework
+      description: Creates a new compliance framework for the specified organization.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cloud_provider:
+                  type: string
+                  description: The cloud provider this framework is associated with.
+                  enum:
+                  - AWS
+                  - AZURE
+                  - GCP
+                  - BYOC
+                  - ALL
+                  - KUBERNETES
+                description:
+                  type: string
+                  description: A detailed description of the framework.
+                title:
+                  type: string
+                  description: The title of the framework.
+              title: CreateConfigurationFrameworkRequest
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cloud_provider:
+                    type: string
+                    description: The cloud provider this framework is associated with.
+                  description:
+                    type: string
+                    description: A detailed description of the framework.
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration framework.
+                  revision:
+                    type: string
+                    description: The revision of this configuration framework.
+                  status:
+                    type: string
+                    description: The current status of the framework.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  title:
+                    type: string
+                    description: The title of this configuration framework.
+                  version:
+                    type: string
+                    description: The version of this configuration framework.
+                title: ConfigurationFramework
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cloud_provider:
+                    type: string
+                    description: The cloud provider this framework is associated with.
+                  description:
+                    type: string
+                    description: A detailed description of the framework.
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration framework.
+                  revision:
+                    type: string
+                    description: The revision of this configuration framework.
+                  status:
+                    type: string
+                    description: The current status of the framework.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  title:
+                    type: string
+                    description: The title of this configuration framework.
+                  version:
+                    type: string
+                    description: The version of this configuration framework.
+                title: ConfigurationFramework
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cloud_provider:
+                    type: string
+                    description: The cloud provider this framework is associated with.
+                  description:
+                    type: string
+                    description: A detailed description of the framework.
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration framework.
+                  revision:
+                    type: string
+                    description: The revision of this configuration framework.
+                  status:
+                    type: string
+                    description: The current status of the framework.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  title:
+                    type: string
+                    description: The title of this configuration framework.
+                  version:
+                    type: string
+                    description: The version of this configuration framework.
+                title: ConfigurationFramework
+          description: Internal Server Error
+      security:
+      - OAuth2ClientCredentials: []
+    get:
+      operationId: getAllFrameworks
+      summary: List frameworks
+      description: A `GET` request sent to the endpoint root returns a list of Configuration Framework objects that are associated with the specified organization. This endpoint allows you to search and filter configuration frameworks based on various criteria such as framework IDs, cloud providers, and status. To learn more about Frameworks, refer to the [Frameworks](/configurations/frameworks) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The page number to retrieve. Used for pagination along with the `per-page` parameter.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - description: Specifies how many results are returned on a page.
+        in: query
+        name: per-page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      - description: Filters frameworks by the specified framework IDs.
+        in: query
+        name: framework-ids
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      - description: Filters frameworks by the specified cloud providers.
+        in: query
+        name: cloud-providers
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      - description: Filters frameworks by their status.
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+      - description: Filters frameworks by the earliest creation timestamp (in ISO8601 format).
+        in: query
+        name: min-create-time
+        required: false
+        schema:
+          type: string
+      - description: Filters frameworks by the latest creation timestamp (in ISO8601 format).
+        in: query
+        name: max-create-time
+        required: false
+        schema:
+          type: string
+      - description: Filters frameworks by the earliest update timestamp (in ISO8601 format).
+        in: query
+        name: min-update-time
+        required: false
+        schema:
+          type: string
+      - description: Filters frameworks by the latest update timestamp (in ISO8601 format).
+        in: query
+        name: max-update-time
+        required: false
+        schema:
+          type: string
+      - description: Filters frameworks by the earliest last scan timestamp (in ISO8601 format).
+        in: query
+        name: min-last-scan-time
+        required: false
+        schema:
+          type: string
+      - description: Filters frameworks by the latest last scan timestamp (in ISO8601 format).
+        in: query
+        name: max-last-scan-time
+        required: false
+        schema:
+          type: string
+      - description: Filters frameworks by the minimum score value.
+        in: query
+        name: min-score-value
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - description: Filters frameworks by the maximum score value.
+        in: query
+        name: max-score-value
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - description: Filters frameworks by the specified types.
+        in: query
+        name: types
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cloud_provider:
+                      type: string
+                      description: The cloud provider this framework is associated with.
+                    compliance_status:
+                      description: The compliance status for this framework.
+                      type: object
+                      properties:
+                        score:
+                          type: integer
+                          format: int32
+                          description: The compliance score for this framework.
+                      title: ConfigurationFrameworkStatus
+                    create_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when the framework was created.
+                    description:
+                      type: string
+                      description: A detailed description of the framework.
+                    id:
+                      type: string
+                      description: The unique identifier for this configuration framework.
+                    last_scan_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when the framework was last scanned.
+                    revision:
+                      type: string
+                      description: The revision of this configuration framework.
+                    rollout_state:
+                      type: string
+                      description: The rollout state of the framework.
+                    status:
+                      type: string
+                      description: The current status of the framework.
+                      enum:
+                      - ENABLED
+                      - DISABLED
+                    title:
+                      type: string
+                      description: The title of this configuration framework.
+                    type:
+                      type: string
+                      description: The type of framework.
+                    update_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when the framework was last updated.
+                    version:
+                      type: string
+                      description: The version of this configuration framework.
+                  title: DetailedComplianceFramework
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/configuration-rules/{rule-id}:
+    delete:
+      operationId: deleteCustomRule
+      summary: Delete a rule
+      description: A `DELETE` request sent to the endpoint deletes a Configuration Rule object that is associated with the specified organization. This action permanently removes the rule and cannot be undone. To learn more about Configuration Rules, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the configuration rule.
+        in: path
+        name: rule-id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+    patch:
+      operationId: editCustomRule
+      summary: Update a rule
+      description: A `PATCH` request sent to the endpoint allows you to update an existing Configuration Rule object that is associated with the specified organization. You can modify properties such as name, category, severity, and Rego policy. To learn more about Configuration Rules, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the configuration rule.
+        in: path
+        name: rule-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                asset_kind:
+                  type: string
+                  description: Primary resource type to evaluate
+                category:
+                  type: string
+                  description: Category for the rule.
+                description:
+                  type: string
+                  description: Short description of the rule.
+                name:
+                  type: string
+                  description: Display name for the rule
+                rego_policy:
+                  type: string
+                  description: Rego policy for the rule.
+                  maxLength: 50000
+                  minLength: 0
+                risk_category:
+                  type: string
+                  description: Risk category for the rule.
+                severity:
+                  type: string
+                  description: Severity for the rule.
+                  enum:
+                  - CRITICAL
+                  - HIGH
+                  - MEDIUM
+                  - LOW
+              title: CustomRuleEditRequest
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response schema for creating a configuration rule
+                properties:
+                  category:
+                    type: string
+                    description: The category of this configuration rule.
+                  create_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this configuration rule was created.
+                  description:
+                    type: string
+                    description: The description of this configuration rule.
+                  frameworks:
+                    type: array
+                    description: The frameworks associated with this configuration rule.
+                    items:
+                      type: object
+                      properties:
+                        cloud_provider:
+                          type: string
+                          description: The cloud provider this framework is associated with.
+                        description:
+                          type: string
+                          description: A detailed description of the framework.
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration framework.
+                        revision:
+                          type: string
+                          description: The revision of this configuration framework.
+                        status:
+                          type: string
+                          description: The current status of the framework.
+                          enum:
+                          - ENABLED
+                          - DISABLED
+                        title:
+                          type: string
+                          description: The title of this configuration framework.
+                        version:
+                          type: string
+                          description: The version of this configuration framework.
+                      title: ConfigurationFramework
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration rule.
+                  inventory_query:
+                    description: The inventory query associated with this configuration rule.
+                  name:
+                    type: string
+                    description: The name of this configuration rule.
+                  rego_policy:
+                    type: string
+                    description: The Rego policy logic for this configuration rule.
+                  risk_category:
+                    type: string
+                    description: The risk category of this configuration rule.
+                  severity:
+                    type: string
+                    description: The severity level of this configuration rule.
+                    enum:
+                    - LOW
+                    - MEDIUM
+                    - HIGH
+                    - CRITICAL
+                  update_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this configuration rule was last updated.
+                title: CreateConfigurationRuleResponse
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/configuration-frameworks/{framework-id}:
+    patch:
+      operationId: editFramework
+      summary: Update a framework
+      description: A `PATCH` request sent to the endpoint allows you to update an existing Configuration Framework object that is associated with the specified organization. You can modify properties such as title, description, and status. To learn more about Frameworks, refer to the [Frameworks](/configurations/frameworks) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the configuration framework.
+        in: path
+        name: framework-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: A detailed description of the framework.
+                status:
+                  type: string
+                  description: Framework scan status.
+                  enum:
+                  - ENABLED
+                  - DISABLED
+                title:
+                  type: string
+                  description: The title of the framework.
+              title: UpdateConfigurationFrameworkRequest
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cloud_provider:
+                    type: string
+                    description: The cloud provider this framework is associated with.
+                  description:
+                    type: string
+                    description: A detailed description of the framework.
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration framework.
+                  revision:
+                    type: string
+                    description: The revision of this configuration framework.
+                  status:
+                    type: string
+                    description: The current status of the framework.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  title:
+                    type: string
+                    description: The title of this configuration framework.
+                  version:
+                    type: string
+                    description: The version of this configuration framework.
+                title: ConfigurationFramework
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cloud_provider:
+                    type: string
+                    description: The cloud provider this framework is associated with.
+                  description:
+                    type: string
+                    description: A detailed description of the framework.
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration framework.
+                  revision:
+                    type: string
+                    description: The revision of this configuration framework.
+                  status:
+                    type: string
+                    description: The current status of the framework.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  title:
+                    type: string
+                    description: The title of this configuration framework.
+                  version:
+                    type: string
+                    description: The version of this configuration framework.
+                title: ConfigurationFramework
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  body:
+                    type: object
+                    properties:
+                      detail:
+                        type: string
+                      instance:
+                        type: string
+                        format: uri
+                      properties:
+                        type: object
+                        additionalProperties: {}
+                      status:
+                        type: integer
+                        format: int32
+                      title:
+                        type: string
+                      type:
+                        type: string
+                        format: uri
+                    title: ProblemDetail
+                  detailMessageArguments:
+                    type: array
+                    items: {}
+                  detailMessageCode:
+                    type: string
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    properties:
+                      accept:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            charset:
+                              type: string
+                            concrete:
+                              type: boolean
+                            parameters:
+                              type: object
+                              additionalProperties:
+                                type: string
+                            qualityValue:
+                              type: number
+                              format: double
+                            subtype:
+                              type: string
+                            subtypeSuffix:
+                              type: string
+                            type:
+                              type: string
+                            wildcardSubtype:
+                              type: boolean
+                            wildcardType:
+                              type: boolean
+                          title: MediaType
+                      acceptCharset:
+                        type: array
+                        items:
+                          type: string
+                      acceptLanguage:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            range:
+                              type: string
+                            weight:
+                              type: number
+                              format: double
+                      acceptLanguageAsLocales:
+                        type: array
+                        items:
+                          type: string
+                      acceptPatch:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            charset:
+                              type: string
+                            concrete:
+                              type: boolean
+                            parameters:
+                              type: object
+                              additionalProperties:
+                                type: string
+                            qualityValue:
+                              type: number
+                              format: double
+                            subtype:
+                              type: string
+                            subtypeSuffix:
+                              type: string
+                            type:
+                              type: string
+                            wildcardSubtype:
+                              type: boolean
+                            wildcardType:
+                              type: boolean
+                          title: MediaType
+                      accessControlAllowCredentials:
+                        type: boolean
+                      accessControlAllowHeaders:
+                        type: array
+                        items:
+                          type: string
+                      accessControlAllowMethods:
+                        type: array
+                        items:
+                          title: HttpMethod
+                      accessControlAllowOrigin:
+                        type: string
+                      accessControlExposeHeaders:
+                        type: array
+                        items:
+                          type: string
+                      accessControlMaxAge:
+                        type: integer
+                        format: int64
+                      accessControlRequestHeaders:
+                        type: array
+                        items:
+                          type: string
+                      accessControlRequestMethod:
+                        title: HttpMethod
+                      all:
+                        type: object
+                        additionalProperties:
+                          type: string
+                        writeOnly: true
+                      allow:
+                        type: array
+                        items:
+                          title: HttpMethod
+                        uniqueItems: true
+                      basicAuth:
+                        type: string
+                        writeOnly: true
+                      bearerAuth:
+                        type: string
+                        writeOnly: true
+                      cacheControl:
+                        type: string
+                      connection:
+                        type: array
+                        items:
+                          type: string
+                      contentDisposition:
+                        type: object
+                        properties:
+                          attachment:
+                            type: boolean
+                          charset:
+                            type: string
+                          creationDate:
+                            type: string
+                            format: date-time
+                            deprecated: true
+                          filename:
+                            type: string
+                          formData:
+                            type: boolean
+                          inline:
+                            type: boolean
+                          modificationDate:
+                            type: string
+                            format: date-time
+                            deprecated: true
+                          name:
+                            type: string
+                          readDate:
+                            type: string
+                            format: date-time
+                            deprecated: true
+                          size:
+                            type: integer
+                            format: int64
+                            deprecated: true
+                          type:
+                            type: string
+                        title: ContentDisposition
+                      contentLanguage:
+                        type: string
+                      contentLength:
+                        type: integer
+                        format: int64
+                      contentType:
+                        type: object
+                        properties:
+                          charset:
+                            type: string
+                          concrete:
+                            type: boolean
+                          parameters:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          qualityValue:
+                            type: number
+                            format: double
+                          subtype:
+                            type: string
+                          subtypeSuffix:
+                            type: string
+                          type:
+                            type: string
+                          wildcardSubtype:
+                            type: boolean
+                          wildcardType:
+                            type: boolean
+                        title: MediaType
+                      date:
+                        type: integer
+                        format: int64
+                      empty:
+                        type: boolean
+                      etag:
+                        type: string
+                      expires:
+                        type: integer
+                        format: int64
+                      host:
+                        type: object
+                        properties:
+                          address:
+                            type: object
+                            properties:
+                              address:
+                                type: string
+                                format: byte
+                              anyLocalAddress:
+                                type: boolean
+                              canonicalHostName:
+                                type: string
+                              hostAddress:
+                                type: string
+                              hostName:
+                                type: string
+                              linkLocalAddress:
+                                type: boolean
+                              loopbackAddress:
+                                type: boolean
+                              mcglobal:
+                                type: boolean
+                              mclinkLocal:
+                                type: boolean
+                              mcnodeLocal:
+                                type: boolean
+                              mcorgLocal:
+                                type: boolean
+                              mcsiteLocal:
+                                type: boolean
+                              multicastAddress:
+                                type: boolean
+                              siteLocalAddress:
+                                type: boolean
+                          hostName:
+                            type: string
+                          hostString:
+                            type: string
+                          port:
+                            type: integer
+                            format: int32
+                          unresolved:
+                            type: boolean
+                      ifMatch:
+                        type: array
+                        items:
+                          type: string
+                      ifModifiedSince:
+                        type: integer
+                        format: int64
+                      ifNoneMatch:
+                        type: array
+                        items:
+                          type: string
+                      ifUnmodifiedSince:
+                        type: integer
+                        format: int64
+                      lastModified:
+                        type: integer
+                        format: int64
+                      location:
+                        type: string
+                        format: uri
+                      origin:
+                        type: string
+                      pragma:
+                        type: string
+                      range:
+                        type: array
+                        items:
+                          title: HttpRange
+                      upgrade:
+                        type: string
+                      vary:
+                        type: array
+                        items:
+                          type: string
+                  statusCode:
+                    oneOf:
+                    - allOf:
+                      - type: object
+                        properties:
+                          error:
+                            type: boolean
+                          is1xxInformational:
+                            type: boolean
+                          is2xxSuccessful:
+                            type: boolean
+                          is3xxRedirection:
+                            type: boolean
+                          is4xxClientError:
+                            type: boolean
+                          is5xxServerError:
+                            type: boolean
+                        title: HttpStatusCode
+                      title: DefaultHttpStatusCode
+                    - allOf:
+                      - type: object
+                        properties:
+                          error:
+                            type: boolean
+                          is1xxInformational:
+                            type: boolean
+                          is2xxSuccessful:
+                            type: boolean
+                          is3xxRedirection:
+                            type: boolean
+                          is4xxClientError:
+                            type: boolean
+                          is5xxServerError:
+                            type: boolean
+                        title: HttpStatusCode
+                      enum:
+                      - 100 CONTINUE
+                      - 101 SWITCHING_PROTOCOLS
+                      - 102 PROCESSING
+                      - 103 EARLY_HINTS
+                      - 103 CHECKPOINT
+                      - 200 OK
+                      - 201 CREATED
+                      - 202 ACCEPTED
+                      - 203 NON_AUTHORITATIVE_INFORMATION
+                      - 204 NO_CONTENT
+                      - 205 RESET_CONTENT
+                      - 206 PARTIAL_CONTENT
+                      - 207 MULTI_STATUS
+                      - 208 ALREADY_REPORTED
+                      - 226 IM_USED
+                      - 300 MULTIPLE_CHOICES
+                      - 301 MOVED_PERMANENTLY
+                      - 302 FOUND
+                      - 302 MOVED_TEMPORARILY
+                      - 303 SEE_OTHER
+                      - 304 NOT_MODIFIED
+                      - 305 USE_PROXY
+                      - 307 TEMPORARY_REDIRECT
+                      - 308 PERMANENT_REDIRECT
+                      - 400 BAD_REQUEST
+                      - 401 UNAUTHORIZED
+                      - 402 PAYMENT_REQUIRED
+                      - 403 FORBIDDEN
+                      - 404 NOT_FOUND
+                      - 405 METHOD_NOT_ALLOWED
+                      - 406 NOT_ACCEPTABLE
+                      - 407 PROXY_AUTHENTICATION_REQUIRED
+                      - 408 REQUEST_TIMEOUT
+                      - 409 CONFLICT
+                      - 410 GONE
+                      - 411 LENGTH_REQUIRED
+                      - 412 PRECONDITION_FAILED
+                      - 413 PAYLOAD_TOO_LARGE
+                      - 413 REQUEST_ENTITY_TOO_LARGE
+                      - 414 URI_TOO_LONG
+                      - 414 REQUEST_URI_TOO_LONG
+                      - 415 UNSUPPORTED_MEDIA_TYPE
+                      - 416 REQUESTED_RANGE_NOT_SATISFIABLE
+                      - 417 EXPECTATION_FAILED
+                      - 418 I_AM_A_TEAPOT
+                      - 419 INSUFFICIENT_SPACE_ON_RESOURCE
+                      - 420 METHOD_FAILURE
+                      - 421 DESTINATION_LOCKED
+                      - 422 UNPROCESSABLE_ENTITY
+                      - 423 LOCKED
+                      - 424 FAILED_DEPENDENCY
+                      - 425 TOO_EARLY
+                      - 426 UPGRADE_REQUIRED
+                      - 428 PRECONDITION_REQUIRED
+                      - 429 TOO_MANY_REQUESTS
+                      - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
+                      - 451 UNAVAILABLE_FOR_LEGAL_REASONS
+                      - 500 INTERNAL_SERVER_ERROR
+                      - 501 NOT_IMPLEMENTED
+                      - 502 BAD_GATEWAY
+                      - 503 SERVICE_UNAVAILABLE
+                      - 504 GATEWAY_TIMEOUT
+                      - 505 HTTP_VERSION_NOT_SUPPORTED
+                      - 506 VARIANT_ALSO_NEGOTIATES
+                      - 507 INSUFFICIENT_STORAGE
+                      - 508 LOOP_DETECTED
+                      - 509 BANDWIDTH_LIMIT_EXCEEDED
+                      - 510 NOT_EXTENDED
+                      - 511 NETWORK_AUTHENTICATION_REQUIRED
+                      title: HttpStatus
+                  titleMessageCode:
+                    type: string
+                  typeMessageCode:
+                    type: string
+                title: ErrorResponse
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cloud_provider:
+                    type: string
+                    description: The cloud provider this framework is associated with.
+                  description:
+                    type: string
+                    description: A detailed description of the framework.
+                  id:
+                    type: string
+                    description: The unique identifier for this configuration framework.
+                  revision:
+                    type: string
+                    description: The revision of this configuration framework.
+                  status:
+                    type: string
+                    description: The current status of the framework.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  title:
+                    type: string
+                    description: The title of this configuration framework.
+                  version:
+                    type: string
+                    description: The version of this configuration framework.
+                title: ConfigurationFramework
+          description: Internal Server Error
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/configuration-findings/{finding-id}:
+    get:
+      operationId: getComplianceResourceFindingById
+      summary: Get a finding
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Configuration Finding. This endpoint provides access to comprehensive details such as the status, severity, framework information, and the associated resource. To learn more about Configuration Findings, refer to the [Configurations Overview](/configurations/overview) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for this configuration finding.
+        in: path
+        name: finding-id
+        required: true
+        schema:
+          type: string
+      - description: Specifies whether to include cloud account tags in the response.
+        in: query
+        name: include-cloud-account-tags
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  check:
+                    description: The configuration check that generated this finding.
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                        description: The description of this configuration check.
+                      id:
+                        type: string
+                        description: The unique identifier for this configuration check.
+                      remediation:
+                        type: string
+                        description: The remediation guidance for this configuration check.
+                      title:
+                        type: string
+                        description: The title of this configuration check.
+                    title: ConfigurationCheck
+                  description:
+                    type: string
+                    description: The description of this finding.
+                  first_seen_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this finding was first seen.
+                  framework:
+                    description: The configuration framework associated with this finding.
+                    type: object
+                    properties:
+                      cloud_provider:
+                        type: string
+                        description: The cloud provider this framework is associated with.
+                      description:
+                        type: string
+                        description: A detailed description of the framework.
+                      id:
+                        type: string
+                        description: The unique identifier for this configuration framework.
+                      revision:
+                        type: string
+                        description: The revision of this configuration framework.
+                      status:
+                        type: string
+                        description: The current status of the framework.
+                        enum:
+                        - ENABLED
+                        - DISABLED
+                      title:
+                        type: string
+                        description: The title of this configuration framework.
+                      version:
+                        type: string
+                        description: The version of this configuration framework.
+                    title: ConfigurationFramework
+                  id:
+                    type: string
+                    description: The unique identifier for this finding.
+                  last_seen_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this finding was last seen.
+                  last_sync_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this finding was last synchronized.
+                  resource:
+                    description: The resource associated with this finding.
+                    type: object
+                    properties:
+                      arn:
+                        type: string
+                        description: The Amazon Resource Name (ARN) for AWS resources. Absent for non-AWS or unsupported resource types.
+                      cloud_account_id:
+                        type: string
+                        description: The unique identifier for the cloud account associated with this resource.
+                      cloud_account_name:
+                        type: string
+                        description: The name of the cloud account associated with this resource.
+                      cloud_account_tags:
+                        type: array
+                        description: List of tags associated with the cloud account the resource belongs to.
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            value:
+                              type: string
+                          title: Tag
+                      cloud_provider:
+                        type: string
+                        description: The cloud provider of this resource.
+                        enum:
+                        - AWS
+                        - GCP
+                        - AZURE
+                        - ORACLE
+                        - BYOC
+                      cluster_id:
+                        type: string
+                        description: The unique identifier for the cluster associated with this resource.
+                      id:
+                        type: string
+                        description: The unique identifier for this resource.
+                      name:
+                        type: string
+                        description: The name of this resource.
+                      namespace:
+                        type: string
+                      region:
+                        type: string
+                        description: The region where this resource is located.
+                      risk_categories:
+                        type: array
+                        items:
+                          type: string
+                        uniqueItems: true
+                      type:
+                        type: string
+                        description: The type of this resource.
+                      upwind_asset_id:
+                        type: string
+                        description: The Upwind asset ID for this resource.
+                    title: ComplianceResource
+                  severity:
+                    type: string
+                    description: The severity level of this finding.
+                    enum:
+                    - LOW
+                    - MEDIUM
+                    - HIGH
+                    - CRITICAL
+                  status:
+                    type: string
+                    description: The status of this finding.
+                    enum:
+                    - PASS
+                    - FAIL
+                    - ALL
+                  title:
+                    type: string
+                    description: The title of this finding.
+                title: ConfigurationFinding
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/configuration-findings:
+    get:
+      operationId: getComplianceResourceFindings
+      summary: List findings
+      description: A `GET` request sent to the endpoint root returns a list of Configuration Finding objects that are associated with the specified organization. This endpoint allows you to search and filter configuration findings based on various criteria such as status, severity, resource name, and framework. By default, only findings with `FAIL` status are returned unless otherwise specified. To learn more about Configurations, refer to the [Configurations Overview](/configurations/overview) page.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - deprecated: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - description: Specifies how many results are returned on a page.
+        in: query
+        name: per-page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      - description: Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.
+        in: query
+        name: page-token
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the earliest timestamp (in ISO8601 format) when they were last seen.
+        in: query
+        name: min-last-seen-time
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the latest timestamp (in ISO8601 format) when they were last seen.
+        in: query
+        name: max-last-seen-time
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by their status. Defaults to `FAIL` when not specified.
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+          enum:
+          - PASS
+          - FAIL
+          - ALL
+      - description: Filters findings by their severity level. Multiple values may be provided, separated by commas.
+        example: LOW,HIGH
+        in: query
+        name: severity
+        required: false
+        schema:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+      - description: Filters findings by their Upwind asset ID.
+        in: query
+        name: upwind-asset-id
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified resource name.
+        in: query
+        name: resource-name
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified check title.
+        in: query
+        name: check-title
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified check ID.
+        in: query
+        name: check-id
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified framework ID.
+        in: query
+        name: framework-id
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified framework title.
+        in: query
+        name: framework-title
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified cloud account tags. Use `key=value` format with multiple tags separated by commas. Currently supported for Amazon Web Services (AWS) accounts only.
+        example: environment=production,project=webapp
+        in: query
+        name: cloud-account-tags
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Specifies whether to include cloud account tags in the response.
+        in: query
+        name: include-cloud-account-tags
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      hasMoreData:
+                        type: boolean
+                      nextPageToken:
+                        type: array
+                        items: {}
+                      offset:
+                        type: integer
+                        format: int32
+                      size:
+                        type: integer
+                        format: int32
+                      totalItems:
+                        type: integer
+                        format: int64
+                    title: PaginationDetailsResponse
+                  resourceFindings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        check:
+                          description: The configuration check that generated this finding.
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                              description: The description of this configuration check.
+                            id:
+                              type: string
+                              description: The unique identifier for this configuration check.
+                            remediation:
+                              type: string
+                              description: The remediation guidance for this configuration check.
+                            title:
+                              type: string
+                              description: The title of this configuration check.
+                          title: ConfigurationCheck
+                        description:
+                          type: string
+                          description: The description of this finding.
+                        first_seen_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was first seen.
+                        framework:
+                          description: The configuration framework associated with this finding.
+                          type: object
+                          properties:
+                            cloud_provider:
+                              type: string
+                              description: The cloud provider this framework is associated with.
+                            description:
+                              type: string
+                              description: A detailed description of the framework.
+                            id:
+                              type: string
+                              description: The unique identifier for this configuration framework.
+                            revision:
+                              type: string
+                              description: The revision of this configuration framework.
+                            status:
+                              type: string
+                              description: The current status of the framework.
+                              enum:
+                              - ENABLED
+                              - DISABLED
+                            title:
+                              type: string
+                              description: The title of this configuration framework.
+                            version:
+                              type: string
+                              description: The version of this configuration framework.
+                          title: ConfigurationFramework
+                        id:
+                          type: string
+                          description: The unique identifier for this finding.
+                        last_seen_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was last seen.
+                        last_sync_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was last synchronized.
+                        resource:
+                          description: The resource associated with this finding.
+                          type: object
+                          properties:
+                            arn:
+                              type: string
+                              description: The Amazon Resource Name (ARN) for AWS resources. Absent for non-AWS or unsupported resource types.
+                            cloud_account_id:
+                              type: string
+                              description: The unique identifier for the cloud account associated with this resource.
+                            cloud_account_name:
+                              type: string
+                              description: The name of the cloud account associated with this resource.
+                            cloud_account_tags:
+                              type: array
+                              description: List of tags associated with the cloud account the resource belongs to.
+                              items:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                title: Tag
+                            cloud_provider:
+                              type: string
+                              description: The cloud provider of this resource.
+                              enum:
+                              - AWS
+                              - GCP
+                              - AZURE
+                              - ORACLE
+                              - BYOC
+                            cluster_id:
+                              type: string
+                              description: The unique identifier for the cluster associated with this resource.
+                            id:
+                              type: string
+                              description: The unique identifier for this resource.
+                            name:
+                              type: string
+                              description: The name of this resource.
+                            namespace:
+                              type: string
+                            region:
+                              type: string
+                              description: The region where this resource is located.
+                            risk_categories:
+                              type: array
+                              items:
+                                type: string
+                              uniqueItems: true
+                            type:
+                              type: string
+                              description: The type of this resource.
+                            upwind_asset_id:
+                              type: string
+                              description: The Upwind asset ID for this resource.
+                          title: ComplianceResource
+                        severity:
+                          type: string
+                          description: The severity level of this finding.
+                          enum:
+                          - LOW
+                          - MEDIUM
+                          - HIGH
+                          - CRITICAL
+                        status:
+                          type: string
+                          description: The status of this finding.
+                          enum:
+                          - PASS
+                          - FAIL
+                          - ALL
+                        title:
+                          type: string
+                          description: The title of this finding.
+                      title: ConfigurationFinding
+                title: ComplianceResourceFindingsResponse
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/frameworks:
+    post:
+      operationId: createFramework
+      summary: Create a framework
+      description: A POST request sent to the endpoint creates a new configuration framework for the specified organization.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Request body for creating a configuration framework.
+              properties:
+                description:
+                  type: string
+                  description: The detailed description of the framework.
+                platform:
+                  type: string
+                  description: The platform this framework is associated with.
+                  enum:
+                  - aws
+                  - azure
+                  - gcp
+                  - byoc
+                  - all
+                  - kubernetes
+                  example: aws
+                title:
+                  type: string
+                  description: The title of the framework.
+                  minLength: 1
+              required:
+              - title
+              title: CreateFrameworkRequest
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful API response containing items
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      description: A configuration framework definition.
+                      properties:
+                        description:
+                          type: string
+                          description: The detailed description of the framework.
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration framework.
+                        is_enabled:
+                          type: boolean
+                          description: Whether the framework is enabled.
+                          example: true
+                        platform:
+                          type: string
+                          description: The platform this framework is associated with.
+                          enum:
+                          - aws
+                          - azure
+                          - gcp
+                          - byoc
+                          - all
+                          - kubernetes
+                          example: aws
+                        revision:
+                          type: string
+                          description: The revision of this configuration framework.
+                        title:
+                          type: string
+                          description: The title of this configuration framework.
+                        version:
+                          type: string
+                          description: The version of this configuration framework.
+                      title: Framework
+                title: RestApiResponseFramework
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/custom-rules:
+    post:
+      operationId: createRule
+      summary: Create a configuration rule
+      description: A `POST` request sent to this endpoint creates a configuration rule. Configuration rules define custom compliance checks using Rego policy language to evaluate cloud resources against security and governance requirements.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Request body for creating a configuration rule.
+              properties:
+                asset_kind:
+                  type: string
+                  description: The primary resource type to evaluate.
+                  example: aws_s3_bucket
+                  minLength: 1
+                category:
+                  type: string
+                  description: The category for the configuration rule.
+                description:
+                  type: string
+                  description: A short description of the configuration rule.
+                framework_id:
+                  type: string
+                  description: The framework this rule is associated with.
+                rego_policy:
+                  type: string
+                  description: The Rego policy logic for the configuration rule.
+                  example: '`is_pass(input_item) := false { input_item.public_access == true } else := true`'
+                  maxLength: 50000
+                  minLength: 0
+                related_asset_kinds:
+                  type: array
+                  description: Secondary asset kinds if the rule correlates multiple resources.
+                  items:
+                    type: string
+                severity:
+                  type: string
+                  description: The severity level of the configuration rule. Defaults to medium.
+                  enum:
+                  - low
+                  - medium
+                  - high
+                  - critical
+                title:
+                  type: string
+                  description: The title of the configuration rule.
+                  example: EnsureS3BucketsAreEncrypted
+                  minLength: 1
+              required:
+              - asset_kind
+              - rego_policy
+              - title
+              title: CreateComplianceCustomRuleRequestV2
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful API response containing items
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      description: Detailed representation of a configuration custom rule.
+                      properties:
+                        asset_kind:
+                          type: string
+                          description: The primary resource type evaluated by this configuration rule.
+                        category:
+                          type: string
+                          description: The category of this configuration rule.
+                        create_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this configuration rule was created (in ISO8601 format).
+                        description:
+                          type: string
+                          description: The description of this configuration rule.
+                        frameworks:
+                          type: array
+                          description: The frameworks associated with this configuration rule.
+                          items:
+                            type: object
+                            description: A configuration framework associated with a configuration rule.
+                            properties:
+                              description:
+                                type: string
+                                description: The detailed description of the framework.
+                              id:
+                                type: string
+                                description: The unique identifier for this configuration framework.
+                              revision:
+                                type: string
+                                description: The revision of this configuration framework.
+                              title:
+                                type: string
+                                description: The title of this configuration framework.
+                              version:
+                                type: string
+                                description: The version of this configuration framework.
+                            title: ApiConfigurationCustomRuleFramework
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration rule.
+                        rego_policy:
+                          type: string
+                          description: The Rego policy logic for this configuration rule.
+                        risk_category:
+                          type: string
+                          description: The risk category of this configuration rule.
+                        severity:
+                          type: string
+                          description: The severity level of this configuration rule.
+                          enum:
+                          - low
+                          - medium
+                          - high
+                          - critical
+                        title:
+                          type: string
+                          description: The title of this configuration rule.
+                        update_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this configuration rule was last updated (in ISO8601 format).
+                      title: ApiConfigurationCustomRule
+                title: RestApiResponseApiConfigurationCustomRule
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/asset-examples/{asset-kind}:
+    get:
+      operationId: getAssetExample
+      summary: Get an asset example
+      description: A GET request sent to the endpoint root followed by an asset kind returns an example of that asset. If a cloud account ID is specified, an asset is retrieved from that account as the example.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The asset kind to get an example for
+        example: aws_s3_bucket
+        in: path
+        name: asset-kind
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the cloud account to get an asset example from
+        in: query
+        name: cloud-account-id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: An Asset example
+                example:
+                  items:
+                  - name: bucket-name
+                    refId: 12345::bucket-name
+                    isPublic: false
+                    location: us-west-2
+                    awsEntity:
+                      acl:
+                        owner:
+                          id: a4f1af817628f43b3c846ecbf5339c8d373dd478c6ffd56b9683c2bf2b7329b2
+                          displayName: acl-name
+                        grants:
+                        - grantee:
+                            identifier: a4f1af817628f43b3c846ecbf5339c8d373dd478c6ffd56b9683c2bf2b7329b2
+                            typeIdentifier: id
+                          permission:
+                            headerName: x-amz-grant-full-control
+                            permissionString: FullControl
+                      tags:
+                      - key: key
+                        value: value
+                      policy:
+                        policyText: policy-text
+                      versioning:
+                        status: 'Off'
+                      loggingConfiguration: {}
+                      publicAccessBlockConfiguration:
+                        blockPublicAcls: true
+                        ignorePublicAcls: true
+                        blockPublicPolicy: true
+                        restrictPublicBuckets: true
+                      serverSideEncryptionConfiguration:
+                        rules:
+                        - bucketKeyEnabled: false
+                          applyServerSideEncryptionByDefault:
+                            sseAlgorithm: AES256
+                    createdDate: 1738661721000
+                    sizeInBytes: 4528905
+                    endpointRefId: arn:aws:s3:::bucket-name
+                    accessOverview: Private
+                    cloudAccountId: '12345'
+                properties:
+                  items:
+                    type: array
+                    description: List of asset examples
+                    items: {}
+                title: ApiAssetExampleResponse
+          description: An asset example for the specified asset kind
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful API response containing items
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items: {}
+                title: RestApiResponseObject
+          description: Asset example could not be found for the specified criteria.
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/findings/{finding-id}:
+    get:
+      operationId: getFinding
+      summary: Get a finding
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Configuration Finding.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for this configuration finding.
+        example: fnd-a268c471aae2e2cf4bcab975b93b538e
+        in: path
+        name: finding-id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful API response containing items
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      properties:
+                        evaluation_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was last evaluated (in ISO8601 format).
+                        first_seen_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was first seen (in ISO8601 format).
+                        framework:
+                          description: The configuration framework associated with this finding.
+                          type: object
+                          properties:
+                            cloud_provider_name:
+                              type: string
+                              description: The cloud provider this framework is associated with.
+                            compliance_status:
+                              description: The compliance status for this framework.
+                              type: object
+                              properties:
+                                compliance_score:
+                                  type: integer
+                                  format: int32
+                                  description: The compliance score for this framework.
+                              title: ApiConfigurationFrameworkStatus
+                            create_time:
+                              type: string
+                              format: date-time
+                              description: The timestamp when the framework was created (in ISO8601 format).
+                            description:
+                              type: string
+                              description: A detailed description of the framework.
+                            id:
+                              type: string
+                              description: The unique identifier for this configuration framework.
+                            last_scan_time:
+                              type: string
+                              format: date-time
+                              description: The timestamp when the framework was last scanned (in ISO8601 format).
+                            revision:
+                              type: string
+                              description: The revision of this configuration framework.
+                            rollout_state:
+                              type: string
+                              description: The rollout state of the framework.
+                            status:
+                              type: string
+                              description: The current status of the framework.
+                              enum:
+                              - enabled
+                              - disabled
+                            title:
+                              type: string
+                              description: The title of this configuration framework.
+                            type:
+                              type: string
+                              description: The type of framework.
+                            update_time:
+                              type: string
+                              format: date-time
+                              description: The timestamp when the framework was last updated (in ISO8601 format).
+                            version:
+                              type: string
+                              description: The version of this configuration framework.
+                          title: ApiConfigurationFrameworkDetail
+                        id:
+                          type: string
+                          description: The unique identifier for this finding.
+                        resource:
+                          description: The resource associated with this finding.
+                          type: object
+                          properties:
+                            arn:
+                              type: string
+                              description: The Amazon Resource Name (ARN) for AWS resources. Absent for non-AWS or unsupported resource types.
+                            cloud_account_id:
+                              type: string
+                              description: The unique identifier for the cloud account associated with this resource.
+                            cloud_account_name:
+                              type: string
+                              description: The name of the cloud account associated with this resource.
+                            cloud_account_tags:
+                              type: array
+                              description: List of tags associated with the cloud account the resource belongs to.
+                              items:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                title: Tag
+                            cloud_provider_name:
+                              type: string
+                              description: The cloud provider name of this resource.
+                              enum:
+                              - aws
+                              - gcp
+                              - azure
+                              - oracle
+                              - byoc
+                            cluster_id:
+                              type: string
+                              description: The unique identifier for the cluster associated with this resource.
+                            id:
+                              type: string
+                              description: The unique identifier for this resource.
+                            name:
+                              type: string
+                              description: The name of this resource.
+                            namespace:
+                              type: string
+                              description: The namespace this resource belongs to (for Kubernetes resources).
+                            region:
+                              type: string
+                              description: The region where this resource is located.
+                            sync_time:
+                              type: string
+                              format: date-time
+                              description: The last time this resource was synced (in ISO8601 format).
+                            type:
+                              type: string
+                              description: The type of this resource.
+                            upwind_asset_id:
+                              type: string
+                              description: The Upwind asset identifier for this resource.
+                          title: ApiConfigurationResource
+                        risk_categories:
+                          type: array
+                          description: The risk categories associated with this finding.
+                          items:
+                            type: string
+                          uniqueItems: true
+                        rule:
+                          description: The configuration rule that generated this finding.
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                              description: The description of this configuration rule.
+                            id:
+                              type: string
+                              description: The unique identifier for this configuration rule.
+                            remediation:
+                              type: string
+                              description: The remediation guidance for this configuration rule.
+                            title:
+                              type: string
+                              description: The title of this configuration rule.
+                          title: ApiConfigurationRule
+                        severity:
+                          type: string
+                          description: The severity level of this finding.
+                          enum:
+                          - low
+                          - medium
+                          - high
+                          - critical
+                        status:
+                          type: string
+                          description: The status of this finding.
+                          enum:
+                          - pass
+                          - fail
+                        title:
+                          type: string
+                          description: The title of this finding.
+                      title: ApiConfigurationFindingDetailed
+                title: RestApiResponseApiConfigurationFindingDetailed
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/findings/search:
+    post:
+      operationId: searchFindings
+      summary: Search findings
+      description: 'A `POST` request sent to the search endpoint returns a list of Configuration Finding objects matching the supplied search conditions. Supported attributes are listed below.
+
+
+        **Filtering by `cloud_account_tags`**: values must be supplied in `key=value` format (e.g., `environment=production`).
+
+
+        '
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: Specifies the maximum number of items to be returned.
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+          maximum: 100
+          minimum: 1
+      - description: A cursor for pagination to retrieve the next set of results.
+        example: eyJvZmZzZXQiOjIwfQ
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+      - description: 'Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `first_seen_time`, `evaluation_time`, `rule_title`. Default: `evaluation_time:asc`.'
+        example: evaluation_time:asc
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Search request body.
+              properties:
+                conditions:
+                  type: array
+                  description: List of filter conditions to apply to the search
+                  items:
+                    type: object
+                    description: A filter condition for search queries
+                    properties:
+                      field:
+                        type: string
+                        description: The field name to filter on.
+                        enum:
+                        - status
+                        - severity
+                        - evaluation_time
+                        - first_seen_time
+                        - upwind_asset_id
+                        - resource_name
+                        - rule_title
+                        - rule_id
+                        - framework_id
+                        - framework_title
+                        - cloud_account_tags
+                        example: severity
+                      operator:
+                        type: string
+                        description: The comparison operator to apply.
+                        enum:
+                        - eq
+                        - in
+                        - gt
+                        - lt
+                        example: eq
+                      value:
+                        type: array
+                        description: The values to compare against.
+                        example:
+                        - high
+                        items: {}
+                    required:
+                    - operator
+                    - value
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful paginated API response containing items and pagination metadata
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      properties:
+                        evaluation_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was evaluated (in ISO8601 format).
+                        first_seen_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this finding was first seen (in ISO8601 format).
+                        framework:
+                          description: The configuration framework associated with this finding.
+                          type: object
+                          properties:
+                            cloud_provider_name:
+                              type: string
+                              description: The cloud provider this framework is associated with.
+                            description:
+                              type: string
+                              description: A detailed description of the framework.
+                            id:
+                              type: string
+                              description: The unique identifier for this configuration framework.
+                            revision:
+                              type: string
+                              description: The revision of this configuration framework.
+                            status:
+                              type: string
+                              description: The current status of the framework.
+                              enum:
+                              - enabled
+                              - disabled
+                            title:
+                              type: string
+                              description: The title of this configuration framework.
+                            version:
+                              type: string
+                              description: The version of this configuration framework.
+                          title: ApiConfigurationFramework
+                        id:
+                          type: string
+                          description: The unique identifier for this finding.
+                        resource:
+                          description: The resource associated with this finding.
+                          type: object
+                          properties:
+                            arn:
+                              type: string
+                              description: The Amazon Resource Name (ARN) for AWS resources. Absent for non-AWS or unsupported resource types.
+                            cloud_account_id:
+                              type: string
+                              description: The unique identifier for the cloud account associated with this resource.
+                            cloud_account_name:
+                              type: string
+                              description: The name of the cloud account associated with this resource.
+                            cloud_account_tags:
+                              type: array
+                              description: List of tags associated with the cloud account the resource belongs to.
+                              items:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                title: Tag
+                            cloud_provider_name:
+                              type: string
+                              description: The cloud provider name of this resource.
+                              enum:
+                              - aws
+                              - gcp
+                              - azure
+                              - oracle
+                              - byoc
+                            cluster_id:
+                              type: string
+                              description: The unique identifier for the cluster associated with this resource.
+                            id:
+                              type: string
+                              description: The unique identifier for this resource.
+                            name:
+                              type: string
+                              description: The name of this resource.
+                            namespace:
+                              type: string
+                              description: The namespace this resource belongs to (for Kubernetes resources).
+                            region:
+                              type: string
+                              description: The region where this resource is located.
+                            sync_time:
+                              type: string
+                              format: date-time
+                              description: The last time this resource was synced (in ISO8601 format).
+                            type:
+                              type: string
+                              description: The type of this resource.
+                            upwind_asset_id:
+                              type: string
+                              description: The Upwind asset identifier for this resource.
+                          title: ApiConfigurationResource
+                        risk_categories:
+                          type: array
+                          description: The risk categories associated with this finding.
+                          items:
+                            type: string
+                          uniqueItems: true
+                        rule:
+                          description: The configuration rule that generated this finding.
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                              description: The description of this configuration rule.
+                            id:
+                              type: string
+                              description: The unique identifier for this configuration rule.
+                            remediation:
+                              type: string
+                              description: The remediation guidance for this configuration rule.
+                            title:
+                              type: string
+                              description: The title of this configuration rule.
+                          title: ApiConfigurationRule
+                        severity:
+                          type: string
+                          description: The severity level of this finding.
+                          enum:
+                          - low
+                          - medium
+                          - high
+                          - critical
+                        status:
+                          type: string
+                          description: The status of this finding.
+                          enum:
+                          - pass
+                          - fail
+                        title:
+                          type: string
+                          description: The title of this finding.
+                      title: ApiConfigurationFinding
+                  metadata:
+                    description: Pagination metadata containing cursor information for navigating results
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                        format: int32
+                        description: The maximum number of items returned per page
+                        example: 20
+                      next_cursor:
+                        type: string
+                        description: Cursor for fetching the next page of results. Absent if there are no more pages.
+                        example: eyJvZmZzZXQiOjIwfQ
+                      previous_cursor:
+                        type: string
+                        description: Cursor for fetching the previous page of results. Absent if this is the first page.
+                        example: eyJvZmZzZXQiOjB9
+                    title: ApiPaginationMetadata
+                title: RestApiPaginatedResponseApiConfigurationFinding
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/frameworks/search:
+    post:
+      operationId: searchFrameworks
+      summary: Search frameworks
+      description: A `POST` request sent to the search endpoint returns a list of Configuration Framework objects matching the supplied search conditions.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: Specifies the maximum number of items to be returned.
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+          maximum: 100
+          minimum: 1
+      - description: A cursor for pagination to retrieve the next set of results.
+        example: eyJvZmZzZXQiOjIwfQ
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+      - description: 'Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `title`, `create_time`, `update_time`, `last_evaluation_time`. Default: `title:asc`.'
+        example: title:asc
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Search request body.
+              properties:
+                conditions:
+                  type: array
+                  description: List of filter conditions to apply to the search
+                  items:
+                    type: object
+                    description: A filter condition for search queries
+                    properties:
+                      field:
+                        type: string
+                        description: The field name to filter on.
+                        enum:
+                        - id
+                        - version
+                        - title
+                        - is_enabled
+                        - update_time
+                        - framework_type
+                        - last_evaluation_time
+                        - cloud_account_id
+                        - cloud_organization_id
+                        - cloud_organization_unit_id
+                        - rule_id
+                        - rule_title
+                        - platform
+                        - compliance_score
+                        example: platform
+                      operator:
+                        type: string
+                        description: '`gt` and `lt` are supported for numeric/timestamp fields (`update_time`, `last_evaluation_time`, `compliance_score`).'
+                        enum:
+                        - eq
+                        - in
+                        - gt
+                        - lt
+                        example: eq
+                      value:
+                        type: array
+                        description: The values to compare against.
+                        example:
+                        - aws
+                        items: {}
+                    required:
+                    - operator
+                    - value
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful paginated API response containing items and pagination metadata
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      description: An enriched configuration framework with compliance state and score
+                      properties:
+                        create_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this framework was created (in ISO8601 format).
+                        description:
+                          type: string
+                          description: The detailed description of the framework.
+                        framework_rollout_state:
+                          type: string
+                          description: The rollout state of this framework.
+                        framework_type:
+                          type: string
+                          description: The framework source type.
+                          example: upwind, custom
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration framework.
+                        is_enabled:
+                          type: boolean
+                          description: Whether the framework is enabled.
+                          example: true
+                        last_evaluation_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp of the most recent scan against this framework (in ISO8601 format).
+                        platforms:
+                          type: array
+                          description: The platforms this framework applies to.
+                          items:
+                            type: string
+                        score:
+                          type: integer
+                          format: int32
+                          description: The compliance score of this framework.
+                        state:
+                          type: string
+                          description: The current state of this framework.
+                          enum:
+                          - enabled
+                          - disabled
+                          - no_cloud_account_connected
+                          - during_first_scan
+                          - no_finding_resources
+                        title:
+                          type: string
+                          description: The title of this configuration framework.
+                        update_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this framework was last updated (in ISO8601 format).
+                        version:
+                          type: string
+                          description: The version of this configuration framework.
+                      title: DetailedFramework
+                  metadata:
+                    description: Pagination metadata containing cursor information for navigating results
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                        format: int32
+                        description: The maximum number of items returned per page
+                        example: 20
+                      next_cursor:
+                        type: string
+                        description: Cursor for fetching the next page of results. Absent if there are no more pages.
+                        example: eyJvZmZzZXQiOjIwfQ
+                      previous_cursor:
+                        type: string
+                        description: Cursor for fetching the previous page of results. Absent if this is the first page.
+                        example: eyJvZmZzZXQiOjB9
+                    title: ApiPaginationMetadata
+                title: RestApiPaginatedResponseDetailedFramework
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/frameworks/{framework-id}:
+    patch:
+      operationId: updateFramework
+      summary: Update a framework
+      description: A PATCH request sent to the endpoint root followed by a unique identifier updates the properties of a specific configuration framework.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the configuration framework.
+        in: path
+        name: framework-id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Request body for updating a configuration framework.
+              properties:
+                description:
+                  type: string
+                  description: The detailed description of the framework.
+                is_enabled:
+                  type: boolean
+                  description: Whether the framework is enabled.
+                  example: true
+                title:
+                  type: string
+                  description: The title of the framework.
+              title: UpdateFrameworkRequest
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful API response containing items
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      description: A configuration framework definition.
+                      properties:
+                        description:
+                          type: string
+                          description: The detailed description of the framework.
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration framework.
+                        is_enabled:
+                          type: boolean
+                          description: Whether the framework is enabled.
+                          example: true
+                        platform:
+                          type: string
+                          description: The platform this framework is associated with.
+                          enum:
+                          - aws
+                          - azure
+                          - gcp
+                          - byoc
+                          - all
+                          - kubernetes
+                          example: aws
+                        revision:
+                          type: string
+                          description: The revision of this configuration framework.
+                        title:
+                          type: string
+                          description: The title of this configuration framework.
+                        version:
+                          type: string
+                          description: The version of this configuration framework.
+                      title: Framework
+                title: RestApiResponseFramework
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v2/organizations/{organization-id}/configurations/custom-rules/{rule-id}:
+    patch:
+      operationId: updateRule
+      summary: Update a configuration rule
+      description: A `PATCH` request sent to the endpoint root followed by a unique identifier updates an existing configuration rule. Only the fields provided in the request body are updated; other fields remain unchanged.
+      tags:
+      - configurations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for the configuration rule.
+        in: path
+        name: rule-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Request body for updating a configuration rule. All fields are optional; only the supplied fields are updated.
+              properties:
+                asset_kind:
+                  type: string
+                  description: The updated primary resource type to evaluate.
+                category:
+                  type: string
+                  description: The updated category for the configuration rule.
+                description:
+                  type: string
+                  description: The updated description for the configuration rule.
+                rego_policy:
+                  type: string
+                  description: The updated Rego policy logic for the configuration rule.
+                  maxLength: 50000
+                  minLength: 0
+                risk_category:
+                  type: string
+                  description: The updated risk category for the configuration rule.
+                severity:
+                  type: string
+                  description: The updated severity level for the configuration rule.
+                  enum:
+                  - low
+                  - medium
+                  - high
+                  - critical
+                title:
+                  type: string
+                  description: The updated title for the configuration rule.
+              title: UpdateComplianceCustomRuleRequestV2
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Successful API response containing items
+                properties:
+                  items:
+                    type: array
+                    description: The list of items in the response
+                    items:
+                      type: object
+                      description: Detailed representation of a configuration custom rule.
+                      properties:
+                        asset_kind:
+                          type: string
+                          description: The primary resource type evaluated by this configuration rule.
+                        category:
+                          type: string
+                          description: The category of this configuration rule.
+                        create_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this configuration rule was created (in ISO8601 format).
+                        description:
+                          type: string
+                          description: The description of this configuration rule.
+                        frameworks:
+                          type: array
+                          description: The frameworks associated with this configuration rule.
+                          items:
+                            type: object
+                            description: A configuration framework associated with a configuration rule.
+                            properties:
+                              description:
+                                type: string
+                                description: The detailed description of the framework.
+                              id:
+                                type: string
+                                description: The unique identifier for this configuration framework.
+                              revision:
+                                type: string
+                                description: The revision of this configuration framework.
+                              title:
+                                type: string
+                                description: The title of this configuration framework.
+                              version:
+                                type: string
+                                description: The version of this configuration framework.
+                            title: ApiConfigurationCustomRuleFramework
+                        id:
+                          type: string
+                          description: The unique identifier for this configuration rule.
+                        rego_policy:
+                          type: string
+                          description: The Rego policy logic for this configuration rule.
+                        risk_category:
+                          type: string
+                          description: The risk category of this configuration rule.
+                        severity:
+                          type: string
+                          description: The severity level of this configuration rule.
+                          enum:
+                          - low
+                          - medium
+                          - high
+                          - critical
+                        title:
+                          type: string
+                          description: The title of this configuration rule.
+                        update_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this configuration rule was last updated (in ISO8601 format).
+                      title: ApiConfigurationCustomRule
+                title: RestApiResponseApiConfigurationCustomRule
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+components:
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      description: 'OAuth 2.0 client credentials grant. Obtain client credentials in the Upwind Management Console, then exchange them for a JWT access token at https://auth.upwind.io/oauth/token with an audience matching the regional API host (https://api.upwind.io, https://api.eu.upwind.io, or https://api.me.upwind.io). Send the token as Authorization: Bearer <token>.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.upwind.io/oauth/token
+          scopes: {}
+externalDocs:
+  url: https://docs.upwind.io/restapi/v1/introduction
+  description: API Reference

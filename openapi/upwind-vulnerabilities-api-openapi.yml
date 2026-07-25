@@ -1,0 +1,843 @@
+openapi: 3.0.3
+info:
+  title: Upwind Management REST API v1 access-management vulnerabilities API
+  version: '1.0'
+  description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
+  contact:
+    name: Upwind Support
+    email: support@upwind.io
+    url: https://docs.upwind.io/
+  x-apievangelist:
+    generated: '2026-07-21'
+    method: searched
+    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+servers:
+- url: https://api.upwind.io
+  description: Production endpoint (US)
+- url: https://api.eu.upwind.io
+  description: Production endpoint (EU)
+- url: https://api.me.upwind.io
+  description: Production endpoint (ME)
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: vulnerabilities
+paths:
+  /v1/organizations/{organization-id}/vulnerability-findings/{finding-id}:
+    get:
+      operationId: get-vulnerability-finding-by-id
+      summary: Get a finding
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Vulnerability finding. This endpoint gives access to comprehensive details such as the CVE ID (Common Vulnerabilities and Exposures Identifier), the affected resource, severity, status, and runtime contextual information. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page.
+      tags:
+      - vulnerabilities
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for this finding.
+        in: path
+        name: finding-id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  first_seen_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this finding was first seen.
+                  id:
+                    type: string
+                    description: The unique identifier for this finding.
+                  image:
+                    description: The information on the vulnerable image identified by this finding.
+                    type: object
+                    properties:
+                      digest:
+                        type: string
+                        description: The sha256 digest of the image manifest.
+                      name:
+                        type: string
+                        description: The name of this image.
+                      os_name:
+                        type: string
+                        description: The name of the operating system associated with this image.
+                      os_version:
+                        type: string
+                        description: The version of the operating system associated with this image.
+                      tag:
+                        type: string
+                        description: The tag associated with this image.
+                      uri:
+                        type: string
+                        description: The URI of this image.
+                    title: Image
+                  last_scan_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this finding was last scanned.
+                  package:
+                    description: The information on the vulnerable package identified by this finding.
+                    type: object
+                    properties:
+                      framework:
+                        type: string
+                        description: The framework associated with this package.
+                      in_use:
+                        type: boolean
+                        description: An indicator signaling if this package is currently being utilized by the resource.
+                      introduced_by_layers:
+                        type: array
+                        description: For image findings, the list of layers that introduced this package.
+                        items:
+                          type: object
+                          properties:
+                            layer_index:
+                              type: integer
+                              format: int32
+                              description: The index of the layer within the image.
+                            layer_sha:
+                              type: string
+                              description: The SHA digest of the layer.
+                          title: ApiLayerInfo
+                      name:
+                        type: string
+                        description: The name of this package.
+                      type:
+                        type: string
+                        description: The type of this package.
+                      version:
+                        type: string
+                        description: The version of this package.
+                    title: Package
+                  remediation:
+                    type: array
+                    items:
+                      oneOf:
+                      - allOf:
+                        - type: object
+                          description: Base schema for remediation strategies
+                          discriminator:
+                            mapping:
+                              OFFICIAL_FIX: circular(OfficialFix)
+                            propertyName: type
+                          properties:
+                            type:
+                              type: string
+                              description: The type of the remediation strategy.
+                              enum:
+                              - OFFICIAL_FIX
+                          title: RemediationItem
+                        - type: object
+                          properties:
+                            data:
+                              description: The data of the remediation strategy.
+                              type: object
+                              properties:
+                                fixed_in_version:
+                                  type: string
+                              title: OfficialFixData
+                        title: OfficialFix
+                  resource:
+                    description: The information on the vulnerable resource identified by this finding.
+                    type: object
+                    properties:
+                      cloud_account_id:
+                        type: string
+                        description: The unique identifier for the cloud account associated with this resource.
+                      cloud_account_name:
+                        type: string
+                        description: The name of the cloud account associated with this resource.
+                      cloud_account_tags:
+                        type: array
+                        description: List of tags associated with the cloud account the resource belongs to.
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            value:
+                              type: string
+                          title: Tag
+                      cloud_organization_id:
+                        type: string
+                        description: The unique identifier for the cloud organization that the cloud account belongs to.
+                      cloud_organization_unit_id:
+                        type: string
+                        description: The unique identifier for the cloud organizational unit that the cloud account belongs to.
+                      cloud_provider:
+                        type: string
+                        description: The cloud provider of this resource.
+                        enum:
+                        - AWS
+                        - GCP
+                        - AZURE
+                      cluster_id:
+                        type: string
+                        description: The unique identifier for the cluster associated with this resource.
+                      cluster_name:
+                        type: string
+                        description: The name of the cluster associated with this resource.
+                      external_id:
+                        type: string
+                        description: The external unique identifier for this resource.
+                      id:
+                        type: string
+                        description: The unique identifier for this resource.
+                      internet_exposure:
+                        type: object
+                        properties:
+                          ingress:
+                            description: The information about incoming internet-facing communication activities of the resource.
+                            type: object
+                            properties:
+                              active_communication:
+                                type: boolean
+                                description: An indicator signaling whether there is active incoming communication from the internet to the resource.
+                            title: InternetExposureDetails
+                        title: InternetExposure
+                      name:
+                        type: string
+                        description: The name of this resource.
+                      namespace:
+                        type: string
+                      region:
+                        type: string
+                        description: The region where this resource is located.
+                      resource_tags:
+                        type: array
+                        description: List of tags on the resource itself (distinct from cloud_account_tags).
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            value:
+                              type: string
+                          title: Tag
+                      risk_categories:
+                        type: array
+                        items:
+                          type: string
+                        uniqueItems: true
+                      type:
+                        type: string
+                        description: The type of this resource.
+                      upwind_asset_id:
+                        type: string
+                        description: The Upwind asset identifier for this resource.
+                    title: VulnerabilityResource
+                  source:
+                    type: string
+                    description: The source of this finding.
+                    enum:
+                    - SENSOR
+                    - CLOUD_SCANNER
+                  status:
+                    type: string
+                    description: The status of this finding.
+                    enum:
+                    - OPEN
+                    - ARCHIVED
+                  vulnerability:
+                    description: The information on the Common Vulnerabilities and Exposures (CVE) identified by this finding.
+                    type: object
+                    properties:
+                      cve_first_seen_time:
+                        type: string
+                        format: date-time
+                        description: The timestamp when this CVE was first seen.
+                      description:
+                        type: string
+                        description: The brief description assigned to this vulnerability by Upwind.
+                      epss_score:
+                        type: string
+                        description: The score of this vulnerability based on the Exploit Prediction Scoring System (EPSS). Scores range from 0.0 to 1.0, with higher values indicating a higher likelihood of exploitation.
+                      epss_severity:
+                        type: string
+                        description: The severity level of this vulnerability based on the Exploit Prediction Scoring System (EPSS).
+                      exploitable:
+                        type: boolean
+                        description: An indicator signaling if this vulnerability has a known exploit.
+                      exploitable_functions_in_use:
+                        type: array
+                        description: List of exploitable functions currently in use for this vulnerability.
+                        items:
+                          type: object
+                          properties:
+                            container_id:
+                              type: string
+                              description: The identifier of the container in which the exploitable function is running.
+                            container_name:
+                              type: string
+                              description: The name of the container in which the exploitable function is running.
+                            file_path:
+                              type: string
+                              description: The file path where the exploitable function is located.
+                            function_name:
+                              type: string
+                              description: The name of the exploitable function.
+                            last_detection_time:
+                              type: string
+                              format: date-time
+                              description: The timestamp when this exploitable function was last detected in use (in ISO8601 format).
+                            origin_library_id:
+                              type: string
+                              description: The identifier of the library where this in-use function was detected.
+                              example: com.example.security:crypto-utils
+                            process_id:
+                              type: string
+                              description: The identifier of the process executing the exploitable function.
+                            process_name:
+                              type: string
+                              description: The name of the process executing the exploitable function.
+                          title: ApiExploitableFunctionInUse
+                      known_exploit_sources:
+                        type: array
+                        description: List of vendor catalog identifiers (e.g. `cisa`, `nist`) that flag this CVE as a known exploit.
+                        example:
+                        - cisa
+                        - nist
+                        items:
+                          type: string
+                      name:
+                        type: string
+                        description: The identification name assigned to this vulnerability by Upwind.
+                      nvd_cve_id:
+                        type: string
+                        description: The Common Vulnerabilities and Exposures (CVE) unique identifier for this vulnerability.
+                      nvd_cvss_v2_score:
+                        type: string
+                        description: The score of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 2 (CVSS v2).
+                      nvd_cvss_v2_severity:
+                        type: string
+                        description: The severity level of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 2 (CVSS v2).
+                      nvd_cvss_v3_score:
+                        type: string
+                        description: The score of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 3 (CVSS v3). Scores range from 0.0 to 10.0, with higher values indicating higher severity.
+                      nvd_cvss_v3_severity:
+                        type: string
+                        description: The severity level of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 3 (CVSS v3).
+                        enum:
+                        - LOW
+                        - MEDIUM
+                        - HIGH
+                        - CRITICAL
+                      nvd_cvss_v4_score:
+                        type: string
+                        description: The score of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 4 (CVSS v4).
+                      nvd_cvss_v4_severity:
+                        type: string
+                        description: The severity level of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 4 (CVSS v4).
+                      nvd_description:
+                        type: string
+                        description: The comprehensive vulnerability description provided by the National Vulnerability Database (NVD).
+                      nvd_publish_time:
+                        type: string
+                        format: date-time
+                        description: The timestamp when this vulnerability was published.
+                      sbom_artifact_locations:
+                        type: array
+                        description: List of SBOM artifact locations where this vulnerability is found.
+                        items:
+                          type: string
+                    title: Vulnerability
+                title: VulnerabilityFinding
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/vulnerability-findings:
+    get:
+      operationId: getVulnerabilityFindingList
+      summary: List findings
+      description: A `GET` request sent to the endpoint root returns a list of Vulnerability finding objects that are associated with the specified organization. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page.
+      tags:
+      - vulnerabilities
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: Specifies how many results are returned on a page.
+        in: query
+        name: per-page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      - description: Filters by the specified cloud account ID.
+        in: query
+        name: cloud-account-id
+        required: false
+        schema:
+          type: string
+      - description: Filters findings for packages currently in use.
+        in: query
+        name: package-in-use
+        required: false
+        schema:
+          type: boolean
+      - description: Filters findings for vulnerabilities with exploitable functions currently in use.
+        in: query
+        name: has-exploitable-functions-in-use
+        required: false
+        schema:
+          type: boolean
+      - description: Filters findings for packages with a known exploit.
+        in: query
+        name: exploitable
+        required: false
+        schema:
+          type: boolean
+      - description: Filters findings for packages with an available fix.
+        in: query
+        name: fix-available
+        required: false
+        schema:
+          type: boolean
+      - description: Filters findings for resources with active internet ingress communication.
+        in: query
+        name: ingress-active-communication
+        required: false
+        schema:
+          type: boolean
+      - description: Filters findings for resources with internet exposure.
+        in: query
+        name: internet-exposure
+        required: false
+        schema:
+          type: boolean
+      - description: Filters by the level of CVSS severity.
+        in: query
+        name: severity
+        required: false
+        schema:
+          type: string
+          enum:
+          - low
+          - medium
+          - high
+          - critical
+          - unclassified
+          - other
+      - description: Filters by the level of EPSS severity.
+        in: query
+        name: epss-severity
+        required: false
+        schema:
+          type: string
+          enum:
+          - none
+          - low
+          - medium
+          - high
+          - critical
+          - unclassified
+      - description: Filters findings by the specified CVE ID.
+        in: query
+        name: cve-id
+        required: false
+        schema:
+          type: string
+      - description: Filters by the specified Kubernetes namespace.
+        in: query
+        name: namespace
+        required: false
+        schema:
+          type: string
+      - description: Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.
+        in: query
+        name: page-token
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`.
+        in: query
+        name: image-name
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the specified Upwind asset ID.
+        in: query
+        name: upwind-asset-id
+        required: false
+        schema:
+          type: string
+      - description: Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically.
+        in: query
+        name: known-exploit-sources
+        required: false
+        schema:
+          type: string
+      - description: 'Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`.'
+        in: query
+        name: resource-type
+        required: false
+        schema:
+          type: string
+      - description: 'Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.'
+        in: query
+        name: resource-tags
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    first_seen_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when this finding was first seen.
+                    id:
+                      type: string
+                      description: The unique identifier for this finding.
+                    image:
+                      description: The information on the vulnerable image identified by this finding.
+                      type: object
+                      properties:
+                        digest:
+                          type: string
+                          description: The sha256 digest of the image manifest.
+                        name:
+                          type: string
+                          description: The name of this image.
+                        os_name:
+                          type: string
+                          description: The name of the operating system associated with this image.
+                        os_version:
+                          type: string
+                          description: The version of the operating system associated with this image.
+                        tag:
+                          type: string
+                          description: The tag associated with this image.
+                        uri:
+                          type: string
+                          description: The URI of this image.
+                      title: Image
+                    last_scan_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when this finding was last scanned.
+                    package:
+                      description: The information on the vulnerable package identified by this finding.
+                      type: object
+                      properties:
+                        framework:
+                          type: string
+                          description: The framework associated with this package.
+                        in_use:
+                          type: boolean
+                          description: An indicator signaling if this package is currently being utilized by the resource.
+                        introduced_by_layers:
+                          type: array
+                          description: For image findings, the list of layers that introduced this package.
+                          items:
+                            type: object
+                            properties:
+                              layer_index:
+                                type: integer
+                                format: int32
+                                description: The index of the layer within the image.
+                              layer_sha:
+                                type: string
+                                description: The SHA digest of the layer.
+                            title: ApiLayerInfo
+                        name:
+                          type: string
+                          description: The name of this package.
+                        type:
+                          type: string
+                          description: The type of this package.
+                        version:
+                          type: string
+                          description: The version of this package.
+                      title: Package
+                    remediation:
+                      type: array
+                      items:
+                        oneOf:
+                        - allOf:
+                          - type: object
+                            description: Base schema for remediation strategies
+                            discriminator:
+                              mapping:
+                                OFFICIAL_FIX: circular(OfficialFix)
+                              propertyName: type
+                            properties:
+                              type:
+                                type: string
+                                description: The type of the remediation strategy.
+                                enum:
+                                - OFFICIAL_FIX
+                            title: RemediationItem
+                          - type: object
+                            properties:
+                              data:
+                                description: The data of the remediation strategy.
+                                type: object
+                                properties:
+                                  fixed_in_version:
+                                    type: string
+                                title: OfficialFixData
+                          title: OfficialFix
+                    resource:
+                      description: The information on the vulnerable resource identified by this finding.
+                      type: object
+                      properties:
+                        cloud_account_id:
+                          type: string
+                          description: The unique identifier for the cloud account associated with this resource.
+                        cloud_account_name:
+                          type: string
+                          description: The name of the cloud account associated with this resource.
+                        cloud_account_tags:
+                          type: array
+                          description: List of tags associated with the cloud account the resource belongs to.
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            title: Tag
+                        cloud_organization_id:
+                          type: string
+                          description: The unique identifier for the cloud organization that the cloud account belongs to.
+                        cloud_organization_unit_id:
+                          type: string
+                          description: The unique identifier for the cloud organizational unit that the cloud account belongs to.
+                        cloud_provider:
+                          type: string
+                          description: The cloud provider of this resource.
+                          enum:
+                          - AWS
+                          - GCP
+                          - AZURE
+                        cluster_id:
+                          type: string
+                          description: The unique identifier for the cluster associated with this resource.
+                        cluster_name:
+                          type: string
+                          description: The name of the cluster associated with this resource.
+                        external_id:
+                          type: string
+                          description: The external unique identifier for this resource.
+                        id:
+                          type: string
+                          description: The unique identifier for this resource.
+                        internet_exposure:
+                          type: object
+                          properties:
+                            ingress:
+                              description: The information about incoming internet-facing communication activities of the resource.
+                              type: object
+                              properties:
+                                active_communication:
+                                  type: boolean
+                                  description: An indicator signaling whether there is active incoming communication from the internet to the resource.
+                              title: InternetExposureDetails
+                          title: InternetExposure
+                        name:
+                          type: string
+                          description: The name of this resource.
+                        namespace:
+                          type: string
+                        region:
+                          type: string
+                          description: The region where this resource is located.
+                        resource_tags:
+                          type: array
+                          description: List of tags on the resource itself (distinct from cloud_account_tags).
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            title: Tag
+                        risk_categories:
+                          type: array
+                          items:
+                            type: string
+                          uniqueItems: true
+                        type:
+                          type: string
+                          description: The type of this resource.
+                        upwind_asset_id:
+                          type: string
+                          description: The Upwind asset identifier for this resource.
+                      title: VulnerabilityResource
+                    source:
+                      type: string
+                      description: The source of this finding.
+                      enum:
+                      - SENSOR
+                      - CLOUD_SCANNER
+                    status:
+                      type: string
+                      description: The status of this finding.
+                      enum:
+                      - OPEN
+                      - ARCHIVED
+                    vulnerability:
+                      description: The information on the Common Vulnerabilities and Exposures (CVE) identified by this finding.
+                      type: object
+                      properties:
+                        cve_first_seen_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this CVE was first seen.
+                        description:
+                          type: string
+                          description: The brief description assigned to this vulnerability by Upwind.
+                        epss_score:
+                          type: string
+                          description: The score of this vulnerability based on the Exploit Prediction Scoring System (EPSS). Scores range from 0.0 to 1.0, with higher values indicating a higher likelihood of exploitation.
+                        epss_severity:
+                          type: string
+                          description: The severity level of this vulnerability based on the Exploit Prediction Scoring System (EPSS).
+                        exploitable:
+                          type: boolean
+                          description: An indicator signaling if this vulnerability has a known exploit.
+                        exploitable_functions_in_use:
+                          type: array
+                          description: List of exploitable functions currently in use for this vulnerability.
+                          items:
+                            type: object
+                            properties:
+                              container_id:
+                                type: string
+                                description: The identifier of the container in which the exploitable function is running.
+                              container_name:
+                                type: string
+                                description: The name of the container in which the exploitable function is running.
+                              file_path:
+                                type: string
+                                description: The file path where the exploitable function is located.
+                              function_name:
+                                type: string
+                                description: The name of the exploitable function.
+                              last_detection_time:
+                                type: string
+                                format: date-time
+                                description: The timestamp when this exploitable function was last detected in use (in ISO8601 format).
+                              origin_library_id:
+                                type: string
+                                description: The identifier of the library where this in-use function was detected.
+                                example: com.example.security:crypto-utils
+                              process_id:
+                                type: string
+                                description: The identifier of the process executing the exploitable function.
+                              process_name:
+                                type: string
+                                description: The name of the process executing the exploitable function.
+                            title: ApiExploitableFunctionInUse
+                        known_exploit_sources:
+                          type: array
+                          description: List of vendor catalog identifiers (e.g. `cisa`, `nist`) that flag this CVE as a known exploit.
+                          example:
+                          - cisa
+                          - nist
+                          items:
+                            type: string
+                        name:
+                          type: string
+                          description: The identification name assigned to this vulnerability by Upwind.
+                        nvd_cve_id:
+                          type: string
+                          description: The Common Vulnerabilities and Exposures (CVE) unique identifier for this vulnerability.
+                        nvd_cvss_v2_score:
+                          type: string
+                          description: The score of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 2 (CVSS v2).
+                        nvd_cvss_v2_severity:
+                          type: string
+                          description: The severity level of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 2 (CVSS v2).
+                        nvd_cvss_v3_score:
+                          type: string
+                          description: The score of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 3 (CVSS v3). Scores range from 0.0 to 10.0, with higher values indicating higher severity.
+                        nvd_cvss_v3_severity:
+                          type: string
+                          description: The severity level of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 3 (CVSS v3).
+                          enum:
+                          - LOW
+                          - MEDIUM
+                          - HIGH
+                          - CRITICAL
+                        nvd_cvss_v4_score:
+                          type: string
+                          description: The score of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 4 (CVSS v4).
+                        nvd_cvss_v4_severity:
+                          type: string
+                          description: The severity level of this vulnerability using the National Vulnerability Database's (NVD) Common Vulnerability Scoring System version 4 (CVSS v4).
+                        nvd_description:
+                          type: string
+                          description: The comprehensive vulnerability description provided by the National Vulnerability Database (NVD).
+                        nvd_publish_time:
+                          type: string
+                          format: date-time
+                          description: The timestamp when this vulnerability was published.
+                        sbom_artifact_locations:
+                          type: array
+                          description: List of SBOM artifact locations where this vulnerability is found.
+                          items:
+                            type: string
+                      title: Vulnerability
+                  title: VulnerabilityFinding
+          description: OK
+          headers:
+            Link:
+              description: Provides pagination links for navigating through the result set, formatted as HTTP link headers.
+              schema:
+                type: string
+              style: simple
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+      security:
+      - OAuth2ClientCredentials: []
+components:
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      description: 'OAuth 2.0 client credentials grant. Obtain client credentials in the Upwind Management Console, then exchange them for a JWT access token at https://auth.upwind.io/oauth/token with an audience matching the regional API host (https://api.upwind.io, https://api.eu.upwind.io, or https://api.me.upwind.io). Send the token as Authorization: Bearer <token>.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.upwind.io/oauth/token
+          scopes: {}
+externalDocs:
+  url: https://docs.upwind.io/restapi/v1/introduction
+  description: API Reference

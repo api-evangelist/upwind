@@ -1,0 +1,739 @@
+openapi: 3.0.3
+info:
+  title: Upwind Management REST API v1 access-management integrations API
+  version: '1.0'
+  description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
+  contact:
+    name: Upwind Support
+    email: support@upwind.io
+    url: https://docs.upwind.io/
+  x-apievangelist:
+    generated: '2026-07-21'
+    method: searched
+    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+servers:
+- url: https://api.upwind.io
+  description: Production endpoint (US)
+- url: https://api.eu.upwind.io
+  description: Production endpoint (EU)
+- url: https://api.me.upwind.io
+  description: Production endpoint (ME)
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: integrations
+paths:
+  /v1/organizations/{organization-id}/integration-webhooks:
+    post:
+      operationId: createWebhookIntegration
+      summary: Create a webhook
+      description: A `POST` request sent to the endpoint root creates a integration webhook object that is associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      tags:
+      - integrations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  oneOf:
+                  - allOf:
+                    - title: WebhookRequestConfig
+                    - type: object
+                      properties:
+                        authentication:
+                          oneOf:
+                          - allOf:
+                            - type: object
+                              discriminator:
+                                propertyName: type
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - BEARER
+                                  - API_KEY
+                              title: Authentication
+                            - type: object
+                              properties:
+                                key:
+                                  type: string
+                                value:
+                                  type: string
+                            title: ApiKeyAuthentication
+                          - allOf:
+                            - type: object
+                              discriminator:
+                                propertyName: type
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - BEARER
+                                  - API_KEY
+                              title: Authentication
+                            - type: object
+                              properties:
+                                token:
+                                  type: string
+                            title: BearerAuthentication
+                        headers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              sensitive:
+                                type: boolean
+                              value:
+                                type: string
+                            title: CustomWebhookHeader
+                        url:
+                          type: string
+                    title: CustomWebhookRequestConfig
+                  - allOf:
+                    - title: WebhookRequestConfig
+                    - type: object
+                      properties:
+                        api_key:
+                          type: string
+                        region:
+                          type: string
+                        service:
+                          type: string
+                    title: DatadogWebhookRequestConfig
+                  - allOf:
+                    - title: WebhookRequestConfig
+                    - type: object
+                      properties:
+                        channel_name:
+                          type: string
+                        url:
+                          type: string
+                    title: MsTeamsWebhookRequestConfig
+                  - allOf:
+                    - title: WebhookRequestConfig
+                    - type: object
+                      properties:
+                        hec_token:
+                          type: string
+                        hec_uri:
+                          type: string
+                    title: SplunkWebhookRequestConfig
+                  - allOf:
+                    - title: WebhookRequestConfig
+                    - type: object
+                      properties:
+                        secret:
+                          type: string
+                        url:
+                          type: string
+                    title: TinesWebhookRequestConfig
+                name:
+                  type: string
+                vendor:
+                  type: string
+                  enum:
+                  - DATADOG
+                  - SPLUNK
+                  - MSTEAMS
+                  - TINES
+                  - CUSTOM
+              required:
+              - name
+              - vendor
+              title: CreateWebhookRequest
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Base webhook integration response
+                discriminator:
+                  mapping:
+                    CUSTOM:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to custom webhook integration.
+                            type: object
+                            properties:
+                              authentication:
+                                description: Authentication configuration for the webhook.
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    description: The authentication type.
+                                    enum:
+                                    - BEARER
+                                    - API_KEY
+                                title: WebhookAuthentication
+                              headers:
+                                type: array
+                                description: Custom headers to include in webhook requests.
+                                items:
+                                  type: object
+                                  properties:
+                                    encrypted:
+                                      type: boolean
+                                      description: Whether the header value is encrypted.
+                                    key:
+                                      type: string
+                                      description: The header key.
+                                    value:
+                                      type: string
+                                      description: The header value.
+                                  title: WebhookHeader
+                              url:
+                                type: string
+                                description: The webhook URL endpoint.
+                            title: Custom
+                      title: CustomWebhookResponse
+                    DATADOG:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Datadog webhook integration.
+                            type: object
+                            properties:
+                              region:
+                                type: string
+                                description: The Datadog region.
+                              service:
+                                type: string
+                                description: The Datadog service name.
+                            title: Datadog
+                      title: DatadogWebhookResponse
+                    MSTEAMS:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Microsoft Teams webhook integration.
+                            type: object
+                            properties:
+                              channel_name:
+                                type: string
+                                description: The Microsoft Teams channel name.
+                              url:
+                                type: string
+                                description: The Microsoft Teams webhook URL.
+                            title: Microsoft Teams
+                      title: MsTeamsWebhookResponse
+                    SPLUNK:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Splunk webhook integration.
+                            type: object
+                            properties:
+                              hec_uri:
+                                type: string
+                                description: The Splunk HTTP Event Collector URI.
+                            title: Splunk
+                      title: SplunkWebhookResponse
+                    TINES:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Tines webhook integration.
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                description: The Tines webhook URL.
+                            title: Tines
+                      title: TinesWebhookResponse
+                  propertyName: vendor
+                properties:
+                  create_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this integration webhook was created.
+                  id:
+                    type: string
+                    description: The unique identifier for this integration webhook.
+                  name:
+                    type: string
+                    description: The name of this integration webhook.
+                  status:
+                    type: string
+                    description: The status of this integration webhook.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  update_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this integration webhook was last updated.
+                  vendor:
+                    type: string
+                    description: The vendor type of this integration webhook.
+                    enum:
+                    - DATADOG
+                    - SPLUNK
+                    - MSTEAMS
+                    - TINES
+                    - CUSTOM
+                title: IntegrationWebhook
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+        '500':
+          description: Internal Server Error
+      security:
+      - OAuth2ClientCredentials: []
+    get:
+      operationId: getWebhookIntegrations
+      summary: List webhooks
+      description: A `GET` request sent to the endpoint root returns a list of integration webhook objects that are associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      tags:
+      - integrations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: Filters integration webhooks by vendor type.
+        in: query
+        name: vendor
+        required: false
+        schema:
+          type: string
+          enum:
+          - DATADOG
+          - SPLUNK
+          - MSTEAMS
+          - TINES
+          - CUSTOM
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Base webhook integration response
+                  discriminator:
+                    mapping:
+                      CUSTOM:
+                        allOf:
+                        - circular(IntegrationWebhook)
+                        - type: object
+                          properties:
+                            config:
+                              description: Configuration specific to custom webhook integration.
+                              type: object
+                              properties:
+                                authentication:
+                                  description: Authentication configuration for the webhook.
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      description: The authentication type.
+                                      enum:
+                                      - BEARER
+                                      - API_KEY
+                                  title: WebhookAuthentication
+                                headers:
+                                  type: array
+                                  description: Custom headers to include in webhook requests.
+                                  items:
+                                    type: object
+                                    properties:
+                                      encrypted:
+                                        type: boolean
+                                        description: Whether the header value is encrypted.
+                                      key:
+                                        type: string
+                                        description: The header key.
+                                      value:
+                                        type: string
+                                        description: The header value.
+                                    title: WebhookHeader
+                                url:
+                                  type: string
+                                  description: The webhook URL endpoint.
+                              title: Custom
+                        title: CustomWebhookResponse
+                      DATADOG:
+                        allOf:
+                        - circular(IntegrationWebhook)
+                        - type: object
+                          properties:
+                            config:
+                              description: Configuration specific to Datadog webhook integration.
+                              type: object
+                              properties:
+                                region:
+                                  type: string
+                                  description: The Datadog region.
+                                service:
+                                  type: string
+                                  description: The Datadog service name.
+                              title: Datadog
+                        title: DatadogWebhookResponse
+                      MSTEAMS:
+                        allOf:
+                        - circular(IntegrationWebhook)
+                        - type: object
+                          properties:
+                            config:
+                              description: Configuration specific to Microsoft Teams webhook integration.
+                              type: object
+                              properties:
+                                channel_name:
+                                  type: string
+                                  description: The Microsoft Teams channel name.
+                                url:
+                                  type: string
+                                  description: The Microsoft Teams webhook URL.
+                              title: Microsoft Teams
+                        title: MsTeamsWebhookResponse
+                      SPLUNK:
+                        allOf:
+                        - circular(IntegrationWebhook)
+                        - type: object
+                          properties:
+                            config:
+                              description: Configuration specific to Splunk webhook integration.
+                              type: object
+                              properties:
+                                hec_uri:
+                                  type: string
+                                  description: The Splunk HTTP Event Collector URI.
+                              title: Splunk
+                        title: SplunkWebhookResponse
+                      TINES:
+                        allOf:
+                        - circular(IntegrationWebhook)
+                        - type: object
+                          properties:
+                            config:
+                              description: Configuration specific to Tines webhook integration.
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                                  description: The Tines webhook URL.
+                              title: Tines
+                        title: TinesWebhookResponse
+                    propertyName: vendor
+                  properties:
+                    create_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when this integration webhook was created.
+                    id:
+                      type: string
+                      description: The unique identifier for this integration webhook.
+                    name:
+                      type: string
+                      description: The name of this integration webhook.
+                    status:
+                      type: string
+                      description: The status of this integration webhook.
+                      enum:
+                      - ENABLED
+                      - DISABLED
+                    update_time:
+                      type: string
+                      format: date-time
+                      description: The timestamp when this integration webhook was last updated.
+                    vendor:
+                      type: string
+                      description: The vendor type of this integration webhook.
+                      enum:
+                      - DATADOG
+                      - SPLUNK
+                      - MSTEAMS
+                      - TINES
+                      - CUSTOM
+                  title: IntegrationWebhook
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate Limit Exceeded
+        '500':
+          description: Internal Server Error
+      security:
+      - OAuth2ClientCredentials: []
+  /v1/organizations/{organization-id}/integration-webhooks/{webhook-id}:
+    delete:
+      operationId: deleteWebhookIntegration
+      summary: Delete a webhook
+      description: A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific integration webhook. This action permanently removes the integration webhook and cannot be undone. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      tags:
+      - integrations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for this integration webhook.
+        in: path
+        name: webhook-id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+        '500':
+          description: Internal Server Error
+      security:
+      - OAuth2ClientCredentials: []
+    patch:
+      operationId: updateWebhookIntegration
+      summary: Update a webhook
+      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing integration webhook. This endpoint facilitates the modification of attributes such as the name, status, and configuration. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      tags:
+      - integrations
+      parameters:
+      - description: The unique identifier for the Upwind organization.
+        example: org_Xk9mPq7RtYwN2vLs
+        in: path
+        name: organization-id
+        required: true
+        schema:
+          type: string
+      - description: The unique identifier for this integration webhook.
+        in: path
+        name: webhook-id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                  - ENABLED
+                  - DISABLED
+              title: UpdateWebhookRequest
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Base webhook integration response
+                discriminator:
+                  mapping:
+                    CUSTOM:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to custom webhook integration.
+                            type: object
+                            properties:
+                              authentication:
+                                description: Authentication configuration for the webhook.
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    description: The authentication type.
+                                    enum:
+                                    - BEARER
+                                    - API_KEY
+                                title: WebhookAuthentication
+                              headers:
+                                type: array
+                                description: Custom headers to include in webhook requests.
+                                items:
+                                  type: object
+                                  properties:
+                                    encrypted:
+                                      type: boolean
+                                      description: Whether the header value is encrypted.
+                                    key:
+                                      type: string
+                                      description: The header key.
+                                    value:
+                                      type: string
+                                      description: The header value.
+                                  title: WebhookHeader
+                              url:
+                                type: string
+                                description: The webhook URL endpoint.
+                            title: Custom
+                      title: CustomWebhookResponse
+                    DATADOG:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Datadog webhook integration.
+                            type: object
+                            properties:
+                              region:
+                                type: string
+                                description: The Datadog region.
+                              service:
+                                type: string
+                                description: The Datadog service name.
+                            title: Datadog
+                      title: DatadogWebhookResponse
+                    MSTEAMS:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Microsoft Teams webhook integration.
+                            type: object
+                            properties:
+                              channel_name:
+                                type: string
+                                description: The Microsoft Teams channel name.
+                              url:
+                                type: string
+                                description: The Microsoft Teams webhook URL.
+                            title: Microsoft Teams
+                      title: MsTeamsWebhookResponse
+                    SPLUNK:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Splunk webhook integration.
+                            type: object
+                            properties:
+                              hec_uri:
+                                type: string
+                                description: The Splunk HTTP Event Collector URI.
+                            title: Splunk
+                      title: SplunkWebhookResponse
+                    TINES:
+                      allOf:
+                      - circular(IntegrationWebhook)
+                      - type: object
+                        properties:
+                          config:
+                            description: Configuration specific to Tines webhook integration.
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                                description: The Tines webhook URL.
+                            title: Tines
+                      title: TinesWebhookResponse
+                  propertyName: vendor
+                properties:
+                  create_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this integration webhook was created.
+                  id:
+                    type: string
+                    description: The unique identifier for this integration webhook.
+                  name:
+                    type: string
+                    description: The name of this integration webhook.
+                  status:
+                    type: string
+                    description: The status of this integration webhook.
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                  update_time:
+                    type: string
+                    format: date-time
+                    description: The timestamp when this integration webhook was last updated.
+                  vendor:
+                    type: string
+                    description: The vendor type of this integration webhook.
+                    enum:
+                    - DATADOG
+                    - SPLUNK
+                    - MSTEAMS
+                    - TINES
+                    - CUSTOM
+                title: IntegrationWebhook
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Rate Limit Exceeded
+        '500':
+          description: Internal Server Error
+      security:
+      - OAuth2ClientCredentials: []
+components:
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      description: 'OAuth 2.0 client credentials grant. Obtain client credentials in the Upwind Management Console, then exchange them for a JWT access token at https://auth.upwind.io/oauth/token with an audience matching the regional API host (https://api.upwind.io, https://api.eu.upwind.io, or https://api.me.upwind.io). Send the token as Authorization: Bearer <token>.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.upwind.io/oauth/token
+          scopes: {}
+externalDocs:
+  url: https://docs.upwind.io/restapi/v1/introduction
+  description: API Reference
