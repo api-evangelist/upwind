@@ -1,0 +1,1082 @@
+{
+  "info": {
+    "_postman_id": "58612085-45b2-41db-83d6-cd526f1449fb",
+    "name": "Upwind Management REST API v1 access-management vulnerabilities API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:55.000Z",
+    "updatedAt": "2026-07-28T03:25:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-58612085-45b2-41db-83d6-cd526f1449fb"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "vulnerability-findings",
+                  "item": [
+                    {
+                      "name": "{finding-id}",
+                      "item": [
+                        {
+                          "name": "Get a finding",
+                          "id": "c2996e99-bbf8-463b-8604-0ecf48299b8f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings/:finding-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "vulnerability-findings",
+                                ":finding-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6b39df90-1f5b-4192-a7d7-259ce0782eca",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "86471666-4c78-46a5-a91b-9d55f63d4643",
+                                  "key": "finding-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for this finding."
+                                }
+                              ]
+                            },
+                            "description": "A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Vulnerability finding. This endpoint gives access to comprehensive details such as the CVE ID (Common Vulnerabilities and Exposures Identifier), the affected resource, severity, status, and runtime contextual information. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page."
+                          },
+                          "response": [
+                            {
+                              "id": "83d513f6-edab-41df-8953-f735cb1e1d37",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings/:finding-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "vulnerability-findings",
+                                    ":finding-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "finding-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"first_seen_time\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"image\": {\n    \"digest\": \"<string>\",\n    \"name\": \"<string>\",\n    \"os_name\": \"<string>\",\n    \"os_version\": \"<string>\",\n    \"tag\": \"<string>\",\n    \"uri\": \"<string>\"\n  },\n  \"last_scan_time\": \"<dateTime>\",\n  \"package\": {\n    \"framework\": \"<string>\",\n    \"in_use\": \"<boolean>\",\n    \"introduced_by_layers\": [\n      {\n        \"layer_index\": \"<integer>\",\n        \"layer_sha\": \"<string>\"\n      },\n      {\n        \"layer_index\": \"<integer>\",\n        \"layer_sha\": \"<string>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"remediation\": [\n    {\n      \"type\": \"OFFICIAL_FIX\",\n      \"data\": {\n        \"fixed_in_version\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"OFFICIAL_FIX\",\n      \"data\": {\n        \"fixed_in_version\": \"<string>\"\n      }\n    }\n  ],\n  \"resource\": {\n    \"cloud_account_id\": \"<string>\",\n    \"cloud_account_name\": \"<string>\",\n    \"cloud_account_tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"cloud_organization_id\": \"<string>\",\n    \"cloud_organization_unit_id\": \"<string>\",\n    \"cloud_provider\": \"GCP\",\n    \"cluster_id\": \"<string>\",\n    \"cluster_name\": \"<string>\",\n    \"external_id\": \"<string>\",\n    \"id\": \"<string>\",\n    \"internet_exposure\": {\n      \"ingress\": {\n        \"active_communication\": \"<boolean>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"region\": \"<string>\",\n    \"resource_tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"risk_categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"type\": \"<string>\",\n    \"upwind_asset_id\": \"<string>\"\n  },\n  \"source\": \"SENSOR\",\n  \"status\": \"ARCHIVED\",\n  \"vulnerability\": {\n    \"cve_first_seen_time\": \"<dateTime>\",\n    \"description\": \"<string>\",\n    \"epss_score\": \"<string>\",\n    \"epss_severity\": \"<string>\",\n    \"exploitable\": \"<boolean>\",\n    \"exploitable_functions_in_use\": [\n      {\n        \"container_id\": \"<string>\",\n        \"container_name\": \"<string>\",\n        \"file_path\": \"<string>\",\n        \"function_name\": \"<string>\",\n        \"last_detection_time\": \"<dateTime>\",\n        \"origin_library_id\": \"<string>\",\n        \"process_id\": \"<string>\",\n        \"process_name\": \"<string>\"\n      },\n      {\n        \"container_id\": \"<string>\",\n        \"container_name\": \"<string>\",\n        \"file_path\": \"<string>\",\n        \"function_name\": \"<string>\",\n        \"last_detection_time\": \"<dateTime>\",\n        \"origin_library_id\": \"<string>\",\n        \"process_id\": \"<string>\",\n        \"process_name\": \"<string>\"\n      }\n    ],\n    \"known_exploit_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"name\": \"<string>\",\n    \"nvd_cve_id\": \"<string>\",\n    \"nvd_cvss_v2_score\": \"<string>\",\n    \"nvd_cvss_v2_severity\": \"<string>\",\n    \"nvd_cvss_v3_score\": \"<string>\",\n    \"nvd_cvss_v3_severity\": \"MEDIUM\",\n    \"nvd_cvss_v4_score\": \"<string>\",\n    \"nvd_cvss_v4_severity\": \"<string>\",\n    \"nvd_description\": \"<string>\",\n    \"nvd_publish_time\": \"<dateTime>\",\n    \"sbom_artifact_locations\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T03:25:56.000Z",
+                              "updatedAt": "2026-07-28T03:25:56.000Z",
+                              "uid": "35240-83d513f6-edab-41df-8953-f735cb1e1d37"
+                            },
+                            {
+                              "id": "ceee3499-3c84-44ba-beab-a971cc395861",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings/:finding-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "vulnerability-findings",
+                                    ":finding-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "finding-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:56.000Z",
+                              "updatedAt": "2026-07-28T03:25:56.000Z",
+                              "uid": "35240-ceee3499-3c84-44ba-beab-a971cc395861"
+                            },
+                            {
+                              "id": "faa09f1f-6b97-4d64-bb1f-efb69ecd706b",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings/:finding-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "vulnerability-findings",
+                                    ":finding-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "finding-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:56.000Z",
+                              "updatedAt": "2026-07-28T03:25:56.000Z",
+                              "uid": "35240-faa09f1f-6b97-4d64-bb1f-efb69ecd706b"
+                            },
+                            {
+                              "id": "7ba5c498-5285-4767-ada3-155f0567a3a8",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings/:finding-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "vulnerability-findings",
+                                    ":finding-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "finding-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:56.000Z",
+                              "updatedAt": "2026-07-28T03:25:56.000Z",
+                              "uid": "35240-7ba5c498-5285-4767-ada3-155f0567a3a8"
+                            },
+                            {
+                              "id": "3266a8c9-b3a8-48c4-9faf-c8fb6c278232",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings/:finding-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "vulnerability-findings",
+                                    ":finding-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "finding-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:56.000Z",
+                              "updatedAt": "2026-07-28T03:25:56.000Z",
+                              "uid": "35240-3266a8c9-b3a8-48c4-9faf-c8fb6c278232"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:56.000Z",
+                          "updatedAt": "2026-07-28T03:25:56.000Z",
+                          "uid": "35240-c2996e99-bbf8-463b-8604-0ecf48299b8f"
+                        }
+                      ],
+                      "id": "c8731dd3-d88f-4f3c-8065-5945af73fd85",
+                      "createdAt": "2026-07-28T03:25:56.000Z",
+                      "updatedAt": "2026-07-28T03:25:56.000Z",
+                      "uid": "35240-c8731dd3-d88f-4f3c-8065-5945af73fd85"
+                    },
+                    {
+                      "name": "List findings",
+                      "id": "2fb6a2ba-96e5-435e-87a3-4004ffe6d234",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings?per-page=100&cloud-account-id=<string>&package-in-use=<boolean>&has-exploitable-functions-in-use=<boolean>&exploitable=<boolean>&fix-available=<boolean>&ingress-active-communication=<boolean>&internet-exposure=<boolean>&severity=medium&epss-severity=critical&cve-id=<string>&namespace=<string>&page-token=<string>&image-name=<string>&upwind-asset-id=<string>&known-exploit-sources=<string>&resource-type=<string>&resource-tags=<string>&resource-tags=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "vulnerability-findings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specifies how many results are returned on a page.",
+                              "key": "per-page",
+                              "value": "100"
+                            },
+                            {
+                              "description": "Filters by the specified cloud account ID.",
+                              "key": "cloud-account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings for packages currently in use.",
+                              "key": "package-in-use",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters findings for vulnerabilities with exploitable functions currently in use.",
+                              "key": "has-exploitable-functions-in-use",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters findings for packages with a known exploit.",
+                              "key": "exploitable",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters findings for packages with an available fix.",
+                              "key": "fix-available",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters findings for resources with active internet ingress communication.",
+                              "key": "ingress-active-communication",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters findings for resources with internet exposure.",
+                              "key": "internet-exposure",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters by the level of CVSS severity.",
+                              "key": "severity",
+                              "value": "medium"
+                            },
+                            {
+                              "description": "Filters by the level of EPSS severity.",
+                              "key": "epss-severity",
+                              "value": "critical"
+                            },
+                            {
+                              "description": "Filters findings by the specified CVE ID.",
+                              "key": "cve-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters by the specified Kubernetes namespace.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                              "key": "page-token",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`.",
+                              "key": "image-name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings by the specified Upwind asset ID.",
+                              "key": "upwind-asset-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically.",
+                              "key": "known-exploit-sources",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`.",
+                              "key": "resource-type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.",
+                              "key": "resource-tags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.",
+                              "key": "resource-tags",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e3483868-67e4-4268-883e-c9bc14b14e60",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `GET` request sent to the endpoint root returns a list of Vulnerability finding objects that are associated with the specified organization. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page."
+                      },
+                      "response": [
+                        {
+                          "id": "d835b43b-2ea7-409e-8ef7-dc6e06ecd4b0",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings?per-page=100&cloud-account-id=<string>&package-in-use=<boolean>&has-exploitable-functions-in-use=<boolean>&exploitable=<boolean>&fix-available=<boolean>&ingress-active-communication=<boolean>&internet-exposure=<boolean>&severity=medium&epss-severity=critical&cve-id=<string>&namespace=<string>&page-token=<string>&image-name=<string>&upwind-asset-id=<string>&known-exploit-sources=<string>&resource-type=<string>&resource-tags=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "vulnerability-findings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings for packages currently in use.",
+                                  "key": "package-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for vulnerabilities with exploitable functions currently in use.",
+                                  "key": "has-exploitable-functions-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with a known exploit.",
+                                  "key": "exploitable",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with an available fix.",
+                                  "key": "fix-available",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with active internet ingress communication.",
+                                  "key": "ingress-active-communication",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with internet exposure.",
+                                  "key": "internet-exposure",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the level of CVSS severity.",
+                                  "key": "severity",
+                                  "value": "medium"
+                                },
+                                {
+                                  "description": "Filters by the level of EPSS severity.",
+                                  "key": "epss-severity",
+                                  "value": "critical"
+                                },
+                                {
+                                  "description": "Filters findings by the specified CVE ID.",
+                                  "key": "cve-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified Upwind asset ID.",
+                                  "key": "upwind-asset-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically.",
+                                  "key": "known-exploit-sources",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.",
+                                  "key": "resource-tags",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Provides pagination links for navigating through the result set, formatted as HTTP link headers.",
+                                "type": "text/plain"
+                              },
+                              "key": "Link",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"image\": {\n      \"digest\": \"<string>\",\n      \"name\": \"<string>\",\n      \"os_name\": \"<string>\",\n      \"os_version\": \"<string>\",\n      \"tag\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"last_scan_time\": \"<dateTime>\",\n    \"package\": {\n      \"framework\": \"<string>\",\n      \"in_use\": \"<boolean>\",\n      \"introduced_by_layers\": [\n        {\n          \"layer_index\": \"<integer>\",\n          \"layer_sha\": \"<string>\"\n        },\n        {\n          \"layer_index\": \"<integer>\",\n          \"layer_sha\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"remediation\": [\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"<string>\"\n        }\n      },\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"<string>\"\n        }\n      }\n    ],\n    \"resource\": {\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_account_name\": \"<string>\",\n      \"cloud_account_tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"cloud_organization_id\": \"<string>\",\n      \"cloud_organization_unit_id\": \"<string>\",\n      \"cloud_provider\": \"AZURE\",\n      \"cluster_id\": \"<string>\",\n      \"cluster_name\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"active_communication\": \"<boolean>\"\n        }\n      },\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"region\": \"<string>\",\n      \"resource_tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"risk_categories\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\",\n      \"upwind_asset_id\": \"<string>\"\n    },\n    \"source\": \"SENSOR\",\n    \"status\": \"ARCHIVED\",\n    \"vulnerability\": {\n      \"cve_first_seen_time\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"epss_score\": \"<string>\",\n      \"epss_severity\": \"<string>\",\n      \"exploitable\": \"<boolean>\",\n      \"exploitable_functions_in_use\": [\n        {\n          \"container_id\": \"<string>\",\n          \"container_name\": \"<string>\",\n          \"file_path\": \"<string>\",\n          \"function_name\": \"<string>\",\n          \"last_detection_time\": \"<dateTime>\",\n          \"origin_library_id\": \"<string>\",\n          \"process_id\": \"<string>\",\n          \"process_name\": \"<string>\"\n        },\n        {\n          \"container_id\": \"<string>\",\n          \"container_name\": \"<string>\",\n          \"file_path\": \"<string>\",\n          \"function_name\": \"<string>\",\n          \"last_detection_time\": \"<dateTime>\",\n          \"origin_library_id\": \"<string>\",\n          \"process_id\": \"<string>\",\n          \"process_name\": \"<string>\"\n        }\n      ],\n      \"known_exploit_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"nvd_cve_id\": \"<string>\",\n      \"nvd_cvss_v2_score\": \"<string>\",\n      \"nvd_cvss_v2_severity\": \"<string>\",\n      \"nvd_cvss_v3_score\": \"<string>\",\n      \"nvd_cvss_v3_severity\": \"CRITICAL\",\n      \"nvd_cvss_v4_score\": \"<string>\",\n      \"nvd_cvss_v4_severity\": \"<string>\",\n      \"nvd_description\": \"<string>\",\n      \"nvd_publish_time\": \"<dateTime>\",\n      \"sbom_artifact_locations\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  {\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"image\": {\n      \"digest\": \"<string>\",\n      \"name\": \"<string>\",\n      \"os_name\": \"<string>\",\n      \"os_version\": \"<string>\",\n      \"tag\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"last_scan_time\": \"<dateTime>\",\n    \"package\": {\n      \"framework\": \"<string>\",\n      \"in_use\": \"<boolean>\",\n      \"introduced_by_layers\": [\n        {\n          \"layer_index\": \"<integer>\",\n          \"layer_sha\": \"<string>\"\n        },\n        {\n          \"layer_index\": \"<integer>\",\n          \"layer_sha\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"remediation\": [\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"<string>\"\n        }\n      },\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"<string>\"\n        }\n      }\n    ],\n    \"resource\": {\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_account_name\": \"<string>\",\n      \"cloud_account_tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"cloud_organization_id\": \"<string>\",\n      \"cloud_organization_unit_id\": \"<string>\",\n      \"cloud_provider\": \"AZURE\",\n      \"cluster_id\": \"<string>\",\n      \"cluster_name\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"active_communication\": \"<boolean>\"\n        }\n      },\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"region\": \"<string>\",\n      \"resource_tags\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"risk_categories\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\",\n      \"upwind_asset_id\": \"<string>\"\n    },\n    \"source\": \"CLOUD_SCANNER\",\n    \"status\": \"OPEN\",\n    \"vulnerability\": {\n      \"cve_first_seen_time\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"epss_score\": \"<string>\",\n      \"epss_severity\": \"<string>\",\n      \"exploitable\": \"<boolean>\",\n      \"exploitable_functions_in_use\": [\n        {\n          \"container_id\": \"<string>\",\n          \"container_name\": \"<string>\",\n          \"file_path\": \"<string>\",\n          \"function_name\": \"<string>\",\n          \"last_detection_time\": \"<dateTime>\",\n          \"origin_library_id\": \"<string>\",\n          \"process_id\": \"<string>\",\n          \"process_name\": \"<string>\"\n        },\n        {\n          \"container_id\": \"<string>\",\n          \"container_name\": \"<string>\",\n          \"file_path\": \"<string>\",\n          \"function_name\": \"<string>\",\n          \"last_detection_time\": \"<dateTime>\",\n          \"origin_library_id\": \"<string>\",\n          \"process_id\": \"<string>\",\n          \"process_name\": \"<string>\"\n        }\n      ],\n      \"known_exploit_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"nvd_cve_id\": \"<string>\",\n      \"nvd_cvss_v2_score\": \"<string>\",\n      \"nvd_cvss_v2_severity\": \"<string>\",\n      \"nvd_cvss_v3_score\": \"<string>\",\n      \"nvd_cvss_v3_severity\": \"HIGH\",\n      \"nvd_cvss_v4_score\": \"<string>\",\n      \"nvd_cvss_v4_severity\": \"<string>\",\n      \"nvd_description\": \"<string>\",\n      \"nvd_publish_time\": \"<dateTime>\",\n      \"sbom_artifact_locations\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:56.000Z",
+                          "updatedAt": "2026-07-28T03:25:56.000Z",
+                          "uid": "35240-d835b43b-2ea7-409e-8ef7-dc6e06ecd4b0"
+                        },
+                        {
+                          "id": "6e27af53-4d70-417d-aef3-20c422586ffd",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings?per-page=100&cloud-account-id=<string>&package-in-use=<boolean>&has-exploitable-functions-in-use=<boolean>&exploitable=<boolean>&fix-available=<boolean>&ingress-active-communication=<boolean>&internet-exposure=<boolean>&severity=medium&epss-severity=critical&cve-id=<string>&namespace=<string>&page-token=<string>&image-name=<string>&upwind-asset-id=<string>&known-exploit-sources=<string>&resource-type=<string>&resource-tags=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "vulnerability-findings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings for packages currently in use.",
+                                  "key": "package-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for vulnerabilities with exploitable functions currently in use.",
+                                  "key": "has-exploitable-functions-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with a known exploit.",
+                                  "key": "exploitable",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with an available fix.",
+                                  "key": "fix-available",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with active internet ingress communication.",
+                                  "key": "ingress-active-communication",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with internet exposure.",
+                                  "key": "internet-exposure",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the level of CVSS severity.",
+                                  "key": "severity",
+                                  "value": "medium"
+                                },
+                                {
+                                  "description": "Filters by the level of EPSS severity.",
+                                  "key": "epss-severity",
+                                  "value": "critical"
+                                },
+                                {
+                                  "description": "Filters findings by the specified CVE ID.",
+                                  "key": "cve-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified Upwind asset ID.",
+                                  "key": "upwind-asset-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically.",
+                                  "key": "known-exploit-sources",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.",
+                                  "key": "resource-tags",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:56.000Z",
+                          "updatedAt": "2026-07-28T03:25:56.000Z",
+                          "uid": "35240-6e27af53-4d70-417d-aef3-20c422586ffd"
+                        },
+                        {
+                          "id": "ac092eda-9afa-4264-a254-62614dd86951",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings?per-page=100&cloud-account-id=<string>&package-in-use=<boolean>&has-exploitable-functions-in-use=<boolean>&exploitable=<boolean>&fix-available=<boolean>&ingress-active-communication=<boolean>&internet-exposure=<boolean>&severity=medium&epss-severity=critical&cve-id=<string>&namespace=<string>&page-token=<string>&image-name=<string>&upwind-asset-id=<string>&known-exploit-sources=<string>&resource-type=<string>&resource-tags=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "vulnerability-findings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings for packages currently in use.",
+                                  "key": "package-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for vulnerabilities with exploitable functions currently in use.",
+                                  "key": "has-exploitable-functions-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with a known exploit.",
+                                  "key": "exploitable",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with an available fix.",
+                                  "key": "fix-available",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with active internet ingress communication.",
+                                  "key": "ingress-active-communication",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with internet exposure.",
+                                  "key": "internet-exposure",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the level of CVSS severity.",
+                                  "key": "severity",
+                                  "value": "medium"
+                                },
+                                {
+                                  "description": "Filters by the level of EPSS severity.",
+                                  "key": "epss-severity",
+                                  "value": "critical"
+                                },
+                                {
+                                  "description": "Filters findings by the specified CVE ID.",
+                                  "key": "cve-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified Upwind asset ID.",
+                                  "key": "upwind-asset-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically.",
+                                  "key": "known-exploit-sources",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.",
+                                  "key": "resource-tags",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:56.000Z",
+                          "updatedAt": "2026-07-28T03:25:56.000Z",
+                          "uid": "35240-ac092eda-9afa-4264-a254-62614dd86951"
+                        },
+                        {
+                          "id": "f742c4c0-eee9-450f-b5aa-cb81517a0259",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/vulnerability-findings?per-page=100&cloud-account-id=<string>&package-in-use=<boolean>&has-exploitable-functions-in-use=<boolean>&exploitable=<boolean>&fix-available=<boolean>&ingress-active-communication=<boolean>&internet-exposure=<boolean>&severity=medium&epss-severity=critical&cve-id=<string>&namespace=<string>&page-token=<string>&image-name=<string>&upwind-asset-id=<string>&known-exploit-sources=<string>&resource-type=<string>&resource-tags=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "vulnerability-findings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings for packages currently in use.",
+                                  "key": "package-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for vulnerabilities with exploitable functions currently in use.",
+                                  "key": "has-exploitable-functions-in-use",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with a known exploit.",
+                                  "key": "exploitable",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for packages with an available fix.",
+                                  "key": "fix-available",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with active internet ingress communication.",
+                                  "key": "ingress-active-communication",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters findings for resources with internet exposure.",
+                                  "key": "internet-exposure",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the level of CVSS severity.",
+                                  "key": "severity",
+                                  "value": "medium"
+                                },
+                                {
+                                  "description": "Filters by the level of EPSS severity.",
+                                  "key": "epss-severity",
+                                  "value": "critical"
+                                },
+                                {
+                                  "description": "Filters findings by the specified CVE ID.",
+                                  "key": "cve-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the specified Upwind asset ID.",
+                                  "key": "upwind-asset-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically.",
+                                  "key": "known-exploit-sources",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas.",
+                                  "key": "resource-tags",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:56.000Z",
+                          "updatedAt": "2026-07-28T03:25:56.000Z",
+                          "uid": "35240-f742c4c0-eee9-450f-b5aa-cb81517a0259"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:56.000Z",
+                      "updatedAt": "2026-07-28T03:25:56.000Z",
+                      "uid": "35240-2fb6a2ba-96e5-435e-87a3-4004ffe6d234"
+                    }
+                  ],
+                  "id": "48e7431c-9605-4392-927a-d3473417c7d4",
+                  "createdAt": "2026-07-28T03:25:56.000Z",
+                  "updatedAt": "2026-07-28T03:25:56.000Z",
+                  "uid": "35240-48e7431c-9605-4392-927a-d3473417c7d4"
+                }
+              ],
+              "id": "2bc18d5e-6677-4e50-901c-7b1e683d3bc1",
+              "createdAt": "2026-07-28T03:25:56.000Z",
+              "updatedAt": "2026-07-28T03:25:56.000Z",
+              "uid": "35240-2bc18d5e-6677-4e50-901c-7b1e683d3bc1"
+            }
+          ],
+          "id": "f484a982-2c34-4c89-8801-082e48b556c8",
+          "createdAt": "2026-07-28T03:25:56.000Z",
+          "updatedAt": "2026-07-28T03:25:56.000Z",
+          "uid": "35240-f484a982-2c34-4c89-8801-082e48b556c8"
+        }
+      ],
+      "id": "cafb8ac4-6087-412d-bfc5-e60108cbf907",
+      "createdAt": "2026-07-28T03:25:56.000Z",
+      "updatedAt": "2026-07-28T03:25:56.000Z",
+      "uid": "35240-cafb8ac4-6087-412d-bfc5-e60108cbf907"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

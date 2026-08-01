@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/upwind-management-v1-openapi.yml, openapi/upwind-management-v2-openapi.yml
+docs: https://docs.upwind.io/settings/credentials
+notes: >-
+  Upwind publishes no named OAuth scope strings. Authorization granularity is carried by the
+  audience parameter (one per regional API host) plus RBAC "scope & roles" attached to each API
+  credential in the console — any token generated from a credential inherits that credential's
+  permissions, bounded by the creating member's own access. Token lifetime is 24 hours.
+schemes:
+- name: OAuth2ClientCredentials
+  source: openapi/upwind-management-v1-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.upwind.io/oauth/token
+  description: 'OAuth 2.0 client credentials grant. Obtain client credentials in the Upwind
+    Management Console, then exchange them for a JWT access token at https://auth.upwind.io/oauth/token
+    with an audience matching the regional API host (https://api.upwind.io, https://api.eu.upwind.io,
+    or https://api.me.upwind.io). Send the token as Authorization: Bearer <token>.'
+- name: OAuth2ClientCredentials
+  source: openapi/upwind-management-v2-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.upwind.io/oauth/token
+  description: 'OAuth 2.0 client credentials grant. Obtain client credentials in the Upwind
+    Management Console, then exchange them for a JWT access token at https://auth.upwind.io/oauth/token
+    with an audience matching the regional API host (https://api.upwind.io, https://api.eu.upwind.io,
+    or https://api.me.upwind.io). Send the token as Authorization: Bearer <token>.'
+scopes: []

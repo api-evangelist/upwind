@@ -1,0 +1,263 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/upwind-management-v1-openapi.yml, openapi/upwind-management-v2-openapi.yml
+notes: No official hosted/remote Upwind MCP server was found (docs, GitHub org, npm, MCP registries). Candidate
+  tool list derived from the published Management REST API operations.
+server:
+  name: upwind
+  transport: http
+  url: null
+tools:
+- name: createCloudAccount
+  description: Create a cloud account
+  source_operation: openapi/upwind-management-v1-openapi.yml#createCloudAccount
+- name: createCustomRule
+  description: Create a rule
+  source_operation: openapi/upwind-management-v1-openapi.yml#createCustomRule
+- name: getCustomRules
+  description: List rules
+  source_operation: openapi/upwind-management-v1-openapi.yml#getCustomRules
+- name: createEvent
+  description: Create an event
+  source_operation: openapi/upwind-management-v1-openapi.yml#createEvent
+- name: createFramework
+  description: Create a framework
+  source_operation: openapi/upwind-management-v1-openapi.yml#createFramework
+- name: getAllFrameworks
+  description: List frameworks
+  source_operation: openapi/upwind-management-v1-openapi.yml#getAllFrameworks
+- name: createWebhookIntegration
+  description: Create a webhook
+  source_operation: openapi/upwind-management-v1-openapi.yml#createWebhookIntegration
+- name: getWebhookIntegrations
+  description: List webhooks
+  source_operation: openapi/upwind-management-v1-openapi.yml#getWebhookIntegrations
+- name: createWorkflow
+  description: Create a workflow
+  source_operation: openapi/upwind-management-v1-openapi.yml#createWorkflow
+- name: listAllWorkflows
+  description: List workflows
+  source_operation: openapi/upwind-management-v1-openapi.yml#listAllWorkflows
+- name: deleteCloudAccount
+  description: Delete a cloud account
+  source_operation: openapi/upwind-management-v1-openapi.yml#deleteCloudAccount
+- name: updateCloudAccount
+  description: Update a cloud account
+  source_operation: openapi/upwind-management-v1-openapi.yml#updateCloudAccount
+- name: deleteCustomRule
+  description: Delete a rule
+  source_operation: openapi/upwind-management-v1-openapi.yml#deleteCustomRule
+- name: editCustomRule
+  description: Update a rule
+  source_operation: openapi/upwind-management-v1-openapi.yml#editCustomRule
+- name: deleteWebhookIntegration
+  description: Delete a webhook
+  source_operation: openapi/upwind-management-v1-openapi.yml#deleteWebhookIntegration
+- name: updateWebhookIntegration
+  description: Update a webhook
+  source_operation: openapi/upwind-management-v1-openapi.yml#updateWebhookIntegration
+- name: deleteWorkflow
+  description: Delete a workflow
+  source_operation: openapi/upwind-management-v1-openapi.yml#deleteWorkflow
+- name: getWorkflowById
+  description: Get a workflow
+  source_operation: openapi/upwind-management-v1-openapi.yml#getWorkflowById
+- name: updateWorkflow
+  description: Update a workflow
+  source_operation: openapi/upwind-management-v1-openapi.yml#updateWorkflow
+- name: editFramework
+  description: Update a framework
+  source_operation: openapi/upwind-management-v1-openapi.yml#editFramework
+- name: getApiCatalog
+  description: List endpoints
+  source_operation: openapi/upwind-management-v1-openapi.yml#getApiCatalog
+- name: getComplianceResourceFindingById
+  description: Get a finding
+  source_operation: openapi/upwind-management-v1-openapi.yml#getComplianceResourceFindingById
+- name: getComplianceResourceFindings
+  description: List findings
+  source_operation: openapi/upwind-management-v1-openapi.yml#getComplianceResourceFindings
+- name: getEventsList
+  description: List events
+  source_operation: openapi/upwind-management-v1-openapi.yml#getEventsList
+- name: getSbomPackageDetails
+  description: Get SBOM package details
+  source_operation: openapi/upwind-management-v1-openapi.yml#getSbomPackageDetails
+- name: getShiftLeftResult
+  description: Get a scan result
+  source_operation: openapi/upwind-management-v1-openapi.yml#getShiftLeftResult
+- name: get_threat_detection
+  description: Get a detection
+  source_operation: openapi/upwind-management-v1-openapi.yml#get-threat-detection
+- name: update_threat_detection
+  description: Update a detection
+  source_operation: openapi/upwind-management-v1-openapi.yml#update-threat-detection
+- name: get_vulnerability_finding_by_id
+  description: Get a finding
+  source_operation: openapi/upwind-management-v1-openapi.yml#get-vulnerability-finding-by-id
+- name: getVulnerabilityFindingList
+  description: List findings
+  source_operation: openapi/upwind-management-v1-openapi.yml#getVulnerabilityFindingList
+- name: listSbomPackages
+  description: List SBOM packages
+  source_operation: openapi/upwind-management-v1-openapi.yml#listSbomPackages
+- name: list_threat_detections
+  description: List detections
+  source_operation: openapi/upwind-management-v1-openapi.yml#list-threat-detections
+- name: list_threat_policies
+  description: List policies
+  source_operation: openapi/upwind-management-v1-openapi.yml#list-threat-policies
+- name: searchShiftLeftEvents
+  description: Search ShiftLeft events
+  source_operation: openapi/upwind-management-v1-openapi.yml#searchShiftLeftEvents
+- name: updateThreatPolicy
+  description: Update a policy
+  source_operation: openapi/upwind-management-v1-openapi.yml#updateThreatPolicy
+- name: assetsSearch
+  description: Search asset relationships
+  source_operation: openapi/upwind-management-v2-openapi.yml#assetsSearch
+- name: addGroupMembers
+  description: Add members to a group
+  source_operation: openapi/upwind-management-v2-openapi.yml#addGroupMembers
+- name: removeGroupMembers
+  description: Remove members from a group
+  source_operation: openapi/upwind-management-v2-openapi.yml#removeGroupMembers
+- name: addMember
+  description: Add a member
+  source_operation: openapi/upwind-management-v2-openapi.yml#addMember
+- name: bulkAttachRuleDefinitions
+  description: Bulk create policy rules
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkAttachRuleDefinitions
+- name: bulkDeletePolicyRules
+  description: Bulk delete policy rules
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkDeletePolicyRules
+- name: bulkEditPolicyRules
+  description: Bulk edit policy rules
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkEditPolicyRules
+- name: bulkCreatePolicies
+  description: Bulk create policies
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkCreatePolicies
+- name: bulkDeletePolicies
+  description: Bulk delete policies
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkDeletePolicies
+- name: bulkEditPolicies
+  description: Bulk edit policies
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkEditPolicies
+- name: bulkCreateRuleDefinitions
+  description: Bulk create rule definitions
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkCreateRuleDefinitions
+- name: bulkDeleteRuleDefinitions
+  description: Bulk delete rule definitions
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkDeleteRuleDefinitions
+- name: bulkEditRuleDefinitions
+  description: Bulk edit rule definitions
+  source_operation: openapi/upwind-management-v2-openapi.yml#bulkEditRuleDefinitions
+- name: createFramework
+  description: Create a framework
+  source_operation: openapi/upwind-management-v2-openapi.yml#createFramework
+- name: createRule
+  description: Create a configuration rule
+  source_operation: openapi/upwind-management-v2-openapi.yml#createRule
+- name: createScope
+  description: Create a scope
+  source_operation: openapi/upwind-management-v2-openapi.yml#createScope
+- name: deleteScope
+  description: Delete a scope
+  source_operation: openapi/upwind-management-v2-openapi.yml#deleteScope
+- name: getScope
+  description: Get a scope
+  source_operation: openapi/upwind-management-v2-openapi.yml#getScope
+- name: updateScope
+  description: Update a scope
+  source_operation: openapi/upwind-management-v2-openapi.yml#updateScope
+- name: getAssetExample
+  description: Get an asset example
+  source_operation: openapi/upwind-management-v2-openapi.yml#getAssetExample
+- name: getAsset
+  description: Get an asset
+  source_operation: openapi/upwind-management-v2-openapi.yml#getAsset
+- name: getAttachedPolicies
+  description: Get the policies a rule definition is attached to
+  source_operation: openapi/upwind-management-v2-openapi.yml#getAttachedPolicies
+- name: getFinding
+  description: Get a finding
+  source_operation: openapi/upwind-management-v2-openapi.yml#getFinding
+- name: getGroup
+  description: Get a group
+  source_operation: openapi/upwind-management-v2-openapi.yml#getGroup
+- name: updateGroup
+  description: Update a group
+  source_operation: openapi/upwind-management-v2-openapi.yml#updateGroup
+- name: getPolicyRule
+  description: Get a policy rule
+  source_operation: openapi/upwind-management-v2-openapi.yml#getPolicyRule
+- name: getPolicy
+  description: Get a policy
+  source_operation: openapi/upwind-management-v2-openapi.yml#getPolicy
+- name: getRole
+  description: Get a role
+  source_operation: openapi/upwind-management-v2-openapi.yml#getRole
+- name: getRuleDefinition
+  description: Get a rule definition
+  source_operation: openapi/upwind-management-v2-openapi.yml#getRuleDefinition
+- name: getSchemaByLabelName
+  description: Get asset schema
+  source_operation: openapi/upwind-management-v2-openapi.yml#getSchemaByLabelName
+- name: getSchema
+  description: List asset schemas
+  source_operation: openapi/upwind-management-v2-openapi.yml#getSchema
+- name: getStory
+  description: Get a story
+  source_operation: openapi/upwind-management-v2-openapi.yml#getStory
+- name: listStories
+  description: List stories
+  source_operation: openapi/upwind-management-v2-openapi.yml#listStories
+- name: patchAsset
+  description: Update an inventory asset
+  source_operation: openapi/upwind-management-v2-openapi.yml#patchAsset
+- name: searchAssets
+  description: Search catalog assets
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchAssets
+- name: searchEndpoints
+  description: Search API endpoints
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchEndpoints
+- name: searchFindings
+  description: Search findings
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchFindings
+- name: searchFrameworks
+  description: Search frameworks
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchFrameworks
+- name: searchGroups
+  description: Search groups
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchGroups
+- name: searchMembers
+  description: Search members
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchMembers
+- name: searchPolicies
+  description: Search policies
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchPolicies
+- name: searchPolicyRules
+  description: Search policy rules
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchPolicyRules
+- name: searchRoles
+  description: Search roles
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchRoles
+- name: searchRuleDefinitions
+  description: Search rule definitions
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchRuleDefinitions
+- name: searchScopes
+  description: Search scopes
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchScopes
+- name: searchShiftLeftEvents
+  description: Search ShiftLeft events
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchShiftLeftEvents
+- name: searchStories
+  description: Search stories
+  source_operation: openapi/upwind-management-v2-openapi.yml#searchStories
+- name: updateFramework
+  description: Update a framework
+  source_operation: openapi/upwind-management-v2-openapi.yml#updateFramework
+- name: updateRule
+  description: Update a configuration rule
+  source_operation: openapi/upwind-management-v2-openapi.yml#updateRule

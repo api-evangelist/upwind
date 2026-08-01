@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/restapi/ (per-operation descriptions)
+notes: HTTP 429 "Rate Limit Exceeded" is declared on all 84 published operations. Numeric limits are documented
+  per endpoint; adjustments via Upwind Support.
+limits:
+- name: inventory-assets-search
+  limit_count: 100
+  window: minute
+  scope: organization
+  evidence: 'Rate limit: Requests to this endpoint are limited to 100 requests per minute per organization.'
+  operation: assetsSearch
+signaling:
+  status_code: 429

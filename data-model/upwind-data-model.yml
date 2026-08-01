@@ -1,0 +1,154 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/upwind-management-v1-openapi.yml, openapi/upwind-management-v2-openapi.yml
+notes: Entity graph derived from the organization-scoped Management API. Every entity belongs_to Organization via
+  the {organization-id} path parameter. Policies contain policy rules; rule definitions attach to policies; groups
+  contain members with roles bounded by scopes.
+root:
+  entity: Organization
+  via: organization-id path parameter
+  relationship: has_many -> all entities below
+entities:
+- entity: threats
+  operations: 25
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/threat-detections
+  - /v1/organizations/{organization-id}/threat-detections/{detection-id}
+  - /v1/organizations/{organization-id}/threat-events
+  - /v1/organizations/{organization-id}/threat-policies
+- entity: configurations
+  operations: 17
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/configuration-findings
+  - /v1/organizations/{organization-id}/configuration-findings/{finding-id}
+  - /v1/organizations/{organization-id}/configuration-frameworks
+  - /v1/organizations/{organization-id}/configuration-frameworks/{framework-id}
+- entity: access-management
+  operations: 14
+  sources:
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v2/organizations/{organization-id}/access-management/groups/search
+  - /v2/organizations/{organization-id}/access-management/groups/{group-id}
+  - /v2/organizations/{organization-id}/access-management/groups/{group-id}/members/bulk
+  - /v2/organizations/{organization-id}/access-management/members
+- entity: workflows
+  operations: 5
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/workflows
+  - /v1/organizations/{organization-id}/workflows/{workflow-id}
+- entity: inventory
+  operations: 5
+  sources:
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v2/organizations/{organization-id}/inventory/assets/{id}
+  - /v2/organizations/{organization-id}/inventory/catalog/assets/search
+  - /v2/organizations/{organization-id}/inventory/catalog/assets/{id}
+  - /v2/organizations/{organization-id}/inventory/schema
+- entity: integrations
+  operations: 4
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/integration-webhooks
+  - /v1/organizations/{organization-id}/integration-webhooks/{webhook-id}
+- entity: cloud-accounts
+  operations: 3
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/cloud-accounts
+  - /v1/organizations/{organization-id}/cloud-accounts/{account-id}
+- entity: events
+  operations: 3
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/events
+  - /v1/organizations/{organization-id}/events/shift-left/search
+  - /v2/organizations/{organization-id}/events/shift-left/search
+- entity: api-security
+  operations: 2
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/apisecurity-endpoints
+  - /v2/organizations/{organization-id}/api-security/endpoints/search
+- entity: packages
+  operations: 2
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/sbom-packages
+  - /v1/organizations/{organization-id}/sbom-packages/{package-path}
+- entity: vulnerabilities
+  operations: 2
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/vulnerability-findings
+  - /v1/organizations/{organization-id}/vulnerability-findings/{finding-id}
+- entity: shiftleft
+  operations: 1
+  sources:
+  - openapi/upwind-management-v1-openapi.yml
+  example_paths:
+  - /v1/organizations/{organization-id}/shiftleft/results/{fingerprint}
+- entity: Inventory
+  operations: 1
+  sources:
+  - openapi/upwind-management-v2-openapi.yml
+  example_paths:
+  - /v2/organizations/{organization-id}/inventory/assets/search
+explicit_relationships:
+- from: Policy
+  to: PolicyRule
+  type: has_many
+  evidence: v2 search-policy-rules, bulk policy-rule operations
+- from: Policy
+  to: RuleDefinition
+  type: has_many
+  evidence: v2 bulk-attach-rule-definitions, get-attached-policies
+- from: Group
+  to: Member
+  type: has_many
+  evidence: v2 add-group-members / remove-group-members / search-members
+- from: Member
+  to: Role
+  type: has_many
+  evidence: 'v2 access management: roles bounded by scopes'
+- from: Role
+  to: Scope
+  type: belongs_to
+  evidence: v2 create-scope / search-scopes; credentials carry scope & role
+- from: CloudAccount
+  to: Organization
+  type: belongs_to
+  evidence: v1 cloud-accounts CRUD under /organizations/{organization-id}
+- from: ThreatDetection
+  to: ThreatPolicy
+  type: governed_by
+  evidence: v1 threat detections and threat policies surfaces
+- from: Asset
+  to: Asset
+  type: graph-edges
+  evidence: v2 inventory assetsSearch supports relationship traversals (Connected To, Part Of)
+- from: Finding
+  to: Asset
+  type: belongs_to
+  evidence: v2 search-findings over inventory assets
+- from: WebhookIntegration
+  to: Organization
+  type: belongs_to
+  evidence: v1 webhook-integration CRUD

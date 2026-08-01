@@ -1,0 +1,1706 @@
+{
+  "info": {
+    "_postman_id": "55c6aa19-2a40-4cdc-b5bf-132f9ea21a77",
+    "name": "Upwind Management REST API v1 access-management workflows API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:57.000Z",
+    "updatedAt": "2026-07-28T03:25:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-55c6aa19-2a40-4cdc-b5bf-132f9ea21a77"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "workflows",
+                  "item": [
+                    {
+                      "name": "{workflow-id}",
+                      "item": [
+                        {
+                          "name": "Delete a workflow",
+                          "id": "71bd0adf-d233-4a0e-ba8c-1a3d4abc08c9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows",
+                                ":workflow-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5955074b-1628-400f-9b71-5642a1ed66ab",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "9106af66-cc18-44b9-a499-ff9cc1d9975b",
+                                  "key": "workflow-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for this workflow."
+                                }
+                              ]
+                            },
+                            "description": "A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific Workflow. This action permanently removes the workflow and cannot be undone. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page."
+                          },
+                          "response": [
+                            {
+                              "id": "f38e72b7-45de-4302-b425-4318cd6e9cd3",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-f38e72b7-45de-4302-b425-4318cd6e9cd3"
+                            },
+                            {
+                              "id": "10f26a6b-14e2-4640-8bbe-f466b0f6100c",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-10f26a6b-14e2-4640-8bbe-f466b0f6100c"
+                            },
+                            {
+                              "id": "937f79d2-24a8-4147-9789-89042c701977",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-937f79d2-24a8-4147-9789-89042c701977"
+                            },
+                            {
+                              "id": "242c281f-3fc6-4960-b340-35dfd9156ada",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-242c281f-3fc6-4960-b340-35dfd9156ada"
+                            },
+                            {
+                              "id": "024db913-4cc0-4c52-981f-5c3ec9ad8979",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-024db913-4cc0-4c52-981f-5c3ec9ad8979"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-71bd0adf-d233-4a0e-ba8c-1a3d4abc08c9"
+                        },
+                        {
+                          "name": "Get a workflow",
+                          "id": "c4e651e4-61f3-4a0d-b65e-c1d390d58f98",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows",
+                                ":workflow-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8e8c07e3-2d86-4840-befa-df6532fad14c",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "c81bd400-e0d6-46ab-bb3a-b377d719714c",
+                                  "key": "workflow-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for this workflow."
+                                }
+                              ]
+                            },
+                            "description": "A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Workflow. This endpoint provides access to comprehensive details such as triggers, actions, and selectors configured for the workflow. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page."
+                          },
+                          "response": [
+                            {
+                              "id": "b6a5ad0c-9029-4094-9314-683add7bfde2",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLOUD_ACCOUNT\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"ENDPOINT_TAG\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"last_execution_time\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-b6a5ad0c-9029-4094-9314-683add7bfde2"
+                            },
+                            {
+                              "id": "c46ca52e-1a51-450d-89d7-94378011f097",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-c46ca52e-1a51-450d-89d7-94378011f097"
+                            },
+                            {
+                              "id": "68ff3ada-30d6-4ba5-b0b4-a694addff641",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-68ff3ada-30d6-4ba5-b0b4-a694addff641"
+                            },
+                            {
+                              "id": "ccd041ec-3961-43e4-9684-562d3bd00f30",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-ccd041ec-3961-43e4-9684-562d3bd00f30"
+                            },
+                            {
+                              "id": "24d99875-3575-41e6-8f85-acdb28a8d61c",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-24d99875-3575-41e6-8f85-acdb28a8d61c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-c4e651e4-61f3-4a0d-b65e-c1d390d58f98"
+                        },
+                        {
+                          "name": "Update a workflow",
+                          "id": "d9681678-6459-4396-84a5-f3112f82f5e8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows",
+                                ":workflow-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f236b85c-5634-42fd-8717-9140c2d2fb7e",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "3078275e-66f8-4d49-a23d-764768b6ff24",
+                                  "key": "workflow-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for this workflow."
+                                }
+                              ]
+                            },
+                            "description": "A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Workflow. This endpoint facilitates the modification of attributes such as the workflow name, status, and configuration. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page."
+                          },
+                          "response": [
+                            {
+                              "id": "07393640-8798-433c-ada0-3b6743ea46ac",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLOUD_ACCOUNT\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"ENDPOINT_TAG\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"last_execution_time\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-07393640-8798-433c-ada0-3b6743ea46ac"
+                            },
+                            {
+                              "id": "cd258148-259d-4ea5-935b-50ddc4a764b2",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-cd258148-259d-4ea5-935b-50ddc4a764b2"
+                            },
+                            {
+                              "id": "9ba2ff53-7ea6-4f2f-a04f-293ef9287d36",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-9ba2ff53-7ea6-4f2f-a04f-293ef9287d36"
+                            },
+                            {
+                              "id": "f8453915-9dc0-46f9-b24b-dfae760e0041",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLOUD_ACCOUNT\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"ENDPOINT_TAG\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"last_execution_time\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-f8453915-9dc0-46f9-b24b-dfae760e0041"
+                            },
+                            {
+                              "id": "e8915e63-2494-4926-976b-4aa2881926ae",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-e8915e63-2494-4926-976b-4aa2881926ae"
+                            },
+                            {
+                              "id": "a6d75b47-ea7f-4836-9469-f2b3b6105914",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLUSTER\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"RESOURCE_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"TRIGGERED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows/:workflow-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "workflows",
+                                    ":workflow-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "workflow-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:58.000Z",
+                              "updatedAt": "2026-07-28T03:25:58.000Z",
+                              "uid": "35240-a6d75b47-ea7f-4836-9469-f2b3b6105914"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-d9681678-6459-4396-84a5-f3112f82f5e8"
+                        }
+                      ],
+                      "id": "0bee3572-8cca-492a-8d0e-4eeef93a6334",
+                      "createdAt": "2026-07-28T03:25:58.000Z",
+                      "updatedAt": "2026-07-28T03:25:58.000Z",
+                      "uid": "35240-0bee3572-8cca-492a-8d0e-4eeef93a6334"
+                    },
+                    {
+                      "name": "Create a workflow",
+                      "id": "3b296164-ca7d-42d9-850f-fb8b1c4a231b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"SLACK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"HOST\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"CLUSTER_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"type\": \"SCHEDULED\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "id": "29a5ba0b-bd0e-4e60-a022-488e8967108f",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `POST` request sent to the endpoint root creates a Workflow object that is associated with the specified organization. Workflows provide automation capabilities for responding to security events, vulnerabilities, and configuration findings. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page."
+                      },
+                      "response": [
+                        {
+                          "id": "1b43b3ba-f7f8-47b1-97a2-a5b000dd0a74",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"SLACK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"HOST\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"CLUSTER_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLOUD_ACCOUNT\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"ENDPOINT_TAG\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"last_execution_time\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"SCHEDULED\"\n}",
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-1b43b3ba-f7f8-47b1-97a2-a5b000dd0a74"
+                        },
+                        {
+                          "id": "23d88122-b170-4111-a051-8d9b5b61d2cf",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"SLACK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"HOST\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"CLUSTER_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      },\n      {\n        \"type\": \"WEBHOOK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"CLOUD_ACCOUNT\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"ENDPOINT_TAG\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"last_execution_time\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"type\": \"SCHEDULED\"\n}",
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-23d88122-b170-4111-a051-8d9b5b61d2cf"
+                        },
+                        {
+                          "id": "a11703fc-1831-4e00-91f4-a71dd54a0664",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"SLACK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"HOST\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"CLUSTER_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-a11703fc-1831-4e00-91f4-a71dd54a0664"
+                        },
+                        {
+                          "id": "ec033b55-dbb5-4088-abeb-60f12d8e1869",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"SLACK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"HOST\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"CLUSTER_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-ec033b55-dbb5-4088-abeb-60f12d8e1869"
+                        },
+                        {
+                          "id": "5ea49252-74e9-476b-ac72-dd0d64b164cc",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"actions\": [\n      {\n        \"type\": \"EMAIL\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"CUSTOM\"\n      },\n      {\n        \"type\": \"SLACK\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"target_audience\": \"ALL\"\n      }\n    ],\n    \"selectors\": [\n      {\n        \"type\": \"HOST\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"type\": \"CLUSTER_NAME\",\n        \"key_values\": [\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"config\": {\n      \"title\": \"DailySummaryReportJobConfig\"\n    },\n    \"cron\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"type\": \"SCHEDULED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-5ea49252-74e9-476b-ac72-dd0d64b164cc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:58.000Z",
+                      "updatedAt": "2026-07-28T03:25:58.000Z",
+                      "uid": "35240-3b296164-ca7d-42d9-850f-fb8b1c4a231b"
+                    },
+                    {
+                      "name": "List workflows",
+                      "id": "1651bd73-ccb3-46df-b259-3f62db2daec3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1c76cd07-0d21-48b9-843b-fa0f24024746",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `GET` request sent to the endpoint root returns a list of Workflow objects that are associated with the specified organization. Workflows provide automation capabilities for responding to security events, vulnerabilities, and configuration findings. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page."
+                      },
+                      "response": [
+                        {
+                          "id": "5b4c18b8-2849-4079-b3f5-e5eee6bb9769",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"config\": {\n      \"actions\": [\n        {\n          \"type\": \"EMAIL\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"target_audience\": \"ALL\"\n        },\n        {\n          \"type\": \"WEBHOOK\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"target_audience\": \"ALL\"\n        }\n      ],\n      \"selectors\": [\n        {\n          \"type\": \"CLUSTER_NAME\",\n          \"key_values\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"type\": \"CLOUD_PROVIDER\",\n          \"key_values\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"config\": {\n        \"title\": \"DailySummaryReportJobConfig\"\n      },\n      \"cron\": \"<string>\"\n    },\n    \"id\": \"<string>\",\n    \"last_execution_time\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"status\": \"ENABLED\",\n    \"type\": \"TRIGGERED\"\n  },\n  {\n    \"config\": {\n      \"actions\": [\n        {\n          \"type\": \"WEBHOOK\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"target_audience\": \"CUSTOM\"\n        },\n        {\n          \"type\": \"EMAIL\",\n          \"recipients\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"target_audience\": \"CUSTOM\"\n        }\n      ],\n      \"selectors\": [\n        {\n          \"type\": \"CLUSTER\",\n          \"key_values\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"type\": \"RESOURCE_NAME\",\n          \"key_values\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"config\": {\n        \"title\": \"DailySummaryReportJobConfig\"\n      },\n      \"cron\": \"<string>\"\n    },\n    \"id\": \"<string>\",\n    \"last_execution_time\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"status\": \"ENABLED\",\n    \"type\": \"SCHEDULED\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-5b4c18b8-2849-4079-b3f5-e5eee6bb9769"
+                        },
+                        {
+                          "id": "e54ff086-08e3-445b-b6b0-fb2ecc9018fc",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-e54ff086-08e3-445b-b6b0-fb2ecc9018fc"
+                        },
+                        {
+                          "id": "1a01a400-2200-4942-96e6-ba4b2853079a",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-1a01a400-2200-4942-96e6-ba4b2853079a"
+                        },
+                        {
+                          "id": "9a68bee4-8931-4653-9289-63e640e7a51b",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/workflows",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "workflows"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:58.000Z",
+                          "updatedAt": "2026-07-28T03:25:58.000Z",
+                          "uid": "35240-9a68bee4-8931-4653-9289-63e640e7a51b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:58.000Z",
+                      "updatedAt": "2026-07-28T03:25:58.000Z",
+                      "uid": "35240-1651bd73-ccb3-46df-b259-3f62db2daec3"
+                    }
+                  ],
+                  "id": "95d3c20e-f56b-4936-b6b4-151374c7e2ad",
+                  "createdAt": "2026-07-28T03:25:58.000Z",
+                  "updatedAt": "2026-07-28T03:25:58.000Z",
+                  "uid": "35240-95d3c20e-f56b-4936-b6b4-151374c7e2ad"
+                }
+              ],
+              "id": "d505839b-6827-47ce-a1f0-9c85c261fca7",
+              "createdAt": "2026-07-28T03:25:58.000Z",
+              "updatedAt": "2026-07-28T03:25:58.000Z",
+              "uid": "35240-d505839b-6827-47ce-a1f0-9c85c261fca7"
+            }
+          ],
+          "id": "81196560-17d5-4fda-a216-69b3afd50fdb",
+          "createdAt": "2026-07-28T03:25:58.000Z",
+          "updatedAt": "2026-07-28T03:25:58.000Z",
+          "uid": "35240-81196560-17d5-4fda-a216-69b3afd50fdb"
+        }
+      ],
+      "id": "6562173d-aec8-48cf-9621-e21a5d5eaa63",
+      "createdAt": "2026-07-28T03:25:58.000Z",
+      "updatedAt": "2026-07-28T03:25:58.000Z",
+      "uid": "35240-6562173d-aec8-48cf-9621-e21a5d5eaa63"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

@@ -1,0 +1,768 @@
+{
+  "info": {
+    "_postman_id": "c9ebde48-0ab4-40d7-87f8-55c549191e69",
+    "name": "Upwind Management REST API v1 access-management packages API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:45.000Z",
+    "updatedAt": "2026-07-28T03:25:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c9ebde48-0ab4-40d7-87f8-55c549191e69"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "sbom-packages",
+                  "item": [
+                    {
+                      "name": "{package-path}",
+                      "item": [
+                        {
+                          "name": "Get SBOM package details",
+                          "id": "7d50117b-7247-4563-91f7-dee665d2df5a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages/:package-path",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "sbom-packages",
+                                ":package-path"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c0110429-44e6-4d9a-89fd-3bbdad1a6a78",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "23ca465a-c858-4fce-b9d1-340c015fc492",
+                                  "key": "package-path",
+                                  "value": "<string>",
+                                  "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                                }
+                              ]
+                            },
+                            "description": "A `GET` request sent to the endpoint root followed by package name and version returns detailed information about a specific SBOM package. This endpoint provides comprehensive details about the package including vulnerabilities, affected resources, images, and usage statistics."
+                          },
+                          "response": [
+                            {
+                              "id": "279a5f88-e197-48f3-acab-150482dbb8c1",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages/:package-path",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "sbom-packages",
+                                    ":package-path"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "package-path"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"cloud_account_id\": \"<string>\",\n  \"cloud_provider\": \"AZURE\",\n  \"framework\": \"<string>\",\n  \"images\": [\n    {\n      \"digest\": \"<string>\",\n      \"name\": \"<string>\",\n      \"registry\": \"<string>\",\n      \"resource_id\": \"<string>\",\n      \"scan_source\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"digest\": \"<string>\",\n      \"name\": \"<string>\",\n      \"registry\": \"<string>\",\n      \"resource_id\": \"<string>\",\n      \"scan_source\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"images_summary\": {\n    \"affected_count\": \"<integer>\"\n  },\n  \"licenses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"package_manager\": \"<string>\",\n  \"resources\": [\n    {\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"AWS\",\n      \"cluster_id\": \"<string>\",\n      \"cluster_name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"image_asset_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"region\": \"<string>\",\n      \"risk_overview\": {\n        \"critical_detections_count\": \"<integer>\",\n        \"critical_vulnerabilities_count\": \"<integer>\",\n        \"has_active_internet_egress\": \"<boolean>\",\n        \"has_active_internet_ingress\": \"<boolean>\",\n        \"sensitive_data_categories\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sensitive_data_tags\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"status\": \"UNKNOWN\",\n      \"type\": \"StandAlone\",\n      \"upwind_asset_id\": \"<string>\",\n      \"vulnerabilities_summary\": {\n        \"critical_count\": \"<integer>\",\n        \"high_count\": \"<integer>\",\n        \"low_count\": \"<integer>\",\n        \"medium_count\": \"<integer>\",\n        \"total_count\": \"<integer>\",\n        \"unclassified_count\": \"<integer>\"\n      }\n    },\n    {\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"AZURE\",\n      \"cluster_id\": \"<string>\",\n      \"cluster_name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"image_asset_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"region\": \"<string>\",\n      \"risk_overview\": {\n        \"critical_detections_count\": \"<integer>\",\n        \"critical_vulnerabilities_count\": \"<integer>\",\n        \"has_active_internet_egress\": \"<boolean>\",\n        \"has_active_internet_ingress\": \"<boolean>\",\n        \"sensitive_data_categories\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sensitive_data_tags\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"status\": \"ACTIVE\",\n      \"type\": \"StandAlone\",\n      \"upwind_asset_id\": \"<string>\",\n      \"vulnerabilities_summary\": {\n        \"critical_count\": \"<integer>\",\n        \"high_count\": \"<integer>\",\n        \"low_count\": \"<integer>\",\n        \"medium_count\": \"<integer>\",\n        \"total_count\": \"<integer>\",\n        \"unclassified_count\": \"<integer>\"\n      }\n    }\n  ],\n  \"resources_summary\": {\n    \"in_use_count\": \"<integer>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"version\": \"<string>\",\n  \"vulnerabilities\": [\n    {\n      \"cve_first_seen_time\": \"<dateTime>\",\n      \"cve_id\": \"<string>\",\n      \"cvss_v2_score\": \"<string>\",\n      \"cvss_v2_severity\": \"<string>\",\n      \"cvss_v3_score\": \"<string>\",\n      \"cvss_v3_severity\": \"<string>\",\n      \"cvss_v4_score\": \"<string>\",\n      \"cvss_v4_severity\": \"<string>\",\n      \"description\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"last_modification_time\": \"<dateTime>\",\n      \"nist_severity\": \"<string>\",\n      \"publish_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\"\n    },\n    {\n      \"cve_first_seen_time\": \"<dateTime>\",\n      \"cve_id\": \"<string>\",\n      \"cvss_v2_score\": \"<string>\",\n      \"cvss_v2_severity\": \"<string>\",\n      \"cvss_v3_score\": \"<string>\",\n      \"cvss_v3_severity\": \"<string>\",\n      \"cvss_v4_score\": \"<string>\",\n      \"cvss_v4_severity\": \"<string>\",\n      \"description\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"last_modification_time\": \"<dateTime>\",\n      \"nist_severity\": \"<string>\",\n      \"publish_time\": \"<dateTime>\",\n      \"update_time\": \"<dateTime>\"\n    }\n  ],\n  \"vulnerabilities_summary\": {\n    \"critical_count\": \"<integer>\",\n    \"high_count\": \"<integer>\",\n    \"low_count\": \"<integer>\",\n    \"medium_count\": \"<integer>\",\n    \"total_count\": \"<integer>\",\n    \"unclassified_count\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-07-28T03:25:46.000Z",
+                              "updatedAt": "2026-07-28T03:25:46.000Z",
+                              "uid": "35240-279a5f88-e197-48f3-acab-150482dbb8c1"
+                            },
+                            {
+                              "id": "db548c65-e78c-466a-bb4d-d19c2dcb8698",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages/:package-path",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "sbom-packages",
+                                    ":package-path"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "package-path"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:46.000Z",
+                              "updatedAt": "2026-07-28T03:25:46.000Z",
+                              "uid": "35240-db548c65-e78c-466a-bb4d-d19c2dcb8698"
+                            },
+                            {
+                              "id": "03da2c39-2412-49ff-8b8b-07c4ced02da3",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages/:package-path",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "sbom-packages",
+                                    ":package-path"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "package-path"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:46.000Z",
+                              "updatedAt": "2026-07-28T03:25:46.000Z",
+                              "uid": "35240-03da2c39-2412-49ff-8b8b-07c4ced02da3"
+                            },
+                            {
+                              "id": "07f52402-962e-43a5-bc62-d1bf6b7965ba",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages/:package-path",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "sbom-packages",
+                                    ":package-path"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "package-path"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:46.000Z",
+                              "updatedAt": "2026-07-28T03:25:46.000Z",
+                              "uid": "35240-07f52402-962e-43a5-bc62-d1bf6b7965ba"
+                            },
+                            {
+                              "id": "12bcb055-baf1-4be2-975f-17f1aa883acb",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages/:package-path",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "sbom-packages",
+                                    ":package-path"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "package-path"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:46.000Z",
+                              "updatedAt": "2026-07-28T03:25:46.000Z",
+                              "uid": "35240-12bcb055-baf1-4be2-975f-17f1aa883acb"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:46.000Z",
+                          "updatedAt": "2026-07-28T03:25:46.000Z",
+                          "uid": "35240-7d50117b-7247-4563-91f7-dee665d2df5a"
+                        }
+                      ],
+                      "id": "9658dd89-f2d2-4057-9278-fc19bebae39c",
+                      "createdAt": "2026-07-28T03:25:46.000Z",
+                      "updatedAt": "2026-07-28T03:25:46.000Z",
+                      "uid": "35240-9658dd89-f2d2-4057-9278-fc19bebae39c"
+                    },
+                    {
+                      "name": "List SBOM packages",
+                      "id": "29945fba-4a7c-4a2b-8d4c-ac8281a3c78b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages?cloud-account-id=<string>&framework=<string>&image-name=<string>&package-name=<string>&package-manager=<string>&package-license=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "sbom-packages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters by the specified cloud account ID.",
+                              "key": "cloud-account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters packages by the specified framework.",
+                              "key": "framework",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters packages by the specified image name.",
+                              "key": "image-name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters packages by the specified package name.",
+                              "key": "package-name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters packages by the specified package manager.",
+                              "key": "package-manager",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters packages by the specified package license.",
+                              "key": "package-license",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "991d60e4-d8e7-4a5f-ae17-bff03026d45f",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `GET` request sent to the endpoint root returns a list of Software Bill of Materials (SBOM) packages associated with the specified organization. This endpoint provides comprehensive details about packages including their vulnerabilities, affected resources, and usage statistics. The results can be filtered by various criteria including package name, version, framework, and more."
+                      },
+                      "response": [
+                        {
+                          "id": "be177c5a-09ce-4571-82fd-1f4c31515d75",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages?cloud-account-id=<string>&framework=<string>&image-name=<string>&package-name=<string>&package-manager=<string>&package-license=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "sbom-packages"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified framework.",
+                                  "key": "framework",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified image name.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package name.",
+                                  "key": "package-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package manager.",
+                                  "key": "package-manager",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package license.",
+                                  "key": "package-license",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"cloud_account_id\": \"<string>\",\n  \"cloud_provider\": \"AWS\",\n  \"framework\": \"<string>\",\n  \"images_summary\": {\n    \"affected_count\": \"<integer>\"\n  },\n  \"licenses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"package_manager\": \"<string>\",\n  \"resources_summary\": {\n    \"in_use_count\": \"<integer>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"version\": \"<string>\",\n  \"vulnerabilities_summary\": {\n    \"critical_count\": \"<integer>\",\n    \"high_count\": \"<integer>\",\n    \"low_count\": \"<integer>\",\n    \"medium_count\": \"<integer>\",\n    \"total_count\": \"<integer>\",\n    \"unclassified_count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:25:46.000Z",
+                          "updatedAt": "2026-07-28T03:25:46.000Z",
+                          "uid": "35240-be177c5a-09ce-4571-82fd-1f4c31515d75"
+                        },
+                        {
+                          "id": "f31036da-6b0b-4bdc-a256-4e9926e2f76d",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages?cloud-account-id=<string>&framework=<string>&image-name=<string>&package-name=<string>&package-manager=<string>&package-license=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "sbom-packages"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified framework.",
+                                  "key": "framework",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified image name.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package name.",
+                                  "key": "package-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package manager.",
+                                  "key": "package-manager",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package license.",
+                                  "key": "package-license",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:46.000Z",
+                          "updatedAt": "2026-07-28T03:25:46.000Z",
+                          "uid": "35240-f31036da-6b0b-4bdc-a256-4e9926e2f76d"
+                        },
+                        {
+                          "id": "6e1aa8a8-4c83-49b3-8349-0be75c00b6b3",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages?cloud-account-id=<string>&framework=<string>&image-name=<string>&package-name=<string>&package-manager=<string>&package-license=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "sbom-packages"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified framework.",
+                                  "key": "framework",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified image name.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package name.",
+                                  "key": "package-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package manager.",
+                                  "key": "package-manager",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package license.",
+                                  "key": "package-license",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:46.000Z",
+                          "updatedAt": "2026-07-28T03:25:46.000Z",
+                          "uid": "35240-6e1aa8a8-4c83-49b3-8349-0be75c00b6b3"
+                        },
+                        {
+                          "id": "19282b88-1997-4ac9-a386-b353618cf0f7",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/sbom-packages?cloud-account-id=<string>&framework=<string>&image-name=<string>&package-name=<string>&package-manager=<string>&package-license=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "sbom-packages"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified framework.",
+                                  "key": "framework",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified image name.",
+                                  "key": "image-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package name.",
+                                  "key": "package-name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package manager.",
+                                  "key": "package-manager",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters packages by the specified package license.",
+                                  "key": "package-license",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:46.000Z",
+                          "updatedAt": "2026-07-28T03:25:46.000Z",
+                          "uid": "35240-19282b88-1997-4ac9-a386-b353618cf0f7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:46.000Z",
+                      "updatedAt": "2026-07-28T03:25:46.000Z",
+                      "uid": "35240-29945fba-4a7c-4a2b-8d4c-ac8281a3c78b"
+                    }
+                  ],
+                  "id": "10f61a5f-3e7a-4fcb-9922-fde25f0e7eb1",
+                  "createdAt": "2026-07-28T03:25:46.000Z",
+                  "updatedAt": "2026-07-28T03:25:46.000Z",
+                  "uid": "35240-10f61a5f-3e7a-4fcb-9922-fde25f0e7eb1"
+                }
+              ],
+              "id": "edf4e0a2-1bb7-4e0f-999b-7a132e1c060a",
+              "createdAt": "2026-07-28T03:25:46.000Z",
+              "updatedAt": "2026-07-28T03:25:46.000Z",
+              "uid": "35240-edf4e0a2-1bb7-4e0f-999b-7a132e1c060a"
+            }
+          ],
+          "id": "022f44db-7f30-4476-9f90-96c2f7ad0f8e",
+          "createdAt": "2026-07-28T03:25:46.000Z",
+          "updatedAt": "2026-07-28T03:25:46.000Z",
+          "uid": "35240-022f44db-7f30-4476-9f90-96c2f7ad0f8e"
+        }
+      ],
+      "id": "c0c4d523-cbcd-40d8-9283-090c9431b136",
+      "createdAt": "2026-07-28T03:25:46.000Z",
+      "updatedAt": "2026-07-28T03:25:46.000Z",
+      "uid": "35240-c0c4d523-cbcd-40d8-9283-090c9431b136"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

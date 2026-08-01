@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/restapi/v1/introduction + https://docs.upwind.io/restapi/v2/introduction + https://docs.upwind.io/settings/credentials
+authentication:
+  style: oauth2-client-credentials
+  token_endpoint: https://auth.upwind.io/oauth/token
+  audience_required: true
+  audiences:
+    - https://api.upwind.io
+    - https://api.eu.upwind.io
+    - https://api.me.upwind.io
+  header: 'Authorization: Bearer <JWT>'
+  token_lifetime: 24h (all tokens automatically expire after 24 hours)
+  credential_model: RBAC-bounded API credentials created in the console; up to 20 credentials per organization by default; scope of existing credentials is immutable (generate new credentials to change resource boundaries)
+  see: authentication/upwind-authentication.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key header or idempotent-retry contract is documented in the v1/v2 API docs.
+pagination:
+  v1:
+    styles:
+      - style: page-based
+        params: [page, per-page]
+      - style: token-based
+        params: [page-token, per-page]
+        response_headers: ['Link (RFC 5988, rel-based navigation, comma-separated relationships)']
+    notes: Each list endpoint supports one of the two methods; the endpoint reference states which.
+  v2:
+    styles:
+      - style: cursor-based
+        params: [limit, cursor]
+        response_fields: [metadata.limit, metadata.next_cursor, metadata.previous_cursor]
+    notes: next_cursor is null on the last page; omit cursor for the first page.
+versioning:
+  scheme: uri-path
+  current: v2
+  path_pattern: /v{n}/organizations/{organization-id}/...
+  see: lifecycle/upwind-lifecycle.yml
+multi_tenancy:
+  pattern: organization-scoped paths; every request is rooted at /v{n}/organizations/{organization-id}
+regions:
+  - {region: US, base_url: 'https://api.upwind.io'}
+  - {region: EU, base_url: 'https://api.eu.upwind.io'}
+  - {region: ME, base_url: 'https://api.me.upwind.io'}
+errors:
+  envelope: application/json; documented statuses are 400, 401 (Unauthorized), 403 (Forbidden), 404, 429 (Rate Limit Exceeded), 500; no RFC 9457 problem+json media type is used
+  see: errors/upwind-problem-types.yml
+rate_limits:
+  signaling: 429 Rate Limit Exceeded documented on every operation; specific numeric limits documented per endpoint (e.g. inventory assets search is 100 requests/minute per organization); adjustments via Upwind Support
+  see: rate-limits/upwind-rate-limits.yml
+content_type: application/json for requests and responses
+field_expansion: not documented
+metadata: not documented
+request_tracing: not documented

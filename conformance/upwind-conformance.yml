@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://trust.upwind.io/ + https://docs.upwind.io/restapi/ + https://auth.upwind.io/.well-known/openid-configuration
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OAuth 2.0 client credentials grant documented for all Management API access; token endpoint https://auth.upwind.io/oauth/token with per-region audience.
+  - id: oidc
+    conforms: true
+    evidence: OIDC discovery published at https://auth.upwind.io/.well-known/openid-configuration (Auth0-hosted issuer; PKCE S256, private_key_jwt, device_code, token-exchange, DPoP ES256 supported).
+  - id: jwt
+    conforms: true
+    evidence: API access tokens are JSON Web Tokens (JWTs) sent as Bearer credentials; jwks_uri published.
+  - id: rfc5988-web-linking
+    conforms: true
+    evidence: v1 token-based pagination returns RFC 5988 Link headers with rel-based navigation.
+  - id: pagination
+    conforms: true
+    evidence: v1 page-based and token-based pagination; v2 cursor-based pagination with metadata.next_cursor/previous_cursor.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Error responses are plain application/json (401 Unauthorized, 403 Forbidden, 429 Rate Limit Exceeded); no application/problem+json media type in the published operations.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key contract documented.
+  - id: soc2-type2
+    conforms: true
+    evidence: SOC 2 Type 2 listed under Compliance on https://trust.upwind.io/ (SafeBase trust center; SOC 2 Report available under NDA).
+  - id: iso27001
+    conforms: true
+    evidence: ISO/IEC 27001:2022 listed under Compliance on https://trust.upwind.io/.
+  - id: gdpr
+    conforms: true
+    evidence: GDPR listed under Compliance on https://trust.upwind.io/; Data Processing Agreement and Subprocessors published.
+  - id: scim
+    conforms: false
+    evidence: No SCIM provisioning surface documented; SSO via SAML/OIDC providers (Okta, Entra, Google Workspace, PingOne, OneLogin, JumpCloud, Duo) is documented instead.

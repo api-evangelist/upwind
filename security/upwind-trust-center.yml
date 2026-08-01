@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://trust.upwind.io/
+url: https://trust.upwind.io/
+platform: SafeBase
+certifications:
+- SOC 2 Type 2
+- ISO/IEC 27001:2022
+- GDPR
+partner_programs:
+- AWS Advanced Technology Partner
+- AWS Security Software Competency Partner
+documents:
+- Pentest Report
+- SOC 2 Report
+- ISO/IEC 27001:2022 certificate
+- Security Exhibit
+- Data Processing Agreement
+- Subprocessors list
+- Acceptable Use / Access Control / Asset Management / Backup / BC-DR / Change Management / Code of Conduct policies
+evidence:
+- source: https://trust.upwind.io/
+  keywords:
+  - soc 2
+  - iso/iec 27001
+  - trust center
+  - gdpr

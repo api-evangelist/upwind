@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: probes of upwind.io, docs.upwind.io, auth.upwind.io, api.upwind.io
+hosts:
+  - host: https://upwind.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://auth.upwind.io
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: upwind-openid-configuration.json
+        note: Auth0-hosted issuer; token endpoint https://auth.upwind.io/oauth/token; client_credentials + device_code + token-exchange grants; DPoP (ES256) supported.
+  - host: https://docs.upwind.io
+    documents:
+      - path: /llms.txt
+        status: 200
+        note: soft 404 — returns the Docusaurus SPA HTML shell, not a real llms.txt; treated as absent.

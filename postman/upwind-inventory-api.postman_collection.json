@@ -1,0 +1,2474 @@
+{
+  "info": {
+    "_postman_id": "14f79b0d-62f2-4159-aedb-7f77603addfa",
+    "name": "Upwind Management REST API v1 access-management Inventory API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:19.000Z",
+    "updatedAt": "2026-07-28T03:25:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-14f79b0d-62f2-4159-aedb-7f77603addfa"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "inventory",
+                  "item": [
+                    {
+                      "name": "assets",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Search asset relationships",
+                              "id": "65ce9c2b-4865-4945-9eef-cfab655ca7e3",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "assets",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "20"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "db2b75cd-2051-4b17-b09d-98410f14419c",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the organization."
+                                    }
+                                  ]
+                                },
+                                "description": "This endpoint retrieves asset metadata, based on its schema, for resources that satisfy specific relationship criteria defined in your query. Unlike a standard search, this API is optimized for graph-style traversals, enabling you to discover assets based on how they are connected to other entities in your environment.\n\n**When to Use This API**\n\nUse this endpoint when your search criteria depend on relationships. For example, use this if you need to find all \"Virtual Machines\" that are \"Connected To\" a specific \"Subnet\" or \"Part Of\" a specific \"EKS cluster\".\n\nFor an introduction to the query guide and how to use nested conditions, see [graph introduction](inventory) for more details.\n\nRate limit: Requests to this endpoint are limited to 100 requests per minute per organization. For rate limit adjustments, please contact Upwind Support."
+                              },
+                              "response": [
+                                {
+                                  "id": "a48477dc-73ed-4996-a34e-9c5a0d68dd90",
+                                  "name": "Search results",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"label\": \"<string>\",\n      \"id\": \"<string>\",\n      \"asset_category\": \"<string>\",\n      \"asset_sub_category\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"<string>\",\n      \"cloud_resource_id\": \"<string>\",\n      \"created_time\": \"<string>\",\n      \"max_size\": \"<number>\",\n      \"min_size\": \"<number>\",\n      \"name\": \"<string>\",\n      \"region\": \"<string>\",\n      \"status\": \"<string>\",\n      \"uw_protected_by\": \"<string>\",\n      \"uw_risk_detections_severity_count_total\": \"<number>\",\n      \"uw_risk_network_internet_exposure_type\": \"<string>\",\n      \"uw_risk_network_last_application_layer_internet_ingress_time\": \"<dateTime>\",\n      \"uw_risk_network_last_imds_v1_at\": \"<dateTime>\",\n      \"uw_risk_network_last_imds_v2_at\": \"<dateTime>\",\n      \"uw_risk_network_last_time_being_accessed_from_internet\": \"<dateTime>\",\n      \"uw_risk_network_last_time_being_accessed_from_internet_in_ssh_or_rdp\": \"<dateTime>\",\n      \"uw_risk_network_last_time_communicating_with_database\": \"<dateTime>\",\n      \"uw_risk_network_last_time_communicating_with_internet\": \"<dateTime>\",\n      \"uw_risk_vulnerabilities_severity_count_total\": \"<number>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"id\": \"<string>\",\n      \"asset_category\": \"<string>\",\n      \"asset_sub_category\": \"<string>\",\n      \"arn\": \"<string>\",\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"<string>\",\n      \"cloud_resource_id\": \"<string>\",\n      \"created_time\": \"<string>\",\n      \"max_size\": \"<number>\",\n      \"min_size\": \"<number>\",\n      \"name\": \"<string>\",\n      \"region\": \"<string>\",\n      \"status\": \"<string>\",\n      \"uw_protected_by\": \"<string>\",\n      \"uw_risk_detections_severity_count_total\": \"<number>\",\n      \"uw_risk_network_internet_exposure_type\": \"<string>\",\n      \"uw_risk_network_last_application_layer_internet_ingress_time\": \"<dateTime>\",\n      \"uw_risk_network_last_imds_v1_at\": \"<dateTime>\",\n      \"uw_risk_network_last_imds_v2_at\": \"<dateTime>\",\n      \"uw_risk_network_last_time_being_accessed_from_internet\": \"<dateTime>\",\n      \"uw_risk_network_last_time_being_accessed_from_internet_in_ssh_or_rdp\": \"<dateTime>\",\n      \"uw_risk_network_last_time_communicating_with_database\": \"<dateTime>\",\n      \"uw_risk_network_last_time_communicating_with_internet\": \"<dateTime>\",\n      \"uw_risk_vulnerabilities_severity_count_total\": \"<number>\"\n    }\n  ],\n  \"metadata\": {\n    \"limit\": \"<integer>\",\n    \"next_cursor\": \"<string>\",\n    \"previous_cursor\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-a48477dc-73ed-4996-a34e-9c5a0d68dd90"
+                                },
+                                {
+                                  "id": "3f4096ad-8ef9-44e5-b0c3-43ee9224480d",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-3f4096ad-8ef9-44e5-b0c3-43ee9224480d"
+                                },
+                                {
+                                  "id": "cd509c98-0c08-4bdf-bf53-468872604a84",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-cd509c98-0c08-4bdf-bf53-468872604a84"
+                                },
+                                {
+                                  "id": "248b0a48-8f62-4437-8bf3-1e1ccb807084",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-248b0a48-8f62-4437-8bf3-1e1ccb807084"
+                                },
+                                {
+                                  "id": "6448d83e-68fa-44e8-be81-5f5036cac375",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-6448d83e-68fa-44e8-be81-5f5036cac375"
+                                },
+                                {
+                                  "id": "655fc039-9322-4504-ab88-4315d38559eb",
+                                  "name": "Internal Server Error - An unexpected error occurred on the server",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"gt\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"in\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-655fc039-9322-4504-ab88-4315d38559eb"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-65ce9c2b-4865-4945-9eef-cfab655ca7e3"
+                            }
+                          ],
+                          "id": "e7920145-8d5a-4e9b-9680-17be1524775d",
+                          "createdAt": "2026-07-28T03:25:20.000Z",
+                          "updatedAt": "2026-07-28T03:25:20.000Z",
+                          "uid": "35240-e7920145-8d5a-4e9b-9680-17be1524775d"
+                        },
+                        {
+                          "name": "{id}",
+                          "item": [
+                            {
+                              "name": "Update an inventory asset",
+                              "id": "6fd92dfe-1a3d-402b-ae20-8f5bd808dbec",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "assets",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "efca100e-26bf-4da6-966d-b4d4fadf255a",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the Upwind organization."
+                                    },
+                                    {
+                                      "id": "19b1e294-f4d9-40a9-be80-9227b8e8d710",
+                                      "key": "id",
+                                      "value": "<string>",
+                                      "description": "(Required) Upwind asset ID"
+                                    }
+                                  ]
+                                },
+                                "description": "A `PATCH` request sent to the endpoint updates fields on a specific inventory asset. The request body supports updating `custom_tags` only; additional patchable fields may be added in the future. The provided list of custom tags **replaces any existing custom tags on the asset**."
+                              },
+                              "response": [
+                                {
+                                  "id": "39ddf3ed-93d2-4964-9eec-65afbee46eff",
+                                  "name": "The updated asset",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"category\": \"<string>\",\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"<string>\",\n      \"cloud_resource_id\": \"<string>\",\n      \"custom_tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": \"<long>\",\n        \"high_count\": \"<long>\",\n        \"low_count\": \"<long>\",\n        \"medium_count\": \"<long>\",\n        \"total_count\": \"<long>\"\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": \"<boolean>\"\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"<string>\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"<dateTime>\",\n        \"last_access_from_internet_time\": \"<dateTime>\",\n        \"last_application_layer_internet_ingress_time\": \"<dateTime>\",\n        \"last_communication_with_database_time\": \"<dateTime>\",\n        \"last_communication_with_internet_time\": \"<dateTime>\",\n        \"last_imds_v1_access_time\": \"<dateTime>\",\n        \"last_imds_v2_access_time\": \"<dateTime>\"\n      },\n      \"private_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"protected_by\": \"<string>\",\n      \"public_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"region\": \"<string>\",\n      \"resource_type\": \"<string>\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"status\": \"<string>\",\n      \"sub_category\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": \"<integer>\",\n        \"high_count\": \"<integer>\",\n        \"low_count\": \"<integer>\",\n        \"medium_count\": \"<integer>\",\n        \"total_count\": \"<integer>\",\n        \"unclassified_count\": \"<integer>\"\n      }\n    },\n    {\n      \"category\": \"<string>\",\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"<string>\",\n      \"cloud_resource_id\": \"<string>\",\n      \"custom_tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": \"<long>\",\n        \"high_count\": \"<long>\",\n        \"low_count\": \"<long>\",\n        \"medium_count\": \"<long>\",\n        \"total_count\": \"<long>\"\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": \"<boolean>\"\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"<string>\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"<dateTime>\",\n        \"last_access_from_internet_time\": \"<dateTime>\",\n        \"last_application_layer_internet_ingress_time\": \"<dateTime>\",\n        \"last_communication_with_database_time\": \"<dateTime>\",\n        \"last_communication_with_internet_time\": \"<dateTime>\",\n        \"last_imds_v1_access_time\": \"<dateTime>\",\n        \"last_imds_v2_access_time\": \"<dateTime>\"\n      },\n      \"private_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"protected_by\": \"<string>\",\n      \"public_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"region\": \"<string>\",\n      \"resource_type\": \"<string>\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"status\": \"<string>\",\n      \"sub_category\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": \"<integer>\",\n        \"high_count\": \"<integer>\",\n        \"low_count\": \"<integer>\",\n        \"medium_count\": \"<integer>\",\n        \"total_count\": \"<integer>\",\n        \"unclassified_count\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-39ddf3ed-93d2-4964-9eec-65afbee46eff"
+                                },
+                                {
+                                  "id": "23c93d53-db71-467a-aff1-df08841bd13a",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-23c93d53-db71-467a-aff1-df08841bd13a"
+                                },
+                                {
+                                  "id": "befe986e-76d6-4c1c-897b-25a45f4b6d50",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-befe986e-76d6-4c1c-897b-25a45f4b6d50"
+                                },
+                                {
+                                  "id": "3baf0c42-3e19-4006-9210-c2bd76951420",
+                                  "name": "Asset not found",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-3baf0c42-3e19-4006-9210-c2bd76951420"
+                                },
+                                {
+                                  "id": "26f959bb-a974-4530-aaf0-c6f11305f905",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/assets/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "assets",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-26f959bb-a974-4530-aaf0-c6f11305f905"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-6fd92dfe-1a3d-402b-ae20-8f5bd808dbec"
+                            }
+                          ],
+                          "id": "599803b2-d937-42ca-aeff-43af8bb98311",
+                          "createdAt": "2026-07-28T03:25:20.000Z",
+                          "updatedAt": "2026-07-28T03:25:20.000Z",
+                          "uid": "35240-599803b2-d937-42ca-aeff-43af8bb98311"
+                        }
+                      ],
+                      "id": "4c5dcd51-138c-499f-9dd1-5728a9343d2a",
+                      "createdAt": "2026-07-28T03:25:20.000Z",
+                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                      "uid": "35240-4c5dcd51-138c-499f-9dd1-5728a9343d2a"
+                    },
+                    {
+                      "name": "catalog",
+                      "item": [
+                        {
+                          "name": "assets",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Get an asset",
+                                  "id": "9fb77d48-d8d9-425b-a7ce-8876c1abb6fb",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "oauth2",
+                                      "oauth2": [
+                                        {
+                                          "key": "accessTokenUrl",
+                                          "value": "https://auth.upwind.io/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "grant_type",
+                                          "value": "client_credentials",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "catalog",
+                                        "assets",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "6f82bcc1-875d-4cdb-b27a-96ebd2f677e7",
+                                          "key": "organization-id",
+                                          "value": "<string>",
+                                          "description": "(Required) The unique identifier for the Upwind organization."
+                                        },
+                                        {
+                                          "id": "5256f3ce-6f53-433b-bc53-adcb591b965b",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) Upwind asset ID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific asset."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "7b6a74e0-b143-48c8-bdf5-9bfeab129172",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"raw_data\": {\n        \"description\": \"The asset's data as provided by its source provider. Structure varies by asset type.\"\n      },\n      \"resource_type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"raw_data\": {\n        \"description\": \"The asset's data as provided by its source provider. Structure varies by asset type.\"\n      },\n      \"resource_type\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-7b6a74e0-b143-48c8-bdf5-9bfeab129172"
+                                    },
+                                    {
+                                      "id": "3a1596e6-17b8-47e6-b844-142c4df7a939",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-3a1596e6-17b8-47e6-b844-142c4df7a939"
+                                    },
+                                    {
+                                      "id": "8ad1137c-44d1-4856-800e-0e2164acf06f",
+                                      "name": "Forbidden",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Forbidden",
+                                      "code": 403,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-8ad1137c-44d1-4856-800e-0e2164acf06f"
+                                    },
+                                    {
+                                      "id": "0b09bbc7-3788-4b62-b6cb-de8a054d1a50",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-0b09bbc7-3788-4b62-b6cb-de8a054d1a50"
+                                    },
+                                    {
+                                      "id": "e839cf1d-212b-415f-80f7-a68931611f9c",
+                                      "name": "Rate Limit Exceeded",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Too Many Requests",
+                                      "code": 429,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-e839cf1d-212b-415f-80f7-a68931611f9c"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-9fb77d48-d8d9-425b-a7ce-8876c1abb6fb"
+                                }
+                              ],
+                              "id": "1812dd84-8737-43ed-ac89-15c2405cb4fe",
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-1812dd84-8737-43ed-ac89-15c2405cb4fe"
+                            },
+                            {
+                              "name": "search",
+                              "item": [
+                                {
+                                  "name": "Search catalog assets",
+                                  "id": "3304b085-5265-4142-b27e-82b6cdc3cc9c",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "oauth2",
+                                      "oauth2": [
+                                        {
+                                          "key": "accessTokenUrl",
+                                          "value": "https://auth.upwind.io/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "grant_type",
+                                          "value": "client_credentials",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"exists\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/search?limit=20&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "catalog",
+                                        "assets",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "20"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "c4333fb7-ad83-4fa1-b626-2c9215df606e",
+                                          "key": "organization-id",
+                                          "value": "<string>",
+                                          "description": "(Required) The unique identifier for the Upwind organization."
+                                        }
+                                      ]
+                                    },
+                                    "description": "A `POST` request sent to the search endpoint retrieves a comprehensive list of assets based on the direct attributes described below. It is purpose-built for high-volume inventory queries, allowing you to filter the catalog by specific properties, tags, or security posture.\n\n**When to Use This API**\n\nUse this endpoint for flat searches where the filtering criteria are contained within the asset itself. This is the ideal tool for:\n- **Bulk Data Retrieval**: Generating large lists of resources across the entire environment.\n- **Attribute Filtering**: Narrowing down assets by status, type, etc.\n- **Risk Assessment**: Identifying assets based on specific vulnerability severity levels."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "e27a64bc-f68d-4e75-8f7d-5d1c99925ec0",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"exists\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/search?limit=20&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            "search"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Specifies the maximum number of items to be returned.",
+                                              "key": "limit",
+                                              "value": "20"
+                                            },
+                                            {
+                                              "description": "A cursor for pagination to retrieve the next set of results.",
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"items\": [\n    {\n      \"category\": \"<string>\",\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"<string>\",\n      \"cloud_resource_id\": \"<string>\",\n      \"custom_tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": \"<long>\",\n        \"high_count\": \"<long>\",\n        \"low_count\": \"<long>\",\n        \"medium_count\": \"<long>\",\n        \"total_count\": \"<long>\"\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": \"<boolean>\"\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"<string>\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"<dateTime>\",\n        \"last_access_from_internet_time\": \"<dateTime>\",\n        \"last_application_layer_internet_ingress_time\": \"<dateTime>\",\n        \"last_communication_with_database_time\": \"<dateTime>\",\n        \"last_communication_with_internet_time\": \"<dateTime>\",\n        \"last_imds_v1_access_time\": \"<dateTime>\",\n        \"last_imds_v2_access_time\": \"<dateTime>\"\n      },\n      \"private_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"protected_by\": \"<string>\",\n      \"public_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"region\": \"<string>\",\n      \"resource_type\": \"<string>\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"status\": \"<string>\",\n      \"sub_category\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": \"<integer>\",\n        \"high_count\": \"<integer>\",\n        \"low_count\": \"<integer>\",\n        \"medium_count\": \"<integer>\",\n        \"total_count\": \"<integer>\",\n        \"unclassified_count\": \"<integer>\"\n      }\n    },\n    {\n      \"category\": \"<string>\",\n      \"cloud_account_id\": \"<string>\",\n      \"cloud_provider\": \"<string>\",\n      \"cloud_resource_id\": \"<string>\",\n      \"custom_tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": \"<long>\",\n        \"high_count\": \"<long>\",\n        \"low_count\": \"<long>\",\n        \"medium_count\": \"<long>\",\n        \"total_count\": \"<long>\"\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": \"<boolean>\"\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"<string>\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"<dateTime>\",\n        \"last_access_from_internet_time\": \"<dateTime>\",\n        \"last_application_layer_internet_ingress_time\": \"<dateTime>\",\n        \"last_communication_with_database_time\": \"<dateTime>\",\n        \"last_communication_with_internet_time\": \"<dateTime>\",\n        \"last_imds_v1_access_time\": \"<dateTime>\",\n        \"last_imds_v2_access_time\": \"<dateTime>\"\n      },\n      \"private_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"protected_by\": \"<string>\",\n      \"public_ip_addresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"region\": \"<string>\",\n      \"resource_type\": \"<string>\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": \"<boolean>\",\n        \"has_phi\": \"<boolean>\",\n        \"has_pii\": \"<boolean>\"\n      },\n      \"status\": \"<string>\",\n      \"sub_category\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"end_of_life_time\": \"<dateTime>\",\n          \"end_of_support_time\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"sub_category\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": \"<integer>\",\n        \"high_count\": \"<integer>\",\n        \"low_count\": \"<integer>\",\n        \"medium_count\": \"<integer>\",\n        \"total_count\": \"<integer>\",\n        \"unclassified_count\": \"<integer>\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"limit\": \"<integer>\",\n    \"next_cursor\": \"<string>\",\n    \"previous_cursor\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-e27a64bc-f68d-4e75-8f7d-5d1c99925ec0"
+                                    },
+                                    {
+                                      "id": "d0647632-0090-4201-9369-68aec890008a",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"exists\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/search?limit=20&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            "search"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Specifies the maximum number of items to be returned.",
+                                              "key": "limit",
+                                              "value": "20"
+                                            },
+                                            {
+                                              "description": "A cursor for pagination to retrieve the next set of results.",
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-d0647632-0090-4201-9369-68aec890008a"
+                                    },
+                                    {
+                                      "id": "d72aa61d-379b-4bab-8854-77a730c50bc6",
+                                      "name": "Forbidden",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"exists\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/search?limit=20&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            "search"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Specifies the maximum number of items to be returned.",
+                                              "key": "limit",
+                                              "value": "20"
+                                            },
+                                            {
+                                              "description": "A cursor for pagination to retrieve the next set of results.",
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Forbidden",
+                                      "code": 403,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-d72aa61d-379b-4bab-8854-77a730c50bc6"
+                                    },
+                                    {
+                                      "id": "51ff1d50-f2b2-43cc-a34d-9fb8625df93e",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"exists\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/search?limit=20&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            "search"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Specifies the maximum number of items to be returned.",
+                                              "key": "limit",
+                                              "value": "20"
+                                            },
+                                            {
+                                              "description": "A cursor for pagination to retrieve the next set of results.",
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-51ff1d50-f2b2-43cc-a34d-9fb8625df93e"
+                                    },
+                                    {
+                                      "id": "451e8ec9-ecf0-404f-a24e-4fc3243cc409",
+                                      "name": "Rate Limit Exceeded",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"exists\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/catalog/assets/search?limit=20&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "organizations",
+                                            ":organization-id",
+                                            "inventory",
+                                            "catalog",
+                                            "assets",
+                                            "search"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Specifies the maximum number of items to be returned.",
+                                              "key": "limit",
+                                              "value": "20"
+                                            },
+                                            {
+                                              "description": "A cursor for pagination to retrieve the next set of results.",
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organization-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Too Many Requests",
+                                      "code": 429,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T03:25:20.000Z",
+                                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                                      "uid": "35240-451e8ec9-ecf0-404f-a24e-4fc3243cc409"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-3304b085-5265-4142-b27e-82b6cdc3cc9c"
+                                }
+                              ],
+                              "id": "13cf34e4-cd63-42d3-882f-73fa75597362",
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-13cf34e4-cd63-42d3-882f-73fa75597362"
+                            }
+                          ],
+                          "id": "31e1373b-fc81-4766-ac83-faba740ae8ba",
+                          "createdAt": "2026-07-28T03:25:20.000Z",
+                          "updatedAt": "2026-07-28T03:25:20.000Z",
+                          "uid": "35240-31e1373b-fc81-4766-ac83-faba740ae8ba"
+                        }
+                      ],
+                      "id": "4c30f2f5-58ad-4eb0-8a04-a05c25b7ceaf",
+                      "createdAt": "2026-07-28T03:25:20.000Z",
+                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                      "uid": "35240-4c30f2f5-58ad-4eb0-8a04-a05c25b7ceaf"
+                    },
+                    {
+                      "name": "schema",
+                      "item": [
+                        {
+                          "name": "{label-name}",
+                          "item": [
+                            {
+                              "name": "Get asset schema",
+                              "id": "7666dd60-8c07-4ee8-9a62-19dd006f4466",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema/:label-name",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "schema",
+                                    ":label-name"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "ac6b2547-76e0-4c4e-a3be-ec233cdc1fa0",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the Upwind organization."
+                                    },
+                                    {
+                                      "id": "28a00dad-5a51-4e82-a4a0-2b986f4e0cd5",
+                                      "key": "label-name",
+                                      "value": "<string>",
+                                      "description": "(Required) The name of the asset label to retrieve"
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieves the schema for a specific asset label containing its searchable fields with their types. Use this endpoint to discover the queryable attributes for a specific asset label."
+                              },
+                              "response": [
+                                {
+                                  "id": "0b00710d-5fc6-4516-852c-3edbac18236f",
+                                  "name": "The schema for the specified asset label",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema/:label-name",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "schema",
+                                        ":label-name"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "label-name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"label\": \"<string>\"\n    },\n    {\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"label\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-0b00710d-5fc6-4516-852c-3edbac18236f"
+                                },
+                                {
+                                  "id": "d7bd5068-4e98-4aff-b0a4-502003cb009e",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema/:label-name",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "schema",
+                                        ":label-name"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "label-name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-d7bd5068-4e98-4aff-b0a4-502003cb009e"
+                                },
+                                {
+                                  "id": "ffcbed75-067a-4d46-aba5-d0d1f49b3258",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema/:label-name",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "schema",
+                                        ":label-name"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "label-name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-ffcbed75-067a-4d46-aba5-d0d1f49b3258"
+                                },
+                                {
+                                  "id": "b4e44c9f-3961-4bd6-99ed-7af12e9c0b2b",
+                                  "name": "Asset schema not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema/:label-name",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "schema",
+                                        ":label-name"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "label-name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"label\": \"<string>\"\n    },\n    {\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"label\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-b4e44c9f-3961-4bd6-99ed-7af12e9c0b2b"
+                                },
+                                {
+                                  "id": "47bef7c2-2f53-47a1-83ae-8835ae158138",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema/:label-name",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "inventory",
+                                        "schema",
+                                        ":label-name"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "label-name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:20.000Z",
+                                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                                  "uid": "35240-47bef7c2-2f53-47a1-83ae-8835ae158138"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-7666dd60-8c07-4ee8-9a62-19dd006f4466"
+                            }
+                          ],
+                          "id": "e18e254d-f64c-45b8-9dc0-57bee9bf86dc",
+                          "createdAt": "2026-07-28T03:25:20.000Z",
+                          "updatedAt": "2026-07-28T03:25:20.000Z",
+                          "uid": "35240-e18e254d-f64c-45b8-9dc0-57bee9bf86dc"
+                        },
+                        {
+                          "name": "List asset schemas",
+                          "id": "e9db3d42-0f37-4efa-b62b-d8603f3d5f30",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema?limit=50&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "organizations",
+                                ":organization-id",
+                                "inventory",
+                                "schema"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies the maximum number of items to be returned.",
+                                  "key": "limit",
+                                  "value": "50"
+                                },
+                                {
+                                  "description": "A cursor for pagination to retrieve the next set of results.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f76aa7ca-840d-4779-9569-010abc42485b",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                }
+                              ]
+                            },
+                            "description": "Retrieves the inventory schema containing all asset labels and their searchable fields with their types. Use this endpoint to discover available asset labels and their queryable attributes for building search requests."
+                          },
+                          "response": [
+                            {
+                              "id": "abe3ac23-623e-4187-9fc1-d9c7be70f332",
+                              "name": "The inventory schema containing all asset labels and their searchable fields",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema?limit=50&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "schema"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"label\": \"<string>\"\n    },\n    {\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"label\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-abe3ac23-623e-4187-9fc1-d9c7be70f332"
+                            },
+                            {
+                              "id": "fe2049ad-7668-4e8b-babf-70617e31fdbb",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema?limit=50&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "schema"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-fe2049ad-7668-4e8b-babf-70617e31fdbb"
+                            },
+                            {
+                              "id": "0dfc2f27-b882-45d8-a349-dac239a108df",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema?limit=50&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "schema"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-0dfc2f27-b882-45d8-a349-dac239a108df"
+                            },
+                            {
+                              "id": "24cd215f-0a4b-424b-92ce-eaaff32333bb",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema?limit=50&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "schema"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-24cd215f-0a4b-424b-92ce-eaaff32333bb"
+                            },
+                            {
+                              "id": "37e77cd2-331a-486c-ad10-b58728763e5d",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/inventory/schema?limit=50&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "inventory",
+                                    "schema"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:20.000Z",
+                              "updatedAt": "2026-07-28T03:25:20.000Z",
+                              "uid": "35240-37e77cd2-331a-486c-ad10-b58728763e5d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:20.000Z",
+                          "updatedAt": "2026-07-28T03:25:20.000Z",
+                          "uid": "35240-e9db3d42-0f37-4efa-b62b-d8603f3d5f30"
+                        }
+                      ],
+                      "id": "0587809d-0093-4172-b891-8f74067b0e06",
+                      "createdAt": "2026-07-28T03:25:20.000Z",
+                      "updatedAt": "2026-07-28T03:25:20.000Z",
+                      "uid": "35240-0587809d-0093-4172-b891-8f74067b0e06"
+                    }
+                  ],
+                  "id": "48d5ebb8-d190-4de4-a399-b9ff5c52c740",
+                  "createdAt": "2026-07-28T03:25:20.000Z",
+                  "updatedAt": "2026-07-28T03:25:20.000Z",
+                  "uid": "35240-48d5ebb8-d190-4de4-a399-b9ff5c52c740"
+                }
+              ],
+              "id": "701c1c5b-9e40-4ea5-bc95-5e50538e0236",
+              "createdAt": "2026-07-28T03:25:20.000Z",
+              "updatedAt": "2026-07-28T03:25:20.000Z",
+              "uid": "35240-701c1c5b-9e40-4ea5-bc95-5e50538e0236"
+            }
+          ],
+          "id": "d6392d2a-bfe4-4644-b882-78de4f00d985",
+          "createdAt": "2026-07-28T03:25:20.000Z",
+          "updatedAt": "2026-07-28T03:25:20.000Z",
+          "uid": "35240-d6392d2a-bfe4-4644-b882-78de4f00d985"
+        }
+      ],
+      "id": "ade1cb49-a700-44ae-a190-7c6f47fcadc7",
+      "createdAt": "2026-07-28T03:25:20.000Z",
+      "updatedAt": "2026-07-28T03:25:20.000Z",
+      "uid": "35240-ade1cb49-a700-44ae-a190-7c6f47fcadc7"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

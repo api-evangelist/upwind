@@ -1,0 +1,1279 @@
+{
+  "info": {
+    "_postman_id": "c055fe72-5ee7-4aee-a7c5-822ec5dc1ad1",
+    "name": "Upwind Management REST API v1 access-management events API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:16.000Z",
+    "updatedAt": "2026-07-28T03:25:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c055fe72-5ee7-4aee-a7c5-822ec5dc1ad1"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "events",
+                  "item": [
+                    {
+                      "name": "shift-left",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Search ShiftLeft events",
+                              "id": "d83e2550-9d14-4f56-8976-61a7ecfb7f96",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/events/shift-left/search",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "events",
+                                    "shift-left",
+                                    "search"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "2384b4e9-03b2-43f7-8864-9fe1684691e3",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the Upwind organization."
+                                    }
+                                  ]
+                                },
+                                "description": "A `POST` request sent to the endpoint searches for ShiftLeft Events between the start_time and end_time."
+                              },
+                              "response": [
+                                {
+                                  "id": "88a76e73-a944-4d5d-b657-fbf1a08b5225",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/events/shift-left/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"architecture\": \"<string>\",\n      \"branch\": \"<string>\",\n      \"commit_sha\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"fingerprint\": \"<string>\",\n      \"image\": \"<string>\",\n      \"image_sha\": \"<string>\",\n      \"image_size\": \"<long>\",\n      \"initiator\": \"<string>\",\n      \"os\": \"<string>\",\n      \"repository\": \"<string>\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"<string>\",\n        \"pr_id\": \"<string>\",\n        \"pr_link\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"type\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"variant\": \"<string>\"\n    },\n    {\n      \"architecture\": \"<string>\",\n      \"branch\": \"<string>\",\n      \"commit_sha\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"fingerprint\": \"<string>\",\n      \"image\": \"<string>\",\n      \"image_sha\": \"<string>\",\n      \"image_size\": \"<long>\",\n      \"initiator\": \"<string>\",\n      \"os\": \"<string>\",\n      \"repository\": \"<string>\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"<string>\",\n        \"pr_id\": \"<string>\",\n        \"pr_link\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"type\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"variant\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"limit\": \"<integer>\",\n    \"next_cursor\": \"<string>\",\n    \"previous_cursor\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-88a76e73-a944-4d5d-b657-fbf1a08b5225"
+                                },
+                                {
+                                  "id": "03d9a4cb-39ff-4294-9734-6a69559062e6",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/events/shift-left/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-03d9a4cb-39ff-4294-9734-6a69559062e6"
+                                },
+                                {
+                                  "id": "34f59ca5-0fe2-42fc-8304-d1b52b1c7bf3",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/events/shift-left/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-34f59ca5-0fe2-42fc-8304-d1b52b1c7bf3"
+                                },
+                                {
+                                  "id": "6ab5ba90-6875-4b27-b587-afcde995ebc4",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/events/shift-left/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-6ab5ba90-6875-4b27-b587-afcde995ebc4"
+                                },
+                                {
+                                  "id": "9a5e02e3-c12b-46ed-a181-7d9048a0c39a",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/events/shift-left/search",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-9a5e02e3-c12b-46ed-a181-7d9048a0c39a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:16.000Z",
+                              "updatedAt": "2026-07-28T03:25:16.000Z",
+                              "uid": "35240-d83e2550-9d14-4f56-8976-61a7ecfb7f96"
+                            }
+                          ],
+                          "id": "2f624e3c-fae8-41b7-9efe-8cb67777a964",
+                          "createdAt": "2026-07-28T03:25:16.000Z",
+                          "updatedAt": "2026-07-28T03:25:16.000Z",
+                          "uid": "35240-2f624e3c-fae8-41b7-9efe-8cb67777a964"
+                        }
+                      ],
+                      "id": "ae276425-d64c-48d0-84a8-2763f3dba638",
+                      "createdAt": "2026-07-28T03:25:16.000Z",
+                      "updatedAt": "2026-07-28T03:25:16.000Z",
+                      "uid": "35240-ae276425-d64c-48d0-84a8-2763f3dba638"
+                    },
+                    {
+                      "name": "Create an event",
+                      "id": "42e59563-91a7-4028-9c2d-35f4d0940215",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"GITHUB_ACTIONS\",\n  \"type\": \"IMAGE_DEPLOY\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/events",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "events"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f526d650-1c12-4df7-9e98-1e49d0219db3",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `POST` request sent to the endpoint root creates an Event object that is associated with the specified organization. To learn more about Events, refer to the [Continuous Integration (CI)](/integrations/continuous-integration/overview) page."
+                      },
+                      "response": [
+                        {
+                          "id": "3ea84d09-4d15-470d-8d3d-b6f9af4cf2af",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"GITHUB_ACTIONS\",\n  \"type\": \"IMAGE_DEPLOY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/events",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "events"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"reporter\": \"custom_ci\",\n  \"type\": \"IMAGE_DEPLOY\"\n}",
+                          "createdAt": "2026-07-28T03:25:16.000Z",
+                          "updatedAt": "2026-07-28T03:25:16.000Z",
+                          "uid": "35240-3ea84d09-4d15-470d-8d3d-b6f9af4cf2af"
+                        },
+                        {
+                          "id": "0e989ec4-a09d-4510-b163-4d17d4dc16bd",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"GITHUB_ACTIONS\",\n  \"type\": \"IMAGE_DEPLOY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/events",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "events"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:16.000Z",
+                          "updatedAt": "2026-07-28T03:25:16.000Z",
+                          "uid": "35240-0e989ec4-a09d-4510-b163-4d17d4dc16bd"
+                        },
+                        {
+                          "id": "291be8ab-b189-43ca-9eb2-f6b7fadb5b78",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"GITHUB_ACTIONS\",\n  \"type\": \"IMAGE_DEPLOY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/events",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "events"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:16.000Z",
+                          "updatedAt": "2026-07-28T03:25:16.000Z",
+                          "uid": "35240-291be8ab-b189-43ca-9eb2-f6b7fadb5b78"
+                        },
+                        {
+                          "id": "f104c0c7-7bbb-4863-8a0c-88afe3d31faa",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"GITHUB_ACTIONS\",\n  \"type\": \"IMAGE_DEPLOY\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/events",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "events"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:16.000Z",
+                          "updatedAt": "2026-07-28T03:25:16.000Z",
+                          "uid": "35240-f104c0c7-7bbb-4863-8a0c-88afe3d31faa"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:16.000Z",
+                      "updatedAt": "2026-07-28T03:25:16.000Z",
+                      "uid": "35240-42e59563-91a7-4028-9c2d-35f4d0940215"
+                    }
+                  ],
+                  "id": "9a34400b-17dd-4824-80e9-1716f44bd49f",
+                  "createdAt": "2026-07-28T03:25:16.000Z",
+                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                  "uid": "35240-9a34400b-17dd-4824-80e9-1716f44bd49f"
+                }
+              ],
+              "id": "bc6657c2-7a3b-4ab7-8b0e-3bdc8210c07a",
+              "createdAt": "2026-07-28T03:25:16.000Z",
+              "updatedAt": "2026-07-28T03:25:16.000Z",
+              "uid": "35240-bc6657c2-7a3b-4ab7-8b0e-3bdc8210c07a"
+            }
+          ],
+          "id": "9905e68e-dab8-4fa3-9d98-988cfa405440",
+          "createdAt": "2026-07-28T03:25:16.000Z",
+          "updatedAt": "2026-07-28T03:25:16.000Z",
+          "uid": "35240-9905e68e-dab8-4fa3-9d98-988cfa405440"
+        }
+      ],
+      "id": "b929274e-c403-4491-bc6b-84dbe29cd976",
+      "createdAt": "2026-07-28T03:25:16.000Z",
+      "updatedAt": "2026-07-28T03:25:16.000Z",
+      "uid": "35240-b929274e-c403-4491-bc6b-84dbe29cd976"
+    },
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "events",
+                  "item": [
+                    {
+                      "name": "shift-left",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Search ShiftLeft events",
+                              "id": "a897b5ef-426e-489e-883d-1546a9254e7d",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gte\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"like\",\n      \"value\": [],\n      \"field\": \"image\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/events/shift-left/search?limit=50&cursor=<string>&sort=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "events",
+                                    "shift-left",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`.",
+                                      "key": "sort",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "cb5b055e-e350-43be-8297-513373d5254f",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the Upwind organization."
+                                    }
+                                  ]
+                                },
+                                "description": "A POST request sent to the search endpoint returns a filtered list of ShiftLeft events that are associated with the specified organization based on the specified search criteria."
+                              },
+                              "response": [
+                                {
+                                  "id": "b4e5929a-a713-457e-bf69-616928c03628",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gte\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"like\",\n      \"value\": [],\n      \"field\": \"image\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/events/shift-left/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"architecture\": \"<string>\",\n      \"branch\": \"<string>\",\n      \"commit_sha\": \"<string>\",\n      \"create_time\": \"<dateTime>\",\n      \"fingerprint\": \"<string>\",\n      \"image\": \"<string>\",\n      \"image_sha\": \"<string>\",\n      \"image_size_bytes\": \"<long>\",\n      \"initiator\": \"<string>\",\n      \"os\": \"<string>\",\n      \"repository\": \"<string>\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"<string>\",\n        \"pr_id\": \"<string>\",\n        \"pr_link\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"type\": \"<string>\",\n      \"update_time\": \"<dateTime>\",\n      \"variant\": \"<string>\"\n    },\n    {\n      \"architecture\": \"<string>\",\n      \"branch\": \"<string>\",\n      \"commit_sha\": \"<string>\",\n      \"create_time\": \"<dateTime>\",\n      \"fingerprint\": \"<string>\",\n      \"image\": \"<string>\",\n      \"image_sha\": \"<string>\",\n      \"image_size_bytes\": \"<long>\",\n      \"initiator\": \"<string>\",\n      \"os\": \"<string>\",\n      \"repository\": \"<string>\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"<string>\",\n        \"pr_id\": \"<string>\",\n        \"pr_link\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"type\": \"<string>\",\n      \"update_time\": \"<dateTime>\",\n      \"variant\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"limit\": \"<integer>\",\n    \"next_cursor\": \"<string>\",\n    \"previous_cursor\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-b4e5929a-a713-457e-bf69-616928c03628"
+                                },
+                                {
+                                  "id": "134dd63c-b810-4103-98e2-c3759bb200e2",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gte\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"like\",\n      \"value\": [],\n      \"field\": \"image\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/events/shift-left/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-134dd63c-b810-4103-98e2-c3759bb200e2"
+                                },
+                                {
+                                  "id": "7feec8f3-704c-4fbf-bb09-b55eb3139866",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gte\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"like\",\n      \"value\": [],\n      \"field\": \"image\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/events/shift-left/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-7feec8f3-704c-4fbf-bb09-b55eb3139866"
+                                },
+                                {
+                                  "id": "16434e0f-e524-4478-9c48-690e2add5cc8",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gte\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"like\",\n      \"value\": [],\n      \"field\": \"image\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/events/shift-left/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-16434e0f-e524-4478-9c48-690e2add5cc8"
+                                },
+                                {
+                                  "id": "80c329be-0bad-45ef-bbca-c0fe4c4ff7de",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gte\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"like\",\n      \"value\": [],\n      \"field\": \"image\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/events/shift-left/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "events",
+                                        "shift-left",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:16.000Z",
+                                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                                  "uid": "35240-80c329be-0bad-45ef-bbca-c0fe4c4ff7de"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:16.000Z",
+                              "updatedAt": "2026-07-28T03:25:16.000Z",
+                              "uid": "35240-a897b5ef-426e-489e-883d-1546a9254e7d"
+                            }
+                          ],
+                          "id": "b839c753-cc59-409f-96d8-a5ac951dd244",
+                          "createdAt": "2026-07-28T03:25:16.000Z",
+                          "updatedAt": "2026-07-28T03:25:16.000Z",
+                          "uid": "35240-b839c753-cc59-409f-96d8-a5ac951dd244"
+                        }
+                      ],
+                      "id": "4b0bcf30-dd4b-477e-ac6a-a5fcde0fa28c",
+                      "createdAt": "2026-07-28T03:25:16.000Z",
+                      "updatedAt": "2026-07-28T03:25:16.000Z",
+                      "uid": "35240-4b0bcf30-dd4b-477e-ac6a-a5fcde0fa28c"
+                    }
+                  ],
+                  "id": "0922b741-cf2f-43c6-9bdd-fc3664707504",
+                  "createdAt": "2026-07-28T03:25:16.000Z",
+                  "updatedAt": "2026-07-28T03:25:16.000Z",
+                  "uid": "35240-0922b741-cf2f-43c6-9bdd-fc3664707504"
+                }
+              ],
+              "id": "ab144682-4656-420c-97df-28fe1bf02ac0",
+              "createdAt": "2026-07-28T03:25:16.000Z",
+              "updatedAt": "2026-07-28T03:25:16.000Z",
+              "uid": "35240-ab144682-4656-420c-97df-28fe1bf02ac0"
+            }
+          ],
+          "id": "81adea18-a8f3-4d9b-8e1d-e981cf418797",
+          "createdAt": "2026-07-28T03:25:16.000Z",
+          "updatedAt": "2026-07-28T03:25:16.000Z",
+          "uid": "35240-81adea18-a8f3-4d9b-8e1d-e981cf418797"
+        }
+      ],
+      "id": "22023d82-4596-428b-906c-8bcfb5dd01c6",
+      "createdAt": "2026-07-28T03:25:16.000Z",
+      "updatedAt": "2026-07-28T03:25:16.000Z",
+      "uid": "35240-22023d82-4596-428b-906c-8bcfb5dd01c6"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

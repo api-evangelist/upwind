@@ -1,28 +1,292 @@
 aid: upwind
 name: Upwind
-description: 'Upwind is a company surfaced as a portfolio company of craft-ventures, greylock and added
-  to the API Evangelist network as a stub for enrichment. Sector: security. This profile is a lead awaiting
-  the enrichment pipeline.'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 27
+  pass: local-v1
+description: >-
+  Upwind is a cloud and AI security platform (CNAPP) that secures cloud infrastructure, workloads,
+  and applications in real time — spanning cloud security posture management (CSPM), vulnerability
+  management, container and Kubernetes security, API security, data security posture management
+  (DSPM), identity and entitlements (CIEM), and incident response. Its Management REST API (v1 and
+  v2) exposes threats, vulnerabilities, configurations, cloud accounts, inventory graph search,
+  access management, and webhook integrations, secured with OAuth 2.0 client credentials and served
+  from US, EU, and ME regional endpoints. Backed by Craft Ventures and Greylock.
 url: https://raw.githubusercontent.com/api-evangelist/upwind/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - craft-ventures
 - greylock
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched-from-portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://github.com/upwindsecurity.png
 tags:
-- Company
 - Security
-apis: []
+- Cloud Security
+- CNAPP
+- Vulnerability Management
+- Container Security
+- Kubernetes
+- API Security
+- Threat Detection
+- Data Security
+apis:
+- aid: upwind:upwind-access-management-api
+  name: Upwind access-management API
+  description: The access-management API from Upwind — 10 operation(s) for access-management.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - access-management
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-access-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-api-security-api
+  name: Upwind api-security API
+  description: The api-security API from Upwind — 2 operation(s) for api-security.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - api-security
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-api-security-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-cloud-accounts-api
+  name: Upwind cloud-accounts API
+  description: The cloud-accounts API from Upwind — 2 operation(s) for cloud-accounts.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - cloud-accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-cloud-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-configurations-api
+  name: Upwind configurations API
+  description: The configurations API from Upwind — 14 operation(s) for configurations.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-events-api
+  name: Upwind events API
+  description: The events API from Upwind — 3 operation(s) for events.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-integrations-api
+  name: Upwind integrations API
+  description: The integrations API from Upwind — 2 operation(s) for integrations.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-inventory-api
+  name: Upwind Inventory API
+  description: The Inventory API from Upwind — 6 operation(s) for inventory.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-inventory-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-packages-api
+  name: Upwind packages API
+  description: The packages API from Upwind — 2 operation(s) for packages.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - packages
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-packages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-shiftleft-api
+  name: Upwind shiftleft API
+  description: The shiftleft API from Upwind — 1 operation(s) for shiftleft.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - shiftleft
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-shiftleft-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-threats-api
+  name: Upwind threats API
+  description: The threats API from Upwind — 18 operation(s) for threats.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - threats
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-threats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-vulnerabilities-api
+  name: Upwind vulnerabilities API
+  description: The vulnerabilities API from Upwind — 2 operation(s) for vulnerabilities.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - vulnerabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-vulnerabilities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-workflows-api
+  name: Upwind workflows API
+  description: The workflows API from Upwind — 2 operation(s) for workflows.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/upwind/overview
 - type: Website
   url: https://upwind.io
+- type: Portal
+  url: https://console.upwind.io
+- type: Documentation
+  url: https://docs.upwind.io/public/
+- type: APIReference
+  url: https://docs.upwind.io/restapi/v1/introduction
+- type: GettingStarted
+  url: https://docs.upwind.io/public/
+- type: Support
+  url: https://upwind.io/contact
+- type: Blog
+  url: https://upwind.io/feed
+- type: GitHubOrganization
+  url: https://github.com/upwindsecurity
+- type: Login
+  url: https://console.upwind.io
+- type: TermsOfService
+  url: https://upwind.io/terms-of-use
+- type: PrivacyPolicy
+  url: https://upwind.io/privacy-policy
+- type: StatusPage
+  url: https://status.upwind.io/
+- type: ChangeLog
+  url: changelog/upwind-changelog.yml
+- type: Lifecycle
+  url: lifecycle/upwind-lifecycle.yml
+- type: Authentication
+  url: authentication/upwind-authentication.yml
+- type: OpenIDConnect
+  url: well-known/upwind-openid-configuration.json
+- type: OAuthScopes
+  url: scopes/upwind-scopes.yml
+- type: WellKnown
+  url: well-known/upwind-well-known.yml
+- type: TrustCenter
+  url: security/upwind-trust-center.yml
+- type: Compliance
+  url: https://trust.upwind.io/
+- type: DomainSecurity
+  url: security/upwind-domain-security.yml
+- type: Conventions
+  url: conventions/upwind-conventions.yml
+- type: ErrorCatalog
+  url: errors/upwind-problem-types.yml
+- type: RateLimits
+  url: rate-limits/upwind-rate-limits.yml
+- type: Examples
+  url: examples/upwind-request-examples.yml
+- type: DataModel
+  url: data-model/upwind-data-model.yml
+- type: Conformance
+  url: conformance/upwind-conformance.yml
+- type: Webhooks
+  url: asyncapi/upwind-webhooks.yml
+- type: Packages
+  url: packages/upwind-packages.yml
+- type: CLI
+  url: cli/upwind-cli.yml
+- type: MCPServer
+  url: mcp/upwind-mcp.yml
+- type: LLMsTxt
+  url: llms/upwind-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml

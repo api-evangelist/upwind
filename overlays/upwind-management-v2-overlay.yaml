@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Upwind Management REST API v2
+  version: 1.0.0
+extends: openapi/upwind-management-v2-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provenance:
+      generated: '2026-07-21'
+      method: generated
+      notes: Spec reconstructed from the embedded per-operation OpenAPI JSON published in the Upwind docs bundle;
+        this overlay records API Evangelist enhancements.
+- target: $.info
+  update:
+    x-apievangelist-conventions: conventions/upwind-conventions.yml
+- target: $.info
+  update:
+    x-apievangelist-errors: errors/upwind-problem-types.yml
+- target: $.info
+  update:
+    x-apievangelist-rate-limits: rate-limits/upwind-rate-limits.yml
+- target: $.components.securitySchemes.OAuth2ClientCredentials
+  update:
+    x-token-lifetime: 24h
+    x-audience-required: true

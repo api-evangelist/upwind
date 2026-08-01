@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/upwind-management-v1-openapi.yml, openapi/upwind-management-v2-openapi.yml
+skills:
+  - file: upwind-triage-threat-detections.md
+    name: Triage Upwind threat detections
+    api: openapi/upwind-management-v1-openapi.yml
+    operations: [list-threat-detections, get-threat-detection, update-threat-detection]
+  - file: upwind-search-inventory-graph.md
+    name: Search the Upwind inventory asset graph
+    api: openapi/upwind-management-v2-openapi.yml
+    operations: [assetsSearch, getAsset, getAssetExample]
+  - file: upwind-manage-webhook-integrations.md
+    name: Manage Upwind webhook integrations
+    api: openapi/upwind-management-v1-openapi.yml
+    operations: [createWebhookIntegration, getWebhookIntegrations, updateWebhookIntegration, deleteWebhookIntegration]

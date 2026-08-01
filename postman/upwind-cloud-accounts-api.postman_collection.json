@@ -1,0 +1,1409 @@
+{
+  "info": {
+    "_postman_id": "10d05270-455d-48e2-b442-82ed0e09cabe",
+    "name": "Upwind Management REST API v1 access-management cloud-accounts API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:13.000Z",
+    "updatedAt": "2026-07-28T03:25:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-10d05270-455d-48e2-b442-82ed0e09cabe"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "cloud-accounts",
+                  "item": [
+                    {
+                      "name": "{account-id}",
+                      "item": [
+                        {
+                          "name": "Delete a cloud account",
+                          "id": "f3140b98-50aa-4bb1-bda7-5b822b1cfc2a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts",
+                                ":account-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "03f37eed-9188-4104-8cf5-15469afc4f6b",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "d7d26651-925b-4b16-a82e-ecea4fab8002",
+                                  "key": "account-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the cloud account."
+                                }
+                              ]
+                            },
+                            "description": "A `DELETE` request sent to the endpoint removes a Cloud Account object that is associated with the specified organization. This action permanently removes the cloud account and all associated data. To learn more about Cloud Accounts, refer to the [Connect Cloud Account Overview](/getting-started/connect-cloud-account/overview) page."
+                          },
+                          "response": [
+                            {
+                              "id": "fdcaeab4-c410-4bb1-8d2a-0bb7bcad04cb",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-fdcaeab4-c410-4bb1-8d2a-0bb7bcad04cb"
+                            },
+                            {
+                              "id": "85112751-c44c-4492-8d60-56af7c935163",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-85112751-c44c-4492-8d60-56af7c935163"
+                            },
+                            {
+                              "id": "6c521f8b-8c07-429d-84fb-9e6340e7bd9c",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-6c521f8b-8c07-429d-84fb-9e6340e7bd9c"
+                            },
+                            {
+                              "id": "e3a4d1a2-54ea-4595-85c3-ebffc8406990",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-e3a4d1a2-54ea-4595-85c3-ebffc8406990"
+                            },
+                            {
+                              "id": "a4566ef9-16ea-4af7-b087-5d0ba56f0da4",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-a4566ef9-16ea-4af7-b087-5d0ba56f0da4"
+                            },
+                            {
+                              "id": "fd50124b-6bca-4f23-9a89-674ba42dfbd3",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-fd50124b-6bca-4f23-9a89-674ba42dfbd3"
+                            },
+                            {
+                              "id": "99a2d798-a9b8-49c8-b69f-3016a9e97d94",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-99a2d798-a9b8-49c8-b69f-3016a9e97d94"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-f3140b98-50aa-4bb1-bda7-5b822b1cfc2a"
+                        },
+                        {
+                          "name": "Update a cloud account",
+                          "id": "32c9703f-8bec-413d-a02a-4295cfab1c58",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts",
+                                ":account-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5136d721-d124-4a95-af89-0df18e5f557b",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "5ff3c1c6-0e1a-4c65-bb0b-2194beed5314",
+                                  "key": "account-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the cloud account."
+                                }
+                              ]
+                            },
+                            "description": "A `PATCH` request sent to the endpoint updates an existing Cloud Account object that is associated with the specified organization. This endpoint allows you to modify the configuration of an existing cloud account. To learn more about Cloud Accounts, refer to the [Connect Cloud Account Overview](/getting-started/connect-cloud-account/overview) page."
+                          },
+                          "response": [
+                            {
+                              "id": "3a667031-67ee-44ed-8783-9841289c6aa6",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-3a667031-67ee-44ed-8783-9841289c6aa6"
+                            },
+                            {
+                              "id": "42752c9e-6d05-4db8-8b88-26724e3bc955",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-42752c9e-6d05-4db8-8b88-26724e3bc955"
+                            },
+                            {
+                              "id": "b88fc217-a85b-404c-8ac7-18fe1a76dffe",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-b88fc217-a85b-404c-8ac7-18fe1a76dffe"
+                            },
+                            {
+                              "id": "024a1c42-c08b-4c08-a3fc-2e9c20a81d9c",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-024a1c42-c08b-4c08-a3fc-2e9c20a81d9c"
+                            },
+                            {
+                              "id": "efec641c-e009-4d43-9524-949bd3c676cc",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-efec641c-e009-4d43-9524-949bd3c676cc"
+                            },
+                            {
+                              "id": "8e844640-4dce-402b-a6ab-5b77c2ace8b3",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-8e844640-4dce-402b-a6ab-5b77c2ace8b3"
+                            },
+                            {
+                              "id": "ad4b6c59-1bd4-46b4-ae7a-6f061b09282c",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"VMWARE\",\n      \"VMWARE\"\n    ],\n    \"location\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts/:account-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "cloud-accounts",
+                                    ":account-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "account-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "createdAt": "2026-07-28T03:25:14.000Z",
+                              "updatedAt": "2026-07-28T03:25:14.000Z",
+                              "uid": "35240-ad4b6c59-1bd4-46b4-ae7a-6f061b09282c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-32c9703f-8bec-413d-a02a-4295cfab1c58"
+                        }
+                      ],
+                      "id": "7aa410ca-eb94-4065-be64-063c90ddc1d6",
+                      "createdAt": "2026-07-28T03:25:14.000Z",
+                      "updatedAt": "2026-07-28T03:25:14.000Z",
+                      "uid": "35240-7aa410ca-eb94-4065-be64-063c90ddc1d6"
+                    },
+                    {
+                      "name": "Create a cloud account",
+                      "id": "e03059fc-7436-4d2b-98cf-a1b41a39aae0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "cloud-accounts"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6529aea0-b89a-41a1-bd3c-0ab8cd5746c9",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `POST` request sent to the endpoint root creates a Cloud Account object that is associated with the specified organization. This endpoint allows you to add new cloud accounts to your organization for monitoring and security analysis. To learn more about Cloud Accounts, refer to the [Connect Cloud Account Overview](/getting-started/connect-cloud-account/overview) page."
+                      },
+                      "response": [
+                        {
+                          "id": "07ad276a-3f5b-4977-a7d8-453de2863fd5",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-07ad276a-3f5b-4977-a7d8-453de2863fd5"
+                        },
+                        {
+                          "id": "3411805b-ea48-4950-9108-64096b901fd1",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-3411805b-ea48-4950-9108-64096b901fd1"
+                        },
+                        {
+                          "id": "7b6c8b1c-7bf2-47c1-bd9c-0ac36ee41d6d",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-7b6c8b1c-7bf2-47c1-bd9c-0ac36ee41d6d"
+                        },
+                        {
+                          "id": "1e4554df-47c1-4d88-a158-cdc4c82bd5d7",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-1e4554df-47c1-4d88-a158-cdc4c82bd5d7"
+                        },
+                        {
+                          "id": "ffe453a4-0972-49f0-9a33-14d3bee2511a",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-ffe453a4-0972-49f0-9a33-14d3bee2511a"
+                        },
+                        {
+                          "id": "e7f16aae-1484-44ac-a5d7-d45bace7050c",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"config\": {\n    \"infrastructure_types\": [\n      \"OPENSTACK\",\n      \"OPENSTACK\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/cloud-accounts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "cloud-accounts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"account_id\": \"<string>\",\n  \"config\": {\n    \"infrastructure_types\": [\n      \"BARE_METAL\",\n      \"BARE_METAL\"\n    ],\n    \"location\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"provider\": \"BYOC\"\n}",
+                          "createdAt": "2026-07-28T03:25:14.000Z",
+                          "updatedAt": "2026-07-28T03:25:14.000Z",
+                          "uid": "35240-e7f16aae-1484-44ac-a5d7-d45bace7050c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:14.000Z",
+                      "updatedAt": "2026-07-28T03:25:14.000Z",
+                      "uid": "35240-e03059fc-7436-4d2b-98cf-a1b41a39aae0"
+                    }
+                  ],
+                  "id": "f966103c-3e76-46df-be54-26b6fb16d348",
+                  "createdAt": "2026-07-28T03:25:14.000Z",
+                  "updatedAt": "2026-07-28T03:25:14.000Z",
+                  "uid": "35240-f966103c-3e76-46df-be54-26b6fb16d348"
+                }
+              ],
+              "id": "7f78e1e7-7974-4291-9154-4f2448eef9c1",
+              "createdAt": "2026-07-28T03:25:14.000Z",
+              "updatedAt": "2026-07-28T03:25:14.000Z",
+              "uid": "35240-7f78e1e7-7974-4291-9154-4f2448eef9c1"
+            }
+          ],
+          "id": "3559ea2e-c2b1-4496-8770-3b8aaa3eb7e9",
+          "createdAt": "2026-07-28T03:25:14.000Z",
+          "updatedAt": "2026-07-28T03:25:14.000Z",
+          "uid": "35240-3559ea2e-c2b1-4496-8770-3b8aaa3eb7e9"
+        }
+      ],
+      "id": "075ca8fa-7047-48fd-81d0-604754bf87bf",
+      "createdAt": "2026-07-28T03:25:14.000Z",
+      "updatedAt": "2026-07-28T03:25:14.000Z",
+      "uid": "35240-075ca8fa-7047-48fd-81d0-604754bf87bf"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

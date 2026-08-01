@@ -1,0 +1,1516 @@
+{
+  "info": {
+    "_postman_id": "538dbdba-9846-41a9-9793-20d459a3432f",
+    "name": "Upwind Management REST API v1 access-management api-security API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:12.000Z",
+    "updatedAt": "2026-07-28T03:25:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-538dbdba-9846-41a9-9793-20d459a3432f"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "apisecurity-endpoints",
+                  "item": [
+                    {
+                      "name": "List endpoints",
+                      "id": "f8205c5b-25c9-4f05-a8c1-615b294d617f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "apisecurity-endpoints"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specifies how many results are returned on a page.",
+                              "key": "per-page",
+                              "value": "100"
+                            },
+                            {
+                              "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                              "key": "page-token",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                              "key": "method",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                              "key": "authentication-state",
+                              "value": "UNKNOWN"
+                            },
+                            {
+                              "description": "Filters endpoints that have internet ingress exposure.",
+                              "key": "has-internet-ingress",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters endpoints that have associated vulnerabilities.",
+                              "key": "has-vulnerability",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters endpoints that handle sensitive data.",
+                              "key": "has-sensitive-data",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filters by the specified cloud account ID.",
+                              "key": "cloud-account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                              "key": "cloud-provider",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by resource type.",
+                              "key": "resource-type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by cloud organization ID.",
+                              "key": "cloud-organization-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by cloud organization unit ID.",
+                              "key": "cloud-organization-unit-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by domain name.",
+                              "key": "domain",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters endpoints by cluster ID.",
+                              "key": "cluster-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters by the specified Kubernetes namespace.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e8bdfde6-698e-4ebb-a952-e23f8de2778b",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `GET` request sent to the endpoint root returns a list of API Endpoint objects that are associated with the specified organization. To learn more about API Security, refer to the [API Security Overview](/api-security/overview) page."
+                      },
+                      "response": [
+                        {
+                          "id": "9df12b64-7444-4f24-b6ef-1b1ad4a726b4",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"GET\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"UNAUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  },\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"POST\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"AUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-9df12b64-7444-4f24-b6ef-1b1ad4a726b4"
+                        },
+                        {
+                          "id": "edb099a2-aea1-417f-bf15-2c5b49868735",
+                          "name": "Partial Content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Partial Content",
+                          "code": 206,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"GET\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"UNAUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  },\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"POST\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"AUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-edb099a2-aea1-417f-bf15-2c5b49868735"
+                        },
+                        {
+                          "id": "74acdf61-16f4-4dec-8fe4-c65574b1799d",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"GET\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"UNAUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  },\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"POST\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"AUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-74acdf61-16f4-4dec-8fe4-c65574b1799d"
+                        },
+                        {
+                          "id": "72012c37-b2ef-43b0-8a24-05e2817f4924",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-72012c37-b2ef-43b0-8a24-05e2817f4924"
+                        },
+                        {
+                          "id": "620349b4-2255-45b9-85de-9815de9e1f32",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-620349b4-2255-45b9-85de-9815de9e1f32"
+                        },
+                        {
+                          "id": "b636ff8e-065c-447c-b38d-37f81ee1a8ee",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-b636ff8e-065c-447c-b38d-37f81ee1a8ee"
+                        },
+                        {
+                          "id": "ae35dd0a-dcbf-4c0d-8c46-acdcf06257cb",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/apisecurity-endpoints?per-page=100&page-token=<string>&method=<string>&authentication-state=UNKNOWN&has-internet-ingress=<boolean>&has-vulnerability=<boolean>&has-sensitive-data=<boolean>&cloud-account-id=<string>&cloud-provider=<string>&resource-type=<string>&cloud-organization-id=<string>&cloud-organization-unit-id=<string>&domain=<string>&cluster-id=<string>&namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "apisecurity-endpoints"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specifies how many results are returned on a page.",
+                                  "key": "per-page",
+                                  "value": "100"
+                                },
+                                {
+                                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size.",
+                                  "key": "page-token",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by HTTP method (GET, POST, PUT, DELETE, etc.).",
+                                  "key": "method",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by authentication state. Multiple values may be provided, separated by commas.",
+                                  "key": "authentication-state",
+                                  "value": "UNKNOWN"
+                                },
+                                {
+                                  "description": "Filters endpoints that have internet ingress exposure.",
+                                  "key": "has-internet-ingress",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that have associated vulnerabilities.",
+                                  "key": "has-vulnerability",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters endpoints that handle sensitive data.",
+                                  "key": "has-sensitive-data",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filters by the specified cloud account ID.",
+                                  "key": "cloud-account-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud provider (AWS, Azure, GCP, etc.).",
+                                  "key": "cloud-provider",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by resource type.",
+                                  "key": "resource-type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization ID.",
+                                  "key": "cloud-organization-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cloud organization unit ID.",
+                                  "key": "cloud-organization-unit-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by domain name.",
+                                  "key": "domain",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters endpoints by cluster ID.",
+                                  "key": "cluster-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filters by the specified Kubernetes namespace.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"GET\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"UNAUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  },\n  {\n    \"domains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"first_seen_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"method\": \"POST\",\n    \"resource_id\": \"<string>\",\n    \"risk_overview\": {\n      \"authentication\": {\n        \"state\": \"AUTHENTICATED\"\n      },\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"last_seen_time\": \"<dateTime>\"\n        }\n      },\n      \"sensitive_data_findings\": [\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"category\": \"<string>\",\n          \"last_seen_time\": \"<dateTime>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"status_codes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"uri\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-ae35dd0a-dcbf-4c0d-8c46-acdcf06257cb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:13.000Z",
+                      "updatedAt": "2026-07-28T03:25:13.000Z",
+                      "uid": "35240-f8205c5b-25c9-4f05-a8c1-615b294d617f"
+                    }
+                  ],
+                  "id": "594cf673-f265-4421-a3d3-3415da027456",
+                  "createdAt": "2026-07-28T03:25:13.000Z",
+                  "updatedAt": "2026-07-28T03:25:13.000Z",
+                  "uid": "35240-594cf673-f265-4421-a3d3-3415da027456"
+                }
+              ],
+              "id": "82e98e69-7020-472d-add3-e892771904cb",
+              "createdAt": "2026-07-28T03:25:13.000Z",
+              "updatedAt": "2026-07-28T03:25:13.000Z",
+              "uid": "35240-82e98e69-7020-472d-add3-e892771904cb"
+            }
+          ],
+          "id": "bfb09779-63ce-48f7-b498-315955d658ca",
+          "createdAt": "2026-07-28T03:25:13.000Z",
+          "updatedAt": "2026-07-28T03:25:13.000Z",
+          "uid": "35240-bfb09779-63ce-48f7-b498-315955d658ca"
+        }
+      ],
+      "id": "87470638-f39a-41c5-bd5a-b28be3d15363",
+      "createdAt": "2026-07-28T03:25:13.000Z",
+      "updatedAt": "2026-07-28T03:25:13.000Z",
+      "uid": "35240-87470638-f39a-41c5-bd5a-b28be3d15363"
+    },
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "api-security",
+                  "item": [
+                    {
+                      "name": "endpoints",
+                      "item": [
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Search API endpoints",
+                              "id": "6d9f5f1d-2cb7-429b-ad62-3018005efd0a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"method\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"has_sensitive_data\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/organizations/:organization-id/api-security/endpoints/search?limit=50&cursor=<string>&sort=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "organizations",
+                                    ":organization-id",
+                                    "api-security",
+                                    "endpoints",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Specifies the maximum number of items to be returned.",
+                                      "key": "limit",
+                                      "value": "50"
+                                    },
+                                    {
+                                      "description": "A cursor for pagination to retrieve the next set of results.",
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `first_seen_time`, `last_seen_time`.",
+                                      "key": "sort",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "212738cc-3af9-411c-a6a4-970d38bef56d",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the Upwind organization."
+                                    }
+                                  ]
+                                },
+                                "description": "A `POST` request sent to the search endpoint returns a list of API Endpoint objects matching the supplied search conditions."
+                              },
+                              "response": [
+                                {
+                                  "id": "4a9871f4-11f2-45fe-8cc9-b913b67fe064",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"method\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"has_sensitive_data\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/api-security/endpoints/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "api-security",
+                                        "endpoints",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `first_seen_time`, `last_seen_time`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"first_seen_time\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"method\": \"PUT\",\n      \"resource_id\": \"<string>\",\n      \"risk_overview\": {\n        \"authentication\": {\n          \"state\": \"authenticated\"\n        },\n        \"internet_exposure\": {\n          \"ingress\": {\n            \"last_seen_time\": \"<dateTime>\"\n          }\n        },\n        \"sensitive_data\": [\n          {\n            \"category\": \"<string>\",\n            \"last_seen_time\": \"<dateTime>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"category\": \"<string>\",\n            \"last_seen_time\": \"<dateTime>\",\n            \"type\": \"<string>\"\n          }\n        ]\n      },\n      \"status_codes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"uri\": \"<string>\"\n    },\n    {\n      \"domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"first_seen_time\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"method\": \"HEAD\",\n      \"resource_id\": \"<string>\",\n      \"risk_overview\": {\n        \"authentication\": {\n          \"state\": \"authenticated\"\n        },\n        \"internet_exposure\": {\n          \"ingress\": {\n            \"last_seen_time\": \"<dateTime>\"\n          }\n        },\n        \"sensitive_data\": [\n          {\n            \"category\": \"<string>\",\n            \"last_seen_time\": \"<dateTime>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"category\": \"<string>\",\n            \"last_seen_time\": \"<dateTime>\",\n            \"type\": \"<string>\"\n          }\n        ]\n      },\n      \"status_codes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"uri\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"limit\": \"<integer>\",\n    \"next_cursor\": \"<string>\",\n    \"previous_cursor\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:25:13.000Z",
+                                  "updatedAt": "2026-07-28T03:25:13.000Z",
+                                  "uid": "35240-4a9871f4-11f2-45fe-8cc9-b913b67fe064"
+                                },
+                                {
+                                  "id": "e1cc3727-55af-49f9-83ae-1e90b6ab0e10",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"method\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"has_sensitive_data\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/api-security/endpoints/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "api-security",
+                                        "endpoints",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `first_seen_time`, `last_seen_time`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:13.000Z",
+                                  "updatedAt": "2026-07-28T03:25:13.000Z",
+                                  "uid": "35240-e1cc3727-55af-49f9-83ae-1e90b6ab0e10"
+                                },
+                                {
+                                  "id": "eb4236e6-78ee-4118-9892-d5cbc4ecb031",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"method\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"has_sensitive_data\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/api-security/endpoints/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "api-security",
+                                        "endpoints",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `first_seen_time`, `last_seen_time`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:13.000Z",
+                                  "updatedAt": "2026-07-28T03:25:13.000Z",
+                                  "uid": "35240-eb4236e6-78ee-4118-9892-d5cbc4ecb031"
+                                },
+                                {
+                                  "id": "2939d644-5ea6-45db-8e57-47adac3eea27",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"gt\",\n      \"value\": [],\n      \"field\": \"method\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"has_sensitive_data\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/organizations/:organization-id/api-security/endpoints/search?limit=50&cursor=<string>&sort=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "organizations",
+                                        ":organization-id",
+                                        "api-security",
+                                        "endpoints",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Specifies the maximum number of items to be returned.",
+                                          "key": "limit",
+                                          "value": "50"
+                                        },
+                                        {
+                                          "description": "A cursor for pagination to retrieve the next set of results.",
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `first_seen_time`, `last_seen_time`.",
+                                          "key": "sort",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:13.000Z",
+                                  "updatedAt": "2026-07-28T03:25:13.000Z",
+                                  "uid": "35240-2939d644-5ea6-45db-8e57-47adac3eea27"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:13.000Z",
+                              "updatedAt": "2026-07-28T03:25:13.000Z",
+                              "uid": "35240-6d9f5f1d-2cb7-429b-ad62-3018005efd0a"
+                            }
+                          ],
+                          "id": "c275663f-652b-4e98-ace2-5db502024380",
+                          "createdAt": "2026-07-28T03:25:13.000Z",
+                          "updatedAt": "2026-07-28T03:25:13.000Z",
+                          "uid": "35240-c275663f-652b-4e98-ace2-5db502024380"
+                        }
+                      ],
+                      "id": "bb3c4a8a-f483-4032-a7cb-adeb13ede4f1",
+                      "createdAt": "2026-07-28T03:25:13.000Z",
+                      "updatedAt": "2026-07-28T03:25:13.000Z",
+                      "uid": "35240-bb3c4a8a-f483-4032-a7cb-adeb13ede4f1"
+                    }
+                  ],
+                  "id": "aeb65eb0-3ceb-4c87-a52b-aa3dc32b8764",
+                  "createdAt": "2026-07-28T03:25:13.000Z",
+                  "updatedAt": "2026-07-28T03:25:13.000Z",
+                  "uid": "35240-aeb65eb0-3ceb-4c87-a52b-aa3dc32b8764"
+                }
+              ],
+              "id": "4ea84ef7-bebc-4d49-b27c-50e0d1198b5f",
+              "createdAt": "2026-07-28T03:25:13.000Z",
+              "updatedAt": "2026-07-28T03:25:13.000Z",
+              "uid": "35240-4ea84ef7-bebc-4d49-b27c-50e0d1198b5f"
+            }
+          ],
+          "id": "62f20449-d844-44ef-bebd-d02dbc11a774",
+          "createdAt": "2026-07-28T03:25:13.000Z",
+          "updatedAt": "2026-07-28T03:25:13.000Z",
+          "uid": "35240-62f20449-d844-44ef-bebd-d02dbc11a774"
+        }
+      ],
+      "id": "1b1d4534-cbba-4fd1-8cf1-8ac448fd11f6",
+      "createdAt": "2026-07-28T03:25:13.000Z",
+      "updatedAt": "2026-07-28T03:25:13.000Z",
+      "uid": "35240-1b1d4534-cbba-4fd1-8cf1-8ac448fd11f6"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

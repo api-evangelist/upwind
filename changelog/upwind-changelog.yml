@@ -1,0 +1,77 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/release-notes/sensor (and sibling component release-notes pages)
+scheme: per-component semantic versions, dated entries, categorized as Enhancements / Addressed Issues / Changed / Security / Deprecated
+notes: >-
+  Upwind publishes dated release notes per platform component rather than a single API changelog.
+  Components: Sensor, Tracer, Operator, Helm Charts, Lambda Tracer, Admission Webhook, Cluster
+  Manager, HostConfig, Sensor Host Installer, and the upwindctl CLI. The REST API itself is
+  versioned in the URI path (v1/v2) and documented at docs.upwind.io/restapi/.
+components:
+  - name: Sensor
+    url: https://docs.upwind.io/release-notes/sensor
+    current_version: v0.130.4
+  - name: upwindctl
+    url: https://docs.upwind.io/release-notes/upwindctl
+    current_version: 0.30.0
+  - name: Tracer
+    url: https://docs.upwind.io/release-notes/tracer
+  - name: Operator
+    url: https://docs.upwind.io/release-notes/operator
+  - name: Helm Charts
+    url: https://docs.upwind.io/release-notes/helm-charts
+  - name: Lambda Tracer
+    url: https://docs.upwind.io/release-notes/lambda-tracer
+  - name: Admission Webhook
+    url: https://docs.upwind.io/release-notes/admission-webhook
+  - name: Cluster Manager
+    url: https://docs.upwind.io/release-notes/cluster-manager
+  - name: HostConfig
+    url: https://docs.upwind.io/release-notes/hostconfig
+  - name: Sensor Host Installer
+    url: https://docs.upwind.io/release-notes/sensor-host-installer
+entries:
+  - component: Sensor
+    version: v0.130.4
+    changes:
+      - type: fix
+        summary: Fix Azure instance metadata (IMDS) detection
+  - component: Sensor
+    version: v0.130.3
+    changes:
+      - type: fix
+        summary: Fix handling of process events for function in-use detection
+  - component: Sensor
+    version: v0.130.2
+    changes:
+      - type: changed
+        summary: Reduce default log verbosity
+  - component: Sensor
+    version: v0.130.1
+    changes:
+      - type: fix
+        summary: Fix image scanning on CRI-O and for images with mismatched layer metadata
+      - type: security
+        summary: Upgrade bundled open-source dependencies; update scanner dependencies
+  - component: upwindctl
+    version: 0.30.0
+    changes:
+      - type: enhancement
+        summary: --is-saas enhancements; Global Administrator support
+  - component: upwindctl
+    version: 0.29.0
+    changes:
+      - type: enhancement
+        summary: GCP onboarding preflight with --check-all-projects and --enable-missing-apis
+  - component: upwindctl
+    version: 0.27.0
+    changes:
+      - type: enhancement
+        summary: Added --region ap
+      - type: deprecation
+        summary: --upwind-region deprecated in favor of --region
+  - component: upwindctl
+    version: 0.26.1
+    changes:
+      - type: enhancement
+        summary: Multi-platform container images including Windows (amd64/arm64); Kubernetes survey jobs pinned to Linux nodes

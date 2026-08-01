@@ -1,0 +1,393 @@
+{
+  "info": {
+    "_postman_id": "f3d1f7d3-c7a9-4a6e-930b-dce3971122af",
+    "name": "Upwind Management REST API v1 access-management shiftleft API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:46.000Z",
+    "updatedAt": "2026-07-28T03:25:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3d1f7d3-c7a9-4a6e-930b-dce3971122af"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "shiftleft",
+                  "item": [
+                    {
+                      "name": "results",
+                      "item": [
+                        {
+                          "name": "{fingerprint}",
+                          "item": [
+                            {
+                              "name": "Get a scan result",
+                              "id": "b427b034-3958-4221-9893-a82d87fe5bec",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://auth.upwind.io/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "client_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/shiftleft/results/:fingerprint",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "shiftleft",
+                                    "results",
+                                    ":fingerprint"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "304d937a-a124-42d1-892e-779eeee1b676",
+                                      "key": "organization-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the Upwind organization."
+                                    },
+                                    {
+                                      "id": "c733d5b8-0c65-498a-8b6d-3f187e55d547",
+                                      "key": "fingerprint",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                                    }
+                                  ]
+                                },
+                                "description": "A `GET` request sent to the endpoint root followed by the fingerprint name returns detailed information about a specific ShiftLeft scan."
+                              },
+                              "response": [
+                                {
+                                  "id": "1a4362cc-a0fe-4419-9be1-6968046bacd7",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/shiftleft/results/:fingerprint",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "shiftleft",
+                                        "results",
+                                        ":fingerprint"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "fingerprint"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"arch\": \"<string>\",\n  \"branch\": \"<string>\",\n  \"fingerprint\": \"<string>\",\n  \"high_impact_cves\": [\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"image_name\": \"<string>\",\n  \"image_os\": \"<string>\",\n  \"image_version\": \"<string>\",\n  \"initiator\": \"<string>\",\n  \"introduced_cves\": [\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"no_change_cves\": [\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"pr_id\": \"<string>\",\n  \"resolved_cves\": [\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"cve_description\": \"<string>\",\n      \"cve_id\": \"<string>\",\n      \"cve_name\": \"<string>\",\n      \"cvss_vector\": \"<string>\",\n      \"fixed_in_version\": \"<string>\",\n      \"is_exploitable\": \"<boolean>\",\n      \"is_fix_available\": \"<boolean>\",\n      \"package_name\": \"<string>\",\n      \"package_version\": \"<string>\",\n      \"score\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:25:47.000Z",
+                                  "updatedAt": "2026-07-28T03:25:47.000Z",
+                                  "uid": "35240-1a4362cc-a0fe-4419-9be1-6968046bacd7"
+                                },
+                                {
+                                  "id": "484cd146-5965-4629-be1b-426f088a6a63",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/shiftleft/results/:fingerprint",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "shiftleft",
+                                        "results",
+                                        ":fingerprint"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "fingerprint"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:47.000Z",
+                                  "updatedAt": "2026-07-28T03:25:47.000Z",
+                                  "uid": "35240-484cd146-5965-4629-be1b-426f088a6a63"
+                                },
+                                {
+                                  "id": "b9e32e9b-eec9-49c8-98d7-562140a160e3",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/shiftleft/results/:fingerprint",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "shiftleft",
+                                        "results",
+                                        ":fingerprint"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "fingerprint"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:47.000Z",
+                                  "updatedAt": "2026-07-28T03:25:47.000Z",
+                                  "uid": "35240-b9e32e9b-eec9-49c8-98d7-562140a160e3"
+                                },
+                                {
+                                  "id": "f9fb249c-26b3-43d5-b016-c785a228dfdf",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/shiftleft/results/:fingerprint",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "shiftleft",
+                                        "results",
+                                        ":fingerprint"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "fingerprint"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:47.000Z",
+                                  "updatedAt": "2026-07-28T03:25:47.000Z",
+                                  "uid": "35240-f9fb249c-26b3-43d5-b016-c785a228dfdf"
+                                },
+                                {
+                                  "id": "65209685-de2e-430b-b415-1b15d77eb0cd",
+                                  "name": "Rate Limit Exceeded",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/organizations/:organization-id/shiftleft/results/:fingerprint",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "organizations",
+                                        ":organization-id",
+                                        "shiftleft",
+                                        "results",
+                                        ":fingerprint"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organization-id"
+                                        },
+                                        {
+                                          "key": "fingerprint"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:25:47.000Z",
+                                  "updatedAt": "2026-07-28T03:25:47.000Z",
+                                  "uid": "35240-65209685-de2e-430b-b415-1b15d77eb0cd"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:25:47.000Z",
+                              "updatedAt": "2026-07-28T03:25:47.000Z",
+                              "uid": "35240-b427b034-3958-4221-9893-a82d87fe5bec"
+                            }
+                          ],
+                          "id": "52cce4ae-8b9d-43ff-a5b5-8af0357bfd80",
+                          "createdAt": "2026-07-28T03:25:47.000Z",
+                          "updatedAt": "2026-07-28T03:25:47.000Z",
+                          "uid": "35240-52cce4ae-8b9d-43ff-a5b5-8af0357bfd80"
+                        }
+                      ],
+                      "id": "dc13ee0f-0317-404c-854a-a27a3d7f2a07",
+                      "createdAt": "2026-07-28T03:25:47.000Z",
+                      "updatedAt": "2026-07-28T03:25:47.000Z",
+                      "uid": "35240-dc13ee0f-0317-404c-854a-a27a3d7f2a07"
+                    }
+                  ],
+                  "id": "f613f9e3-3704-4fa4-abcc-58699f17b4b5",
+                  "createdAt": "2026-07-28T03:25:47.000Z",
+                  "updatedAt": "2026-07-28T03:25:47.000Z",
+                  "uid": "35240-f613f9e3-3704-4fa4-abcc-58699f17b4b5"
+                }
+              ],
+              "id": "76475023-2692-4cf1-9b55-caca7487c0f1",
+              "createdAt": "2026-07-28T03:25:47.000Z",
+              "updatedAt": "2026-07-28T03:25:47.000Z",
+              "uid": "35240-76475023-2692-4cf1-9b55-caca7487c0f1"
+            }
+          ],
+          "id": "895aef29-6002-4f46-b8d7-08fd71f389fd",
+          "createdAt": "2026-07-28T03:25:47.000Z",
+          "updatedAt": "2026-07-28T03:25:47.000Z",
+          "uid": "35240-895aef29-6002-4f46-b8d7-08fd71f389fd"
+        }
+      ],
+      "id": "2193e665-9e74-45d6-93d7-48f1125f57bf",
+      "createdAt": "2026-07-28T03:25:47.000Z",
+      "updatedAt": "2026-07-28T03:25:47.000Z",
+      "uid": "35240-2193e665-9e74-45d6-93d7-48f1125f57bf"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

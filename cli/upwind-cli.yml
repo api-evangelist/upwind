@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/getting-started/install-sensor/amazon-ecs/fargate/upwindctl + https://docs.upwind.io/release-notes/upwindctl
+name: upwindctl
+description: >-
+  upwindctl is Upwind's first-party CLI for onboarding cloud accounts and deploying/managing the
+  Upwind Sensor and Tracer across environments (Kubernetes, ECS/Fargate, VMs). It is distributed via
+  an installer script and as multi-platform container images (Linux, Windows amd64/arm64).
+install:
+  - method: installer-script
+    command: curl -fsSL https://get.upwind.io/upwindctl.sh | bash
+  - method: container-image
+    notes: Container images published for multiple platforms, including Windows (amd64 and arm64).
+verify: upwindctl version
+commands:
+  - group: ecs
+    summary: Manage Upwind integration for Amazon ECS task definitions.
+    commands:
+      - name: upwindctl ecs patch <taskdef> [flags]
+        summary: Patch ECS task definitions (file path or registered task definition) to add the Upwind Tracer container; designed for IaC (Terraform/CloudFormation) and bulk automation.
+  - group: onboarding-preflight
+    summary: Cloud onboarding preflight surveys (AWS, GCP, Azure).
+    commands:
+      - name: upwindctl gcp onboarding preflight [--check-all-projects] [--enable-missing-apis]
+        summary: Survey GCP projects for onboarding readiness; optionally enable missing APIs.
+      - name: azure onboarding preflight
+        summary: Surveys multiple Azure subscriptions in a single run, checking permissions, resource state, and quotas.
+      - name: aws onboarding preflight
+        summary: AWS onboarding checks including an EC2 Allowed AMIs check.
+  - group: kubernetes
+    summary: Kubernetes survey and sensor deployment checks (scan jobs, node pinning; GKE Autopilot aware).
+  - group: version
+    commands:
+      - name: upwindctl version
+        summary: Print the installed upwindctl version.
+flags:
+  - name: --region / --upwind-region (deprecated alias)
+    summary: Select the Upwind region (e.g. --region ap); --upwind-region is deprecated in favor of --region.
+  - name: --is-saas
+    summary: SaaS deployment mode flag.
+  - name: UPWINDCTL_NONINTERACTIVE / --yes
+    summary: Non-interactive mode for automation.
+release_notes: https://docs.upwind.io/release-notes/upwindctl
+current_version: 0.30.0

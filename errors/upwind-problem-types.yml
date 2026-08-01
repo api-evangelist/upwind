@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/upwind-management-v1-openapi.yml, openapi/upwind-management-v2-openapi.yml
+format: application/json (no RFC 9457 problem+json)
+notes: Derived from the 4xx/5xx responses declared across the 84 published operations. 401/403/429 are declared
+  on every operation.
+problems:
+- status: 400
+  title: Bad Request
+  operations_declaring: 11
+  examples:
+  - openapi/upwind-management-v1-openapi.yml#createCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#createCustomRule
+  - openapi/upwind-management-v1-openapi.yml#createFramework
+- status: 401
+  title: Unauthorized
+  operations_declaring: 84
+  examples:
+  - openapi/upwind-management-v1-openapi.yml#createCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#createCustomRule
+  - openapi/upwind-management-v1-openapi.yml#getCustomRules
+- status: 403
+  title: Forbidden
+  operations_declaring: 84
+  examples:
+  - openapi/upwind-management-v1-openapi.yml#createCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#createCustomRule
+  - openapi/upwind-management-v1-openapi.yml#getCustomRules
+- status: 404
+  title: Not Found
+  operations_declaring: 58
+  examples:
+  - openapi/upwind-management-v1-openapi.yml#deleteCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#updateCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#deleteCustomRule
+- status: 429
+  title: Rate Limit Exceeded
+  operations_declaring: 84
+  examples:
+  - openapi/upwind-management-v1-openapi.yml#createCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#createCustomRule
+  - openapi/upwind-management-v1-openapi.yml#getCustomRules
+- status: 500
+  title: Internal Server Error
+  operations_declaring: 12
+  examples:
+  - openapi/upwind-management-v1-openapi.yml#createCloudAccount
+  - openapi/upwind-management-v1-openapi.yml#createFramework
+  - openapi/upwind-management-v1-openapi.yml#createWebhookIntegration

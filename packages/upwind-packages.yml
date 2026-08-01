@@ -1,0 +1,94 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/upwindsecurity + npm/PyPI/Terraform Registry searches
+notes: >-
+  No first-party client SDKs are published on npm, PyPI, RubyGems, or the Terraform Registry
+  (registry searches for "upwind" return no Upwind Security packages). Upwind's first-party
+  developer tooling ships as the upwindctl CLI (installer script), Terraform onboarding modules
+  consumed by GitHub source, and GitHub Actions for shift-left image events.
+packages:
+  - language: shell
+    registry: installer-script
+    name: upwindctl
+    url: https://get.upwind.io/upwindctl.sh
+    install: curl -fsSL https://get.upwind.io/upwindctl.sh | bash
+    official: true
+    kind: cli
+  - language: hcl
+    registry: github
+    name: terraform-aws-onboarding
+    url: https://github.com/upwindsecurity/terraform-aws-onboarding
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-gcp-onboarding
+    url: https://github.com/upwindsecurity/terraform-gcp-onboarding
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-google-onboarding
+    url: https://github.com/upwindsecurity/terraform-google-onboarding
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-azurerm-onboarding
+    url: https://github.com/upwindsecurity/terraform-azurerm-onboarding
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-oci-onboarding
+    url: https://github.com/upwindsecurity/terraform-oci-onboarding
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-google-cloudscanner
+    url: https://github.com/upwindsecurity/terraform-google-cloudscanner
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-oci-cloudscanner
+    url: https://github.com/upwindsecurity/terraform-oci-cloudscanner
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-azurerm-cloudlogs
+    url: https://github.com/upwindsecurity/terraform-azurerm-cloudlogs
+    official: true
+    kind: terraform-module
+  - language: hcl
+    registry: github
+    name: terraform-google-cloudlogs
+    url: https://github.com/upwindsecurity/terraform-google-cloudlogs
+    official: true
+    kind: terraform-module
+  - language: shell
+    registry: github-actions
+    name: create-image-build-event-action
+    url: https://github.com/upwindsecurity/create-image-build-event-action
+    official: true
+    kind: github-action
+  - language: shell
+    registry: github-actions
+    name: shiftleft-create-image-scan-event-action
+    url: https://github.com/upwindsecurity/shiftleft-create-image-scan-event-action
+    official: true
+    kind: github-action
+  - language: shell
+    registry: github-actions
+    name: shiftleft-create-image-publish-event-action
+    url: https://github.com/upwindsecurity/shiftleft-create-image-publish-event-action
+    official: true
+    kind: github-action
+  - language: shell
+    registry: github-actions
+    name: shiftleft-create-file-scan-event-action
+    url: https://github.com/upwindsecurity/shiftleft-create-file-scan-event-action
+    official: true
+    kind: github-action

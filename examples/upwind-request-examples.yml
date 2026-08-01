@@ -1,0 +1,627 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/restapi/ (example requests published per operation)
+notes: Verbatim JSON request-body examples published in the Upwind API reference, one per write operation.
+examples:
+- operationId: assetsSearch
+  method: POST
+  path: /v2/organizations/{organization-id}/inventory/assets/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/inventory/v2/assets-search
+  request_body_example:
+    conditions:
+    - field: cloud_resource_id
+      operator: eq
+      value:
+      - i-12345678
+      conditions:
+      - {}
+- operationId: createCloudAccount
+  method: POST
+  path: /v1/organizations/{organization-id}/cloud-accounts
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/create-cloud-account
+  request_body_example:
+    config:
+      infrastructure_types:
+      - VMWARE
+      location: us-east-1
+    name: Production
+    provider: BYOC
+- operationId: createCustomRule
+  method: POST
+  path: /v1/organizations/{organization-id}/configuration-rules
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/create-custom-rule
+  request_body_example:
+    asset_kind: AWS_S3_BUCKET
+    category: string
+    description: string
+    framework_id: string
+    name: EnsureS3BucketsAreEncrypted
+    rego_policy: is_pass(input_item) := false { input_item.public_access == true } else := true
+    related_asset_kinds:
+    - string
+    severity: MEDIUM
+- operationId: createEvent
+  method: POST
+  path: /v1/organizations/{organization-id}/events
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/create-event
+  request_body_example:
+    data:
+      branch: string
+      build_time: '2024-07-29T15:51:28.071Z'
+      commit_sha: string
+      image: string
+      image_sha: string
+      pull_request_ids:
+      - 0
+      repository: string
+      user: string
+      version_control_platform: string
+    reporter: circle_ci
+    type: IMAGE_BUILD
+- operationId: createFramework
+  method: POST
+  path: /v1/organizations/{organization-id}/configuration-frameworks
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/create-framework
+  request_body_example:
+    cloud_provider: AWS
+    description: string
+    title: string
+- operationId: createWebhookIntegration
+  method: POST
+  path: /v1/organizations/{organization-id}/integration-webhooks
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/create-webhook-integration
+  request_body_example:
+    config:
+      authentication:
+        type: BEARER
+        key: string
+        value: string
+      headers:
+      - key: string
+        sensitive: true
+        value: string
+      url: string
+    name: string
+    vendor: DATADOG
+- operationId: createWorkflow
+  method: POST
+  path: /v1/organizations/{organization-id}/workflows
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/create-workflow
+  request_body_example:
+    config:
+      actions:
+      - type: SLACK
+        recipients:
+        - string
+        target_audience: ALL
+      - type: SLACK
+        assignee_id: string
+        custom_fields: {}
+        issue_type_id: string
+        labels:
+        - string
+        project_id: string
+        reporter_id: string
+      - type: SLACK
+        channel: string
+        message: string
+      - type: SLACK
+        webhook_id: string
+      selectors:
+      - type: LABEL
+        key_values:
+        - key: string
+          value: string
+      - type: LABEL
+        values:
+        - string
+      cron: string
+    name: string
+    type: TRIGGERED
+- operationId: editCustomRule
+  method: PATCH
+  path: /v1/organizations/{organization-id}/configuration-rules/{rule-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/edit-custom-rule
+  request_body_example:
+    asset_kind: string
+    category: string
+    description: string
+    name: string
+    rego_policy: string
+    risk_category: string
+    severity: CRITICAL
+- operationId: editFramework
+  method: PATCH
+  path: /v1/organizations/{organization-id}/configuration-frameworks/{framework-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/edit-framework
+  request_body_example:
+    description: string
+    status: ENABLED
+    title: string
+- operationId: searchShiftLeftEvents
+  method: POST
+  path: /v1/organizations/{organization-id}/events/shift-left/search
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/search-shift-left-events
+  request_body_example:
+    end_time: 0
+    start_time: 0
+- operationId: updateCloudAccount
+  method: PATCH
+  path: /v1/organizations/{organization-id}/cloud-accounts/{account-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/update-cloud-account
+  request_body_example:
+    config:
+      infrastructure_types:
+      - VMWARE
+      location: us-east-1
+- operationId: update-threat-detection
+  method: PATCH
+  path: /v1/organizations/{organization-id}/threat-detections/{detection-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/update-threat-detection
+  request_body_example:
+    status: ARCHIVED
+- operationId: updateThreatPolicy
+  method: PATCH
+  path: /v1/organizations/{organization-id}/threat-policies/{policy-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/update-threat-policy
+  request_body_example:
+    enabled: true
+- operationId: updateWebhookIntegration
+  method: PATCH
+  path: /v1/organizations/{organization-id}/integration-webhooks/{webhook-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/update-webhook-integration
+  request_body_example:
+    name: string
+    status: ENABLED
+- operationId: updateWorkflow
+  method: PATCH
+  path: /v1/organizations/{organization-id}/workflows/{workflow-id}
+  source: openapi/upwind-management-v1-openapi.yml
+  docs: https://docs.upwind.io/restapi/v1/update-workflow
+  request_body_example:
+    config:
+      actions:
+      - type: SLACK
+        recipients:
+        - string
+        target_audience: ALL
+      - type: SLACK
+        assignee_id: string
+        custom_fields: {}
+        issue_type_id: string
+        labels:
+        - string
+        project_id: string
+        reporter_id: string
+      - type: SLACK
+        channel: string
+        message: string
+      - type: SLACK
+        webhook_id: string
+      selectors:
+      - type: LABEL
+        key_values:
+        - key: string
+          value: string
+      - type: LABEL
+        values:
+        - string
+      cron: string
+    name: string
+    status: ENABLED
+    type: TRIGGERED
+- operationId: addGroupMembers
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/groups/{group-id}/members/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/add-group-members
+  request_body_example:
+    emails:
+    - user@example.com
+- operationId: addMember
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/members
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/add-member
+  request_body_example:
+    connection_type: social-google
+    email: user@example.com
+    first_name: John
+    group_ids:
+    - string
+    last_name: Doe
+    permissions:
+    - role_ids:
+      - string
+      scope_id: scope-prod-123
+- operationId: bulkAttachRuleDefinitions
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-attach-rule-definitions
+  request_body_example:
+    policy_rules:
+    - is_enabled: true
+      rule_definition_id: string
+      scope:
+        condition:
+          type: string
+          field: string
+          operator: equals
+          value:
+          - string
+      severity: low
+- operationId: bulkCreatePolicies
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/policies/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-create-policies
+  request_body_example:
+    policies:
+    - default_severity: low
+      is_enabled: true
+      metadata:
+        detection_description: Surfaces role or permission changes that grant elevated access.
+        detection_title: Privilege Escalation Attempt
+      name: string
+      resource_scope:
+        condition:
+          type: string
+          field: string
+          operator: equals
+          value:
+          - string
+      source_type: cloud_logs
+- operationId: bulkCreateRuleDefinitions
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/rule-definitions/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-create-rule-definitions
+  request_body_example:
+    rule_definitions:
+    - engine: rego
+      metadata:
+        detection_description: Detects API calls made without proper authorization
+        detection_title: Unauthorized API Call Detection
+        mitre_tactic_code: TA0001
+        mitre_tactic_name: Initial Access
+        mitre_technique_code: T1078
+        mitre_technique_name: Valid Accounts
+      name: string
+      rule_expression: string
+      threat_category: network_traffic
+- operationId: bulkDeletePolicies
+  method: DELETE
+  path: /v2/organizations/{organization-id}/threats/policies/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-delete-policies
+  request_body_example:
+    policy_ids:
+    - string
+- operationId: bulkDeletePolicyRules
+  method: DELETE
+  path: /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-delete-policy-rules
+  request_body_example:
+    policy_rule_ids:
+    - string
+- operationId: bulkDeleteRuleDefinitions
+  method: DELETE
+  path: /v2/organizations/{organization-id}/threats/rule-definitions/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-delete-rule-definitions
+  request_body_example:
+    rule_definition_ids:
+    - string
+- operationId: bulkEditPolicies
+  method: PATCH
+  path: /v2/organizations/{organization-id}/threats/policies/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-edit-policies
+  request_body_example:
+    policies:
+    - default_severity: low
+      id: string
+      is_enabled: true
+      metadata:
+        detection_description: Surfaces role or permission changes that grant elevated access.
+        detection_title: Privilege Escalation Attempt
+      name: string
+      resource_scope:
+        condition:
+          type: string
+          field: string
+          operator: equals
+          value:
+          - string
+- operationId: bulkEditPolicyRules
+  method: PATCH
+  path: /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-edit-policy-rules
+  request_body_example:
+    policy_rules:
+    - id: string
+      is_enabled: true
+      scope:
+        condition:
+          type: string
+          field: string
+          operator: equals
+          value:
+          - string
+      severity: low
+- operationId: bulkEditRuleDefinitions
+  method: PATCH
+  path: /v2/organizations/{organization-id}/threats/rule-definitions/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/bulk-edit-rule-definitions
+  request_body_example:
+    rule_definitions:
+    - id: string
+      metadata:
+        detection_description: Detects API calls made without proper authorization
+        detection_title: Unauthorized API Call Detection
+        mitre_tactic_code: TA0001
+        mitre_tactic_name: Initial Access
+        mitre_technique_code: T1078
+        mitre_technique_name: Valid Accounts
+      name: string
+      rule_expression: string
+- operationId: createFramework
+  method: POST
+  path: /v2/organizations/{organization-id}/configurations/frameworks
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/create-framework
+  request_body_example:
+    description: string
+    platform: aws
+    title: string
+- operationId: createRule
+  method: POST
+  path: /v2/organizations/{organization-id}/configurations/custom-rules
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/create-rule
+  request_body_example:
+    asset_kind: aws_s3_bucket
+    category: string
+    description: string
+    framework_id: string
+    rego_policy: '`is_pass(input_item) := false { input_item.public_access == true } else := true`'
+    related_asset_kinds:
+    - string
+    severity: low
+    title: EnsureS3BucketsAreEncrypted
+- operationId: createScope
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/scopes
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/create-scope
+  request_body_example:
+    description: string
+    name: string
+    resource_filters:
+    - attribute: string
+      operator: string
+      values:
+      - string
+- operationId: patchAsset
+  method: PATCH
+  path: /v2/organizations/{organization-id}/inventory/assets/{id}
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/patch-asset
+  request_body_example:
+    custom_tags:
+    - key: env
+      value: production
+- operationId: removeGroupMembers
+  method: DELETE
+  path: /v2/organizations/{organization-id}/access-management/groups/{group-id}/members/bulk
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/remove-group-members
+  request_body_example:
+    emails:
+    - user@example.com
+- operationId: searchAssets
+  method: POST
+  path: /v2/organizations/{organization-id}/inventory/catalog/assets/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-assets
+  request_body_example:
+    conditions:
+    - field: category
+      operator: eq
+      value:
+      - compute_platform
+- operationId: searchEndpoints
+  method: POST
+  path: /v2/organizations/{organization-id}/api-security/endpoints/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-endpoints
+  request_body_example:
+    conditions:
+    - field: method
+      operator: eq
+      value:
+      - GET
+- operationId: searchFindings
+  method: POST
+  path: /v2/organizations/{organization-id}/configurations/findings/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-findings
+  request_body_example:
+    conditions:
+    - field: severity
+      operator: eq
+      value:
+      - high
+- operationId: searchFrameworks
+  method: POST
+  path: /v2/organizations/{organization-id}/configurations/frameworks/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-frameworks
+  request_body_example:
+    conditions:
+    - field: platform
+      operator: eq
+      value:
+      - aws
+- operationId: searchGroups
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/groups/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-groups
+  request_body_example:
+    conditions:
+    - field: name
+      operator: eq
+      value:
+      - Admins
+- operationId: searchMembers
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/members/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-members
+  request_body_example:
+    conditions:
+    - field: email
+      operator: eq
+      value:
+      - user@example.com
+- operationId: searchPolicies
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/policies/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-policies
+  request_body_example:
+    conditions:
+    - field: source_type
+      operator: eq
+      value:
+      - cloud_logs
+- operationId: searchPolicyRules
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-policy-rules
+  request_body_example:
+    conditions:
+    - field: severity
+      operator: eq
+      value:
+      - high
+- operationId: searchRoles
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/roles/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-roles
+  request_body_example:
+    conditions:
+    - field: name
+      operator: eq
+      value:
+      - Security
+- operationId: searchRuleDefinitions
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/rule-definitions/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-rule-definitions
+  request_body_example:
+    conditions:
+    - field: threat_category
+      operator: eq
+      value:
+      - cloud_trail_logs
+- operationId: searchScopes
+  method: POST
+  path: /v2/organizations/{organization-id}/access-management/scopes/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-scopes
+  request_body_example:
+    conditions:
+    - field: name
+      operator: eq
+      value:
+      - Production
+- operationId: searchShiftLeftEvents
+  method: POST
+  path: /v2/organizations/{organization-id}/events/shift-left/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-shift-left-events
+  request_body_example:
+    conditions:
+    - field: architecture
+      operator: eq
+      value:
+      - linux/amd64
+- operationId: searchStories
+  method: POST
+  path: /v2/organizations/{organization-id}/threats/stories/search
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/search-stories
+  request_body_example:
+    conditions:
+    - field: severity
+      operator: eq
+      value:
+      - high
+- operationId: updateFramework
+  method: PATCH
+  path: /v2/organizations/{organization-id}/configurations/frameworks/{framework-id}
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/update-framework
+  request_body_example:
+    description: string
+    is_enabled: true
+    title: string
+- operationId: updateGroup
+  method: PATCH
+  path: /v2/organizations/{organization-id}/access-management/groups/{group-id}
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/update-group
+  request_body_example:
+    permissions:
+    - role_ids:
+      - string
+      scope_id: string
+- operationId: updateRule
+  method: PATCH
+  path: /v2/organizations/{organization-id}/configurations/custom-rules/{rule-id}
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/update-rule
+  request_body_example:
+    asset_kind: string
+    category: string
+    description: string
+    rego_policy: string
+    risk_category: string
+    severity: low
+    title: string
+- operationId: updateScope
+  method: PATCH
+  path: /v2/organizations/{organization-id}/access-management/scopes/{scope-id}
+  source: openapi/upwind-management-v2-openapi.yml
+  docs: https://docs.upwind.io/restapi/v2/update-scope
+  request_body_example:
+    description: string
+    name: string
+    resource_filters:
+    - attribute: string
+      operator: string
+      values:
+      - string

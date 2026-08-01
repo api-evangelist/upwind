@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/integrations/monitoring-and-logging/custom-webhook + https://docs.upwind.io/restapi/v1/create-webhook-integration
+type: Webhooks
+spec_type: none
+notes: >-
+  Upwind publishes no AsyncAPI document. Its event surface is the Custom Webhook integration —
+  outbound webhooks from the Upwind platform that push security events to customer endpoints —
+  plus a v1 Management API surface for managing webhook integrations programmatically.
+webhooks:
+  name: Custom Webhook integration
+  description: >-
+    Transmits Upwind platform events to customer tools via webhooks, supporting transfer of events
+    including threat detections and issue findings for post-processing and monitoring.
+  delivery:
+    method: POST
+    content_type: application/json
+    authentication:
+      - API Key
+      - Bearer Token (Authorization header)
+  event_types:
+    - threat-detection
+    - issue-finding
+  payload_schema_reference: >-
+    Webhook payload mirrors the corresponding API objects (e.g. the Threat Detection object from
+    GET /v1/organizations/{organization-id}/threat-detections/{detection-id}).
+  management:
+    console: Upwind Management Console -> Components & Integrations -> Custom Webhook (Monitoring & Logging)
+    api:
+      - operationId: createWebhookIntegration
+        source: openapi/upwind-management-v1-openapi.yml
+      - operationId: getWebhookIntegrations
+        source: openapi/upwind-management-v1-openapi.yml
+      - operationId: updateWebhookIntegration
+        source: openapi/upwind-management-v1-openapi.yml
+      - operationId: deleteWebhookIntegration
+        source: openapi/upwind-management-v1-openapi.yml

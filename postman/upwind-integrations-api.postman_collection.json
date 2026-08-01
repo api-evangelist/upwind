@@ -1,0 +1,1621 @@
+{
+  "info": {
+    "_postman_id": "8b775aa6-46d8-47a6-ac6c-750f4aa11962",
+    "name": "Upwind Management REST API v1 access-management integrations API",
+    "description": "Upwind Management REST API \u2014 administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:25:17.000Z",
+    "updatedAt": "2026-07-28T03:25:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8b775aa6-46d8-47a6-ac6c-750f4aa11962"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organization-id}",
+              "item": [
+                {
+                  "name": "integration-webhooks",
+                  "item": [
+                    {
+                      "name": "{webhook-id}",
+                      "item": [
+                        {
+                          "name": "Delete a webhook",
+                          "id": "f6097009-b3e5-47bb-aba2-1cd192e98542",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks",
+                                ":webhook-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "21aa2d5d-1d8b-43de-b0c7-6b0501077bbe",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "ede04d0d-e9ae-4daf-8a6d-4ae107f1bc13",
+                                  "key": "webhook-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for this integration webhook."
+                                }
+                              ]
+                            },
+                            "description": "A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific integration webhook. This action permanently removes the integration webhook and cannot be undone. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page."
+                          },
+                          "response": [
+                            {
+                              "id": "6ee55178-65ee-46a3-962f-b74724f387d7",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-6ee55178-65ee-46a3-962f-b74724f387d7"
+                            },
+                            {
+                              "id": "2d74c8d1-00da-43c6-a31a-00fcb19b9212",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-2d74c8d1-00da-43c6-a31a-00fcb19b9212"
+                            },
+                            {
+                              "id": "589aae67-2263-4966-a1db-ec8de7ae6417",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-589aae67-2263-4966-a1db-ec8de7ae6417"
+                            },
+                            {
+                              "id": "a8b216b7-55d9-421e-bb57-5756089a9e76",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-a8b216b7-55d9-421e-bb57-5756089a9e76"
+                            },
+                            {
+                              "id": "50744e20-5d55-4fd7-a08b-f1ef32d6f64d",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-50744e20-5d55-4fd7-a08b-f1ef32d6f64d"
+                            },
+                            {
+                              "id": "5128e0dc-caf3-4a66-8b20-02eb9741e622",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-5128e0dc-caf3-4a66-8b20-02eb9741e622"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-f6097009-b3e5-47bb-aba2-1cd192e98542"
+                        },
+                        {
+                          "name": "Update a webhook",
+                          "id": "1064d778-755c-4b9d-a7da-5a87eec6411c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://auth.upwind.io/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks",
+                                ":webhook-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6ad9268d-adcf-4398-b30f-1d002675411a",
+                                  "key": "organization-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for the Upwind organization."
+                                },
+                                {
+                                  "id": "634fdc35-6b5e-4e9c-b613-4ba1212a4fb6",
+                                  "key": "webhook-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier for this integration webhook."
+                                }
+                              ]
+                            },
+                            "description": "A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing integration webhook. This endpoint facilitates the modification of attributes such as the name, status, and configuration. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page."
+                          },
+                          "response": [
+                            {
+                              "id": "5dfed057-cea9-4694-a6b0-788090b7be5a",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"create_time\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"ENABLED\",\n  \"update_time\": \"<dateTime>\",\n  \"vendor\": \"MSTEAMS\"\n}",
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-5dfed057-cea9-4694-a6b0-788090b7be5a"
+                            },
+                            {
+                              "id": "2ba6f413-878f-4766-9e04-4536bac54eee",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-2ba6f413-878f-4766-9e04-4536bac54eee"
+                            },
+                            {
+                              "id": "0193877b-1821-453f-9b56-487f4f88dac6",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-0193877b-1821-453f-9b56-487f4f88dac6"
+                            },
+                            {
+                              "id": "345f5af4-131b-44e5-acf3-c351b4b3f32c",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-345f5af4-131b-44e5-acf3-c351b4b3f32c"
+                            },
+                            {
+                              "id": "b11cf98d-6739-4077-953b-08065162d489",
+                              "name": "Rate Limit Exceeded",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-b11cf98d-6739-4077-953b-08065162d489"
+                            },
+                            {
+                              "id": "dbf466f7-8ff5-4111-8105-d26ec32fef19",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"DISABLED\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks/:webhook-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organization-id",
+                                    "integration-webhooks",
+                                    ":webhook-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organization-id"
+                                    },
+                                    {
+                                      "key": "webhook-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:25:17.000Z",
+                              "updatedAt": "2026-07-28T03:25:17.000Z",
+                              "uid": "35240-dbf466f7-8ff5-4111-8105-d26ec32fef19"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-1064d778-755c-4b9d-a7da-5a87eec6411c"
+                        }
+                      ],
+                      "id": "9845f687-5f36-40f5-a40c-513d76a3e27c",
+                      "createdAt": "2026-07-28T03:25:17.000Z",
+                      "updatedAt": "2026-07-28T03:25:17.000Z",
+                      "uid": "35240-9845f687-5f36-40f5-a40c-513d76a3e27c"
+                    },
+                    {
+                      "name": "Create a webhook",
+                      "id": "e92180a6-0528-40c3-afe3-b2758f3a875a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "integration-webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3da6ffd5-c561-446b-9dd6-b4ab58435c59",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `POST` request sent to the endpoint root creates a integration webhook object that is associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page."
+                      },
+                      "response": [
+                        {
+                          "id": "a0d56f46-8faf-47ec-b4f2-8c2383bf7f73",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"create_time\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"ENABLED\",\n  \"update_time\": \"<dateTime>\",\n  \"vendor\": \"MSTEAMS\"\n}",
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-a0d56f46-8faf-47ec-b4f2-8c2383bf7f73"
+                        },
+                        {
+                          "id": "3aeb9ab3-4a07-438b-ad03-bb2223e61876",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-3aeb9ab3-4a07-438b-ad03-bb2223e61876"
+                        },
+                        {
+                          "id": "41f118da-a64f-4b11-81aa-495ec69f4318",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-41f118da-a64f-4b11-81aa-495ec69f4318"
+                        },
+                        {
+                          "id": "4fcea78b-f27d-4a63-89fa-68933f761ef2",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-4fcea78b-f27d-4a63-89fa-68933f761ef2"
+                        },
+                        {
+                          "id": "69906692-bc5e-42b4-926e-5dc01945d24c",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-69906692-bc5e-42b4-926e-5dc01945d24c"
+                        },
+                        {
+                          "id": "b409e887-b416-4282-834c-8ddb5cd6ebd3",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"vendor\": \"CUSTOM\",\n  \"config\": {\n    \"authentication\": {\n      \"type\": \"API_KEY\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"headers\": [\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"sensitive\": \"<boolean>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-b409e887-b416-4282-834c-8ddb5cd6ebd3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:17.000Z",
+                      "updatedAt": "2026-07-28T03:25:17.000Z",
+                      "uid": "35240-e92180a6-0528-40c3-afe3-b2758f3a875a"
+                    },
+                    {
+                      "name": "List webhooks",
+                      "id": "cd316357-1367-41e8-b155-3dd56295982e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://auth.upwind.io/oauth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organization-id",
+                            "integration-webhooks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters integration webhooks by vendor type.",
+                              "key": "vendor",
+                              "value": "SPLUNK"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f75e972f-2250-4d50-b327-38f9422cdc23",
+                              "key": "organization-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the Upwind organization."
+                            }
+                          ]
+                        },
+                        "description": "A `GET` request sent to the endpoint root returns a list of integration webhook objects that are associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page."
+                      },
+                      "response": [
+                        {
+                          "id": "995d8050-1db0-4bc7-9e13-6c1232f26f6a",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters integration webhooks by vendor type.",
+                                  "key": "vendor",
+                                  "value": "SPLUNK"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"create_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"DISABLED\",\n    \"update_time\": \"<dateTime>\",\n    \"vendor\": \"TINES\"\n  },\n  {\n    \"create_time\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"DISABLED\",\n    \"update_time\": \"<dateTime>\",\n    \"vendor\": \"CUSTOM\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-995d8050-1db0-4bc7-9e13-6c1232f26f6a"
+                        },
+                        {
+                          "id": "39f5d517-3803-4be0-b30e-44a7949ca322",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters integration webhooks by vendor type.",
+                                  "key": "vendor",
+                                  "value": "SPLUNK"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-39f5d517-3803-4be0-b30e-44a7949ca322"
+                        },
+                        {
+                          "id": "ebffc1e9-5620-4b04-ba90-7610808ca975",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters integration webhooks by vendor type.",
+                                  "key": "vendor",
+                                  "value": "SPLUNK"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-ebffc1e9-5620-4b04-ba90-7610808ca975"
+                        },
+                        {
+                          "id": "c4d91e89-7876-47cb-8626-7b24ba7ce61e",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters integration webhooks by vendor type.",
+                                  "key": "vendor",
+                                  "value": "SPLUNK"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-c4d91e89-7876-47cb-8626-7b24ba7ce61e"
+                        },
+                        {
+                          "id": "27f8d9f4-4c34-4d0f-86d7-47d93e596c6b",
+                          "name": "Rate Limit Exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters integration webhooks by vendor type.",
+                                  "key": "vendor",
+                                  "value": "SPLUNK"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-27f8d9f4-4c34-4d0f-86d7-47d93e596c6b"
+                        },
+                        {
+                          "id": "2bf9742c-bfd2-4802-bec3-ec6aff0dab5b",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organization-id/integration-webhooks?vendor=SPLUNK",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organization-id",
+                                "integration-webhooks"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filters integration webhooks by vendor type.",
+                                  "key": "vendor",
+                                  "value": "SPLUNK"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:25:17.000Z",
+                          "updatedAt": "2026-07-28T03:25:17.000Z",
+                          "uid": "35240-2bf9742c-bfd2-4802-bec3-ec6aff0dab5b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:25:17.000Z",
+                      "updatedAt": "2026-07-28T03:25:17.000Z",
+                      "uid": "35240-cd316357-1367-41e8-b155-3dd56295982e"
+                    }
+                  ],
+                  "id": "517a7647-b768-412e-8325-3f4f48a3dcfe",
+                  "createdAt": "2026-07-28T03:25:17.000Z",
+                  "updatedAt": "2026-07-28T03:25:17.000Z",
+                  "uid": "35240-517a7647-b768-412e-8325-3f4f48a3dcfe"
+                }
+              ],
+              "id": "3de8fd95-f18e-4f4e-b6cd-4c4b315dc917",
+              "createdAt": "2026-07-28T03:25:17.000Z",
+              "updatedAt": "2026-07-28T03:25:17.000Z",
+              "uid": "35240-3de8fd95-f18e-4f4e-b6cd-4c4b315dc917"
+            }
+          ],
+          "id": "aa4ac135-c82d-44fd-a02b-27183a9e781b",
+          "createdAt": "2026-07-28T03:25:17.000Z",
+          "updatedAt": "2026-07-28T03:25:17.000Z",
+          "uid": "35240-aa4ac135-c82d-44fd-a02b-27183a9e781b"
+        }
+      ],
+      "id": "358187d2-cfa7-434c-a157-8539a82bb84b",
+      "createdAt": "2026-07-28T03:25:17.000Z",
+      "updatedAt": "2026-07-28T03:25:17.000Z",
+      "uid": "35240-358187d2-cfa7-434c-a157-8539a82bb84b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.upwind.io"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.upwind.io/ (sitemap) + https://status.upwind.io/ probe
+versioning:
+  scheme: uri-path
+  current: v2
+  notes: REST API published as parallel v1 and v2 surfaces (docs.upwind.io/restapi/v1/, /restapi/v2/, /restapi/inventory/v2/); v2 adds search/query endpoints (assets, findings, policies, rules, stories) and access management.
+  docs:
+    - https://docs.upwind.io/restapi/v1/introduction
+    - https://docs.upwind.io/restapi/v2/introduction
+deprecation:
+  policy_url: null
+  sunset_header: null
+  notes: No public deprecation policy page found; v1 remains documented alongside v2.
+status_page: https://status.upwind.io/
+release_notes:
+  url: https://docs.upwind.io/release-notes/sensor
+  components:
+    - https://docs.upwind.io/release-notes/sensor
+    - https://docs.upwind.io/release-notes/tracer
+    - https://docs.upwind.io/release-notes/operator
+    - https://docs.upwind.io/release-notes/helm-charts
+    - https://docs.upwind.io/release-notes/lambda-tracer
+    - https://docs.upwind.io/release-notes/admission-webhook
+    - https://docs.upwind.io/release-notes/cluster-manager
+    - https://docs.upwind.io/release-notes/hostconfig
+    - https://docs.upwind.io/release-notes/sensor-host-installer
+    - https://docs.upwind.io/release-notes/upwindctl
+sla: null
+deprecated_operations: []
