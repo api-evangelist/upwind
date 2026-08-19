@@ -1,0 +1,411 @@
+{
+  "item": [
+    {
+      "id": "c8dd64df-a8f6-4c71-9036-bf4365bd887f",
+      "name": "shiftleft",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cd38e5c8-9f56-4a77-a763-4c50919a65f2",
+          "name": "Get a scan result",
+          "request": {
+            "name": "Get a scan result",
+            "description": {
+              "content": "A `GET` request sent to the endpoint root followed by the fingerprint name returns detailed information about a specific ShiftLeft scan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "shiftleft",
+                "results",
+                ":fingerprint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fingerprint",
+                  "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8c4b70c-4adf-4a69-bf7c-f69f2e383a20",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "shiftleft",
+                    "results",
+                    ":fingerprint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fingerprint",
+                      "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"arch\": \"string\",\n  \"branch\": \"string\",\n  \"fingerprint\": \"string\",\n  \"high_impact_cves\": [\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": false,\n      \"is_fix_available\": true,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": true,\n      \"is_fix_available\": true,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"image_name\": \"string\",\n  \"image_os\": \"string\",\n  \"image_version\": \"string\",\n  \"initiator\": \"string\",\n  \"introduced_cves\": [\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": true,\n      \"is_fix_available\": false,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": false,\n      \"is_fix_available\": false,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"no_change_cves\": [\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": false,\n      \"is_fix_available\": false,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": true,\n      \"is_fix_available\": true,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"pr_id\": \"string\",\n  \"resolved_cves\": [\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": false,\n      \"is_fix_available\": false,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"cve_description\": \"string\",\n      \"cve_id\": \"string\",\n      \"cve_name\": \"string\",\n      \"cvss_vector\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"is_exploitable\": false,\n      \"is_fix_available\": false,\n      \"package_name\": \"string\",\n      \"package_version\": \"string\",\n      \"score\": \"string\",\n      \"severity\": \"string\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b9338ae-bfc3-41c7-bf6c-1da87e804451",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "shiftleft",
+                    "results",
+                    ":fingerprint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fingerprint",
+                      "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b388f1c-b1c8-4495-94d5-ab3e6eae4588",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "shiftleft",
+                    "results",
+                    ":fingerprint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fingerprint",
+                      "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3020fd6-c63a-4830-9b53-bcc3906fb389",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "shiftleft",
+                    "results",
+                    ":fingerprint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fingerprint",
+                      "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75bcfd9d-b75b-4859-8bf2-fcea63d8e10b",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "shiftleft",
+                    "results",
+                    ":fingerprint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fingerprint",
+                      "description": "(Required) The unique fingerprint of a scanned image, computed by Upwind from the image digest and image name. It identifies a scanned image (not an individual scan execution) and cannot be calculated on the client side. Obtain it from the `fingerprint` field of the objects returned by the [search shift-left events](/restapi/v2/search-shift-left-events) endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upwind.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b5439e4f-5683-4b7d-8241-434614c66a17",
+    "name": "Upwind Management REST API v1 access-management shiftleft API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+      "type": "text/plain"
+    }
+  }
+}

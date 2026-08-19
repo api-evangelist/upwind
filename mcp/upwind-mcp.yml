@@ -2,8 +2,8 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/upwind-management-v1-openapi.yml, openapi/upwind-management-v2-openapi.yml
-notes: No official hosted/remote Upwind MCP server was found (docs, GitHub org, npm, MCP registries). Candidate
-  tool list derived from the published Management REST API operations.
+notes: No official hosted/remote Upwind MCP server was found (docs, GitHub org, npm, MCP registries).
+  Candidate tool list derived from the published Management REST API operations.
 server:
   name: upwind
   transport: http
@@ -261,3 +261,9 @@ tools:
 - name: updateRule
   description: Update a configuration rule
   source_operation: openapi/upwind-management-v2-openapi.yml#updateRule
+deployment:
+  mode: none
+  verified: derived
+  tools: 84
+  checked: '2026-08-12'
+  source: catalog MCP census

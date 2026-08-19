@@ -1,0 +1,804 @@
+{
+  "item": [
+    {
+      "id": "28d20e61-9fe2-4df6-88c1-5341c84b6599",
+      "name": "packages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19c27f85-806e-4efc-b489-05f2c26510bb",
+          "name": "Get SBOM package details",
+          "request": {
+            "name": "Get SBOM package details",
+            "description": {
+              "content": "A `GET` request sent to the endpoint root followed by package name and version returns detailed information about a specific SBOM package. This endpoint provides comprehensive details about the package including vulnerabilities, affected resources, images, and usage statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "sbom-packages",
+                ":package-path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-path",
+                  "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d45b7506-0156-48b2-9696-18fd90d76b55",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages",
+                    ":package-path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package-path",
+                      "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cloud_account_id\": \"string\",\n  \"cloud_provider\": \"BYOC\",\n  \"framework\": \"string\",\n  \"images\": [\n    {\n      \"digest\": \"string\",\n      \"name\": \"string\",\n      \"registry\": \"string\",\n      \"resource_id\": \"string\",\n      \"scan_source\": \"string\",\n      \"uri\": \"string\",\n      \"version\": \"string\"\n    },\n    {\n      \"digest\": \"string\",\n      \"name\": \"string\",\n      \"registry\": \"string\",\n      \"resource_id\": \"string\",\n      \"scan_source\": \"string\",\n      \"uri\": \"string\",\n      \"version\": \"string\"\n    }\n  ],\n  \"images_summary\": {\n    \"affected_count\": 4836\n  },\n  \"licenses\": [\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"package_manager\": \"string\",\n  \"resources\": [\n    {\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"AZURE\",\n      \"cluster_id\": \"string\",\n      \"cluster_name\": \"string\",\n      \"id\": \"string\",\n      \"image_asset_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"region\": \"string\",\n      \"risk_overview\": {\n        \"critical_detections_count\": 2560,\n        \"critical_vulnerabilities_count\": 9232,\n        \"has_active_internet_egress\": false,\n        \"has_active_internet_ingress\": false,\n        \"sensitive_data_categories\": [\n          \"string\"\n        ],\n        \"sensitive_data_tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"status\": \"ACTIVE\",\n      \"type\": \"ReplicaSet\",\n      \"upwind_asset_id\": \"string\",\n      \"vulnerabilities_summary\": {\n        \"critical_count\": 884,\n        \"high_count\": 9757,\n        \"low_count\": 1670,\n        \"medium_count\": 6611,\n        \"total_count\": 1696,\n        \"unclassified_count\": 6639\n      }\n    },\n    {\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"AZURE\",\n      \"cluster_id\": \"string\",\n      \"cluster_name\": \"string\",\n      \"id\": \"string\",\n      \"image_asset_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"region\": \"string\",\n      \"risk_overview\": {\n        \"critical_detections_count\": 179,\n        \"critical_vulnerabilities_count\": 3133,\n        \"has_active_internet_egress\": true,\n        \"has_active_internet_ingress\": false,\n        \"sensitive_data_categories\": [\n          \"string\"\n        ],\n        \"sensitive_data_tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"status\": \"INACTIVE\",\n      \"type\": \"K8SCluster\",\n      \"upwind_asset_id\": \"string\",\n      \"vulnerabilities_summary\": {\n        \"critical_count\": 9271,\n        \"high_count\": 3015,\n        \"low_count\": 6454,\n        \"medium_count\": 5353,\n        \"total_count\": 6755,\n        \"unclassified_count\": 2908\n      }\n    }\n  ],\n  \"resources_summary\": {\n    \"in_use_count\": 6031,\n    \"total_count\": 3495\n  },\n  \"version\": \"string\",\n  \"vulnerabilities\": [\n    {\n      \"cve_first_seen_time\": \"2015-04-16T15:58:48.474Z\",\n      \"cve_id\": \"string\",\n      \"cvss_v2_score\": \"string\",\n      \"cvss_v2_severity\": \"string\",\n      \"cvss_v3_score\": \"string\",\n      \"cvss_v3_severity\": \"string\",\n      \"cvss_v4_score\": \"string\",\n      \"cvss_v4_severity\": \"string\",\n      \"description\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"id\": 8423,\n      \"last_modification_time\": \"1988-10-04T07:54:19.717Z\",\n      \"nist_severity\": \"string\",\n      \"publish_time\": \"1968-11-10T14:55:43.557Z\",\n      \"update_time\": \"1997-11-19T21:44:01.892Z\"\n    },\n    {\n      \"cve_first_seen_time\": \"1989-12-12T22:15:20.438Z\",\n      \"cve_id\": \"string\",\n      \"cvss_v2_score\": \"string\",\n      \"cvss_v2_severity\": \"string\",\n      \"cvss_v3_score\": \"string\",\n      \"cvss_v3_severity\": \"string\",\n      \"cvss_v4_score\": \"string\",\n      \"cvss_v4_severity\": \"string\",\n      \"description\": \"string\",\n      \"fixed_in_version\": \"string\",\n      \"id\": 829,\n      \"last_modification_time\": \"2006-03-09T08:27:38.844Z\",\n      \"nist_severity\": \"string\",\n      \"publish_time\": \"1958-03-27T13:51:09.594Z\",\n      \"update_time\": \"1979-07-25T11:00:18.874Z\"\n    }\n  ],\n  \"vulnerabilities_summary\": {\n    \"critical_count\": 6368,\n    \"high_count\": 279,\n    \"low_count\": 6911,\n    \"medium_count\": 1696,\n    \"total_count\": 2785,\n    \"unclassified_count\": 6388\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b7116fb-bcaf-41b6-b6e8-e809c9cddd03",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages",
+                    ":package-path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package-path",
+                      "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "febf2bab-2949-470c-81bc-e2143127d1cd",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages",
+                    ":package-path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package-path",
+                      "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b59d68ee-d961-4ec1-bf9f-0ab75a53bc9d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages",
+                    ":package-path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package-path",
+                      "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e4fefff-8a84-4854-9af8-ccdf2bc36bd7",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages",
+                    ":package-path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "package-path",
+                      "description": "(Required) The path containing the package name followed by its version (e.g. `lodash/4.17.21`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0aed46f8-e494-4f8b-bba3-7cb0fc7d2ff3",
+          "name": "List SBOM packages",
+          "request": {
+            "name": "List SBOM packages",
+            "description": {
+              "content": "A `GET` request sent to the endpoint root returns a list of Software Bill of Materials (SBOM) packages associated with the specified organization. This endpoint provides comprehensive details about packages including their vulnerabilities, affected resources, and usage statistics. The results can be filtered by various criteria including package name, version, framework, and more.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "sbom-packages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cloud-account-id",
+                  "value": "<string>",
+                  "description": "Filters by the specified cloud account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "framework",
+                  "value": "<string>",
+                  "description": "Filters packages by the specified framework."
+                },
+                {
+                  "disabled": false,
+                  "key": "image-name",
+                  "value": "<string>",
+                  "description": "Filters packages by the specified image name."
+                },
+                {
+                  "disabled": false,
+                  "key": "package-name",
+                  "value": "<string>",
+                  "description": "Filters packages by the specified package name."
+                },
+                {
+                  "disabled": false,
+                  "key": "package-manager",
+                  "value": "<string>",
+                  "description": "Filters packages by the specified package manager."
+                },
+                {
+                  "disabled": false,
+                  "key": "package-license",
+                  "value": "<string>",
+                  "description": "Filters packages by the specified package license."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8e1493e2-5061-4624-b0d1-899019759f3d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "framework",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-manager",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-license",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cloud_account_id\": \"string\",\n  \"cloud_provider\": \"ORACLE\",\n  \"framework\": \"string\",\n  \"images_summary\": {\n    \"affected_count\": 573\n  },\n  \"licenses\": [\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"package_manager\": \"string\",\n  \"resources_summary\": {\n    \"in_use_count\": 6082,\n    \"total_count\": 9566\n  },\n  \"version\": \"string\",\n  \"vulnerabilities_summary\": {\n    \"critical_count\": 9265,\n    \"high_count\": 2895,\n    \"low_count\": 9570,\n    \"medium_count\": 6125,\n    \"total_count\": 4616,\n    \"unclassified_count\": 292\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35599e21-11d0-4e82-8e04-cee646cf1c5f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "framework",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-manager",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-license",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb651b2d-c31e-4634-aa0f-884f00472f5b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "framework",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-manager",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-license",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "91f43187-3816-4652-b34f-574296bc8edd",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "sbom-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "framework",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-manager",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-license",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upwind.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "735fc525-6d45-49cc-8ab0-976551ec9b3b",
+    "name": "Upwind Management REST API v1 access-management packages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+      "type": "text/plain"
+    }
+  }
+}

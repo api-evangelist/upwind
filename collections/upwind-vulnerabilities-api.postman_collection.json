@@ -1,0 +1,1096 @@
+{
+  "item": [
+    {
+      "id": "182820fb-5ae0-4958-b60e-8302f365b86d",
+      "name": "vulnerabilities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee18c4c1-d46f-486c-a63f-923052ab6ddf",
+          "name": "Get a finding",
+          "request": {
+            "name": "Get a finding",
+            "description": {
+              "content": "A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Vulnerability finding. This endpoint gives access to comprehensive details such as the CVE ID (Common Vulnerabilities and Exposures Identifier), the affected resource, severity, status, and runtime contextual information. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "vulnerability-findings",
+                ":finding-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "finding-id",
+                  "description": "(Required) The unique identifier for this finding."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "760291ba-5154-4a23-bd6f-fc8ee9657417",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings",
+                    ":finding-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "finding-id",
+                      "description": "(Required) The unique identifier for this finding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"first_seen_time\": \"1990-05-19T07:07:13.977Z\",\n  \"id\": \"string\",\n  \"image\": {\n    \"digest\": \"string\",\n    \"name\": \"string\",\n    \"os_name\": \"string\",\n    \"os_version\": \"string\",\n    \"tag\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"last_scan_time\": \"1970-06-05T18:47:20.836Z\",\n  \"package\": {\n    \"framework\": \"string\",\n    \"in_use\": false,\n    \"introduced_by_layers\": [\n      {\n        \"layer_index\": 216,\n        \"layer_sha\": \"string\"\n      },\n      {\n        \"layer_index\": 1648,\n        \"layer_sha\": \"string\"\n      }\n    ],\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"version\": \"string\"\n  },\n  \"remediation\": [\n    {\n      \"type\": \"OFFICIAL_FIX\",\n      \"data\": {\n        \"fixed_in_version\": \"string\"\n      }\n    },\n    {\n      \"type\": \"OFFICIAL_FIX\",\n      \"data\": {\n        \"fixed_in_version\": \"string\"\n      }\n    }\n  ],\n  \"resource\": {\n    \"cloud_account_id\": \"string\",\n    \"cloud_account_name\": \"string\",\n    \"cloud_account_tags\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"cloud_organization_id\": \"string\",\n    \"cloud_organization_unit_id\": \"string\",\n    \"cloud_provider\": \"AZURE\",\n    \"cluster_id\": \"string\",\n    \"cluster_name\": \"string\",\n    \"external_id\": \"string\",\n    \"id\": \"string\",\n    \"internet_exposure\": {\n      \"ingress\": {\n        \"active_communication\": false\n      }\n    },\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"region\": \"string\",\n    \"resource_tags\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"risk_categories\": [\n      \"string\"\n    ],\n    \"type\": \"string\",\n    \"upwind_asset_id\": \"string\"\n  },\n  \"source\": \"CLOUD_SCANNER\",\n  \"status\": \"ARCHIVED\",\n  \"vulnerability\": {\n    \"cve_first_seen_time\": \"1991-01-12T12:30:30.628Z\",\n    \"description\": \"string\",\n    \"epss_score\": \"string\",\n    \"epss_severity\": \"string\",\n    \"exploitable\": false,\n    \"exploitable_functions_in_use\": [\n      {\n        \"container_id\": \"string\",\n        \"container_name\": \"string\",\n        \"file_path\": \"string\",\n        \"function_name\": \"string\",\n        \"last_detection_time\": \"2020-02-08T23:15:57.830Z\",\n        \"origin_library_id\": \"com.example.security:crypto-utils\",\n        \"process_id\": \"string\",\n        \"process_name\": \"string\"\n      },\n      {\n        \"container_id\": \"string\",\n        \"container_name\": \"string\",\n        \"file_path\": \"string\",\n        \"function_name\": \"string\",\n        \"last_detection_time\": \"1976-03-23T08:18:31.162Z\",\n        \"origin_library_id\": \"com.example.security:crypto-utils\",\n        \"process_id\": \"string\",\n        \"process_name\": \"string\"\n      }\n    ],\n    \"known_exploit_sources\": [\n      \"cisa\",\n      \"nist\"\n    ],\n    \"name\": \"string\",\n    \"nvd_cve_id\": \"string\",\n    \"nvd_cvss_v2_score\": \"string\",\n    \"nvd_cvss_v2_severity\": \"string\",\n    \"nvd_cvss_v3_score\": \"string\",\n    \"nvd_cvss_v3_severity\": \"HIGH\",\n    \"nvd_cvss_v4_score\": \"string\",\n    \"nvd_cvss_v4_severity\": \"string\",\n    \"nvd_description\": \"string\",\n    \"nvd_publish_time\": \"1971-07-03T05:50:45.744Z\",\n    \"sbom_artifact_locations\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a38370d6-cbf2-4b0a-bf4f-2c244a854f34",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings",
+                    ":finding-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "finding-id",
+                      "description": "(Required) The unique identifier for this finding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd40ef8d-0ee7-454e-a329-6594b068f818",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings",
+                    ":finding-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "finding-id",
+                      "description": "(Required) The unique identifier for this finding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2fd77055-66fb-430b-88d3-e5bde523d786",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings",
+                    ":finding-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "finding-id",
+                      "description": "(Required) The unique identifier for this finding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd8abeb1-026a-4c53-9b6f-0d49a3930e93",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings",
+                    ":finding-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "finding-id",
+                      "description": "(Required) The unique identifier for this finding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "546559d7-42f1-4b0f-97ec-4c4a68c036db",
+          "name": "List findings",
+          "request": {
+            "name": "List findings",
+            "description": {
+              "content": "A `GET` request sent to the endpoint root returns a list of Vulnerability finding objects that are associated with the specified organization. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "vulnerability-findings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "per-page",
+                  "value": "100",
+                  "description": "Specifies how many results are returned on a page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cloud-account-id",
+                  "value": "<string>",
+                  "description": "Filters by the specified cloud account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "package-in-use",
+                  "value": "<boolean>",
+                  "description": "Filters findings for packages currently in use."
+                },
+                {
+                  "disabled": false,
+                  "key": "has-exploitable-functions-in-use",
+                  "value": "<boolean>",
+                  "description": "Filters findings for vulnerabilities with exploitable functions currently in use."
+                },
+                {
+                  "disabled": false,
+                  "key": "exploitable",
+                  "value": "<boolean>",
+                  "description": "Filters findings for packages with a known exploit."
+                },
+                {
+                  "disabled": false,
+                  "key": "fix-available",
+                  "value": "<boolean>",
+                  "description": "Filters findings for packages with an available fix."
+                },
+                {
+                  "disabled": false,
+                  "key": "ingress-active-communication",
+                  "value": "<boolean>",
+                  "description": "Filters findings for resources with active internet ingress communication."
+                },
+                {
+                  "disabled": false,
+                  "key": "internet-exposure",
+                  "value": "<boolean>",
+                  "description": "Filters findings for resources with internet exposure."
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>",
+                  "description": "Filters by the level of CVSS severity."
+                },
+                {
+                  "disabled": false,
+                  "key": "epss-severity",
+                  "value": "<string>",
+                  "description": "Filters by the level of EPSS severity."
+                },
+                {
+                  "disabled": false,
+                  "key": "cve-id",
+                  "value": "<string>",
+                  "description": "Filters findings by the specified CVE ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "namespace",
+                  "value": "<string>",
+                  "description": "Filters by the specified Kubernetes namespace."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-token",
+                  "value": "<string>",
+                  "description": "Specifies the token for fetching subsequent pages in a paginated result set. Use the token from a previous response to continue retrieving data when the number of results exceeds the current page size."
+                },
+                {
+                  "disabled": false,
+                  "key": "image-name",
+                  "value": "<string>",
+                  "description": "Filters findings by the specified image name. For example, `nginx:latest` or `myapp:1.2`."
+                },
+                {
+                  "disabled": false,
+                  "key": "upwind-asset-id",
+                  "value": "<string>",
+                  "description": "Filters findings by the specified Upwind asset ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "known-exploit-sources",
+                  "value": "<string>",
+                  "description": "Filters findings by the vendor catalog that flags the CVE as a known exploit (e.g. `cisa`, `nist`). Comma-separated; matches findings flagged by any of the listed vendors. Values are forwarded to the vulnerability service; new vendor catalogs supported upstream become available here automatically."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource-type",
+                  "value": "<string>",
+                  "description": "Filters findings by the resource type of the affected asset. Comma-separated; matches findings on any of the listed resource types. Example: `AwsInstance,AwsLambdaFunction,Deployment`."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource-tags",
+                  "value": "<string>",
+                  "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource-tags",
+                  "value": "<string>",
+                  "description": "Filters findings by resource tags in `key:value` form. Repeat the parameter to filter on multiple tags; matches findings whose resource carries any of the listed tags. Example: `?resource-tags=env:prod&resource-tags=team:security`. Tag values may contain commas."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a9efdb51-45e7-477a-a45b-ff56e272cc79",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per-page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has-exploitable-functions-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exploitable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fix-available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ingress-active-communication",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "internet-exposure",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "epss-severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cve-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upwind-asset-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "known-exploit-sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Provides pagination links for navigating through the result set, formatted as HTTP link headers.",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"first_seen_time\": \"2000-08-06T08:30:15.086Z\",\n    \"id\": \"string\",\n    \"image\": {\n      \"digest\": \"string\",\n      \"name\": \"string\",\n      \"os_name\": \"string\",\n      \"os_version\": \"string\",\n      \"tag\": \"string\",\n      \"uri\": \"string\"\n    },\n    \"last_scan_time\": \"1992-06-11T05:11:56.352Z\",\n    \"package\": {\n      \"framework\": \"string\",\n      \"in_use\": false,\n      \"introduced_by_layers\": [\n        {\n          \"layer_index\": 4514,\n          \"layer_sha\": \"string\"\n        },\n        {\n          \"layer_index\": 2773,\n          \"layer_sha\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"version\": \"string\"\n    },\n    \"remediation\": [\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"string\"\n        }\n      },\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"string\"\n        }\n      }\n    ],\n    \"resource\": {\n      \"cloud_account_id\": \"string\",\n      \"cloud_account_name\": \"string\",\n      \"cloud_account_tags\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"cloud_organization_id\": \"string\",\n      \"cloud_organization_unit_id\": \"string\",\n      \"cloud_provider\": \"AWS\",\n      \"cluster_id\": \"string\",\n      \"cluster_name\": \"string\",\n      \"external_id\": \"string\",\n      \"id\": \"string\",\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"active_communication\": true\n        }\n      },\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"region\": \"string\",\n      \"resource_tags\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"risk_categories\": [\n        \"string\"\n      ],\n      \"type\": \"string\",\n      \"upwind_asset_id\": \"string\"\n    },\n    \"source\": \"CLOUD_SCANNER\",\n    \"status\": \"ARCHIVED\",\n    \"vulnerability\": {\n      \"cve_first_seen_time\": \"2017-12-10T01:29:02.940Z\",\n      \"description\": \"string\",\n      \"epss_score\": \"string\",\n      \"epss_severity\": \"string\",\n      \"exploitable\": false,\n      \"exploitable_functions_in_use\": [\n        {\n          \"container_id\": \"string\",\n          \"container_name\": \"string\",\n          \"file_path\": \"string\",\n          \"function_name\": \"string\",\n          \"last_detection_time\": \"1949-05-27T18:38:25.696Z\",\n          \"origin_library_id\": \"com.example.security:crypto-utils\",\n          \"process_id\": \"string\",\n          \"process_name\": \"string\"\n        },\n        {\n          \"container_id\": \"string\",\n          \"container_name\": \"string\",\n          \"file_path\": \"string\",\n          \"function_name\": \"string\",\n          \"last_detection_time\": \"1976-07-04T00:46:32.025Z\",\n          \"origin_library_id\": \"com.example.security:crypto-utils\",\n          \"process_id\": \"string\",\n          \"process_name\": \"string\"\n        }\n      ],\n      \"known_exploit_sources\": [\n        \"cisa\",\n        \"nist\"\n      ],\n      \"name\": \"string\",\n      \"nvd_cve_id\": \"string\",\n      \"nvd_cvss_v2_score\": \"string\",\n      \"nvd_cvss_v2_severity\": \"string\",\n      \"nvd_cvss_v3_score\": \"string\",\n      \"nvd_cvss_v3_severity\": \"MEDIUM\",\n      \"nvd_cvss_v4_score\": \"string\",\n      \"nvd_cvss_v4_severity\": \"string\",\n      \"nvd_description\": \"string\",\n      \"nvd_publish_time\": \"2009-07-05T13:05:18.397Z\",\n      \"sbom_artifact_locations\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  },\n  {\n    \"first_seen_time\": \"2018-10-20T13:24:22.475Z\",\n    \"id\": \"string\",\n    \"image\": {\n      \"digest\": \"string\",\n      \"name\": \"string\",\n      \"os_name\": \"string\",\n      \"os_version\": \"string\",\n      \"tag\": \"string\",\n      \"uri\": \"string\"\n    },\n    \"last_scan_time\": \"1987-04-26T11:21:08.821Z\",\n    \"package\": {\n      \"framework\": \"string\",\n      \"in_use\": true,\n      \"introduced_by_layers\": [\n        {\n          \"layer_index\": 6020,\n          \"layer_sha\": \"string\"\n        },\n        {\n          \"layer_index\": 4752,\n          \"layer_sha\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"version\": \"string\"\n    },\n    \"remediation\": [\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"string\"\n        }\n      },\n      {\n        \"type\": \"OFFICIAL_FIX\",\n        \"data\": {\n          \"fixed_in_version\": \"string\"\n        }\n      }\n    ],\n    \"resource\": {\n      \"cloud_account_id\": \"string\",\n      \"cloud_account_name\": \"string\",\n      \"cloud_account_tags\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"cloud_organization_id\": \"string\",\n      \"cloud_organization_unit_id\": \"string\",\n      \"cloud_provider\": \"AZURE\",\n      \"cluster_id\": \"string\",\n      \"cluster_name\": \"string\",\n      \"external_id\": \"string\",\n      \"id\": \"string\",\n      \"internet_exposure\": {\n        \"ingress\": {\n          \"active_communication\": false\n        }\n      },\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"region\": \"string\",\n      \"resource_tags\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"risk_categories\": [\n        \"string\"\n      ],\n      \"type\": \"string\",\n      \"upwind_asset_id\": \"string\"\n    },\n    \"source\": \"SENSOR\",\n    \"status\": \"OPEN\",\n    \"vulnerability\": {\n      \"cve_first_seen_time\": \"2015-01-13T09:27:11.916Z\",\n      \"description\": \"string\",\n      \"epss_score\": \"string\",\n      \"epss_severity\": \"string\",\n      \"exploitable\": false,\n      \"exploitable_functions_in_use\": [\n        {\n          \"container_id\": \"string\",\n          \"container_name\": \"string\",\n          \"file_path\": \"string\",\n          \"function_name\": \"string\",\n          \"last_detection_time\": \"1983-03-11T06:19:53.209Z\",\n          \"origin_library_id\": \"com.example.security:crypto-utils\",\n          \"process_id\": \"string\",\n          \"process_name\": \"string\"\n        },\n        {\n          \"container_id\": \"string\",\n          \"container_name\": \"string\",\n          \"file_path\": \"string\",\n          \"function_name\": \"string\",\n          \"last_detection_time\": \"1978-05-12T09:05:43.664Z\",\n          \"origin_library_id\": \"com.example.security:crypto-utils\",\n          \"process_id\": \"string\",\n          \"process_name\": \"string\"\n        }\n      ],\n      \"known_exploit_sources\": [\n        \"cisa\",\n        \"nist\"\n      ],\n      \"name\": \"string\",\n      \"nvd_cve_id\": \"string\",\n      \"nvd_cvss_v2_score\": \"string\",\n      \"nvd_cvss_v2_severity\": \"string\",\n      \"nvd_cvss_v3_score\": \"string\",\n      \"nvd_cvss_v3_severity\": \"LOW\",\n      \"nvd_cvss_v4_score\": \"string\",\n      \"nvd_cvss_v4_severity\": \"string\",\n      \"nvd_description\": \"string\",\n      \"nvd_publish_time\": \"1973-05-27T12:38:12.510Z\",\n      \"sbom_artifact_locations\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c35708cd-0e73-4600-8228-b999ce31280d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per-page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has-exploitable-functions-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exploitable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fix-available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ingress-active-communication",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "internet-exposure",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "epss-severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cve-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upwind-asset-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "known-exploit-sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30002832-89e0-418f-b478-e4305e92fc3e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per-page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has-exploitable-functions-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exploitable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fix-available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ingress-active-communication",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "internet-exposure",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "epss-severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cve-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upwind-asset-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "known-exploit-sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a28e6d0b-846b-458a-81eb-bc1000d713e8",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "vulnerability-findings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per-page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cloud-account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "package-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has-exploitable-functions-in-use",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exploitable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fix-available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ingress-active-communication",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "internet-exposure",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "epss-severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cve-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "image-name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "upwind-asset-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "known-exploit-sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resource-tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upwind.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1d78851b-8a4f-4bc5-a98a-ba2791d848a9",
+    "name": "Upwind Management REST API v1 access-management vulnerabilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+      "type": "text/plain"
+    }
+  }
+}

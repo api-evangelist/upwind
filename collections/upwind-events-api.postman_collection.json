@@ -1,0 +1,1190 @@
+{
+  "item": [
+    {
+      "id": "fd171d39-4380-4bf6-b492-bcef008f9fa9",
+      "name": "events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb78c3b5-44fc-4f74-a9c8-ab8bfc673b8c",
+          "name": "Create an event",
+          "request": {
+            "name": "Create an event",
+            "description": {
+              "content": "A `POST` request sent to the endpoint root creates an Event object that is associated with the specified organization. To learn more about Events, refer to the [Continuous Integration (CI)](/integrations/continuous-integration/overview) page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b77d1ef-637a-4b15-8937-211ab98a4206",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"branch\": \"string\",\n    \"build_time\": \"2013-05-04T18:03:32.711Z\",\n    \"commit_sha\": \"string\",\n    \"image\": \"string\",\n    \"image_sha\": \"string\",\n    \"pull_request_ids\": [\n      7709,\n      7003\n    ],\n    \"repository\": \"string\",\n    \"user\": \"string\",\n    \"version_control_platform\": \"string\"\n  },\n  \"id\": \"string\",\n  \"reporter\": \"CUSTOM_CD\",\n  \"type\": \"IMAGE_BUILD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6c25b8c-3686-493b-b319-86edae2619c9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db1581d6-d012-4f41-beed-b66a3b9dabae",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d5e45a7-5753-4042-ac5f-510f81fc53a0",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"branch\": \"<string>\",\n    \"build_time\": \"<dateTime>\",\n    \"commit_sha\": \"<string>\",\n    \"image\": \"<string>\",\n    \"image_sha\": \"<string>\",\n    \"pull_request_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"repository\": \"<string>\",\n    \"user\": \"<string>\",\n    \"version_control_platform\": \"<string>\"\n  },\n  \"reporter\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95bdf121-da2e-4bee-9d61-e12984e93a6a",
+          "name": "Search ShiftLeft events",
+          "request": {
+            "name": "Search ShiftLeft events",
+            "description": {
+              "content": "A `POST` request sent to the endpoint searches for ShiftLeft Events between the start_time and end_time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "organizations",
+                ":organization-id",
+                "events",
+                "shift-left",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afc58a84-dbad-4609-9be2-c0e522cb5fbd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"architecture\": \"string\",\n      \"branch\": \"string\",\n      \"commit_sha\": \"string\",\n      \"createdAt\": \"1984-08-15T11:39:54.379Z\",\n      \"fingerprint\": \"string\",\n      \"image\": \"string\",\n      \"image_sha\": \"string\",\n      \"image_size\": 1952,\n      \"initiator\": \"string\",\n      \"os\": \"string\",\n      \"repository\": \"string\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"string\",\n        \"pr_id\": \"string\",\n        \"pr_link\": \"string\"\n      },\n      \"source\": \"string\",\n      \"type\": \"string\",\n      \"updatedAt\": \"2007-03-09T06:12:10.110Z\",\n      \"variant\": \"string\"\n    },\n    {\n      \"architecture\": \"string\",\n      \"branch\": \"string\",\n      \"commit_sha\": \"string\",\n      \"createdAt\": \"1984-06-18T22:28:58.434Z\",\n      \"fingerprint\": \"string\",\n      \"image\": \"string\",\n      \"image_sha\": \"string\",\n      \"image_size\": 6401,\n      \"initiator\": \"string\",\n      \"os\": \"string\",\n      \"repository\": \"string\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"string\",\n        \"pr_id\": \"string\",\n        \"pr_link\": \"string\"\n      },\n      \"source\": \"string\",\n      \"type\": \"string\",\n      \"updatedAt\": \"1988-05-13T01:10:32.338Z\",\n      \"variant\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"limit\": 20,\n    \"next_cursor\": \"eyJvZmZzZXQiOjIwfQ\",\n    \"previous_cursor\": \"eyJvZmZzZXQiOjB9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16a1b490-ee92-40f9-9fec-7aba9070a359",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3e15b36-55a2-4cc4-896b-36df6f9a95fe",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6c5b6fe-2885-466b-82ca-af3afdeaa0ea",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88f8896e-d58a-4e43-9c67-0fa1ceaf0f6f",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"end_time\": \"<long>\",\n  \"start_time\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17666f1c-2c72-47f0-9c77-b2734a744b85",
+          "name": "Search ShiftLeft events",
+          "request": {
+            "name": "Search ShiftLeft events",
+            "description": {
+              "content": "A POST request sent to the search endpoint returns a filtered list of ShiftLeft events that are associated with the specified organization based on the specified search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "events",
+                "shift-left",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Specifies the maximum number of items to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor for pagination to retrieve the next set of results."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort results by one or more fields. Format: `field` or `field:asc` or `field:desc`. Multiple fields: `field1,field2:desc`. Allowed fields: `update_time`, `create_time`. Default: `update_time:asc`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"<string>\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"<string>\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b43f0c05-53b1-4134-8ba0-9ef0ad713ff6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "update_time:asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"architecture\": \"string\",\n      \"branch\": \"string\",\n      \"commit_sha\": \"string\",\n      \"create_time\": \"1957-01-22T23:12:29.991Z\",\n      \"fingerprint\": \"string\",\n      \"image\": \"string\",\n      \"image_sha\": \"string\",\n      \"image_size_bytes\": 4883,\n      \"initiator\": \"string\",\n      \"os\": \"string\",\n      \"repository\": \"string\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"string\",\n        \"pr_id\": \"string\",\n        \"pr_link\": \"string\"\n      },\n      \"source\": \"string\",\n      \"type\": \"string\",\n      \"update_time\": \"1953-04-24T04:47:54.596Z\",\n      \"variant\": \"string\"\n    },\n    {\n      \"architecture\": \"string\",\n      \"branch\": \"string\",\n      \"commit_sha\": \"string\",\n      \"create_time\": \"1980-07-02T00:15:43.309Z\",\n      \"fingerprint\": \"string\",\n      \"image\": \"string\",\n      \"image_sha\": \"string\",\n      \"image_size_bytes\": 3929,\n      \"initiator\": \"string\",\n      \"os\": \"string\",\n      \"repository\": \"string\",\n      \"repository_scan_details\": {\n        \"main_branch_name\": \"string\",\n        \"pr_id\": \"string\",\n        \"pr_link\": \"string\"\n      },\n      \"source\": \"string\",\n      \"type\": \"string\",\n      \"update_time\": \"2026-05-18T07:19:33.725Z\",\n      \"variant\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"limit\": 20,\n    \"next_cursor\": \"eyJvZmZzZXQiOjIwfQ\",\n    \"previous_cursor\": \"eyJvZmZzZXQiOjB9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a84bc411-75f8-452e-af96-633bed4d4c42",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "update_time:asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfcf6581-3a81-4b05-ad7b-e04c1c9e4112",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "update_time:asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8aa484c-cadd-4510-b0b3-a332a57f9ffc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "update_time:asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4da29beb-6410-4df2-b8f8-5bc82ec7eabe",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "events",
+                    "shift-left",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "update_time:asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"architecture\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upwind.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a8d37a2e-9ced-4fab-b48f-0ed1d29bae23",
+    "name": "Upwind Management REST API v1 access-management events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+      "type": "text/plain"
+    }
+  }
+}

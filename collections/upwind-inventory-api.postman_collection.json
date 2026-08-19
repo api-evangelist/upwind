@@ -1,0 +1,2531 @@
+{
+  "item": [
+    {
+      "id": "0e492b49-345a-4735-aad4-cd0380673224",
+      "name": "Inventory",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16521438-465b-44ed-98f5-f9c6a24548f8",
+          "name": "Search asset relationships",
+          "request": {
+            "name": "Search asset relationships",
+            "description": {
+              "content": "This endpoint retrieves asset metadata, based on its schema, for resources that satisfy specific relationship criteria defined in your query. Unlike a standard search, this API is optimized for graph-style traversals, enabling you to discover assets based on how they are connected to other entities in your environment.\n\n**When to Use This API**\n\nUse this endpoint when your search criteria depend on relationships. For example, use this if you need to find all \"Virtual Machines\" that are \"Connected To\" a specific \"Subnet\" or \"Part Of\" a specific \"EKS cluster\".\n\nFor an introduction to the query guide and how to use nested conditions, see [graph introduction](inventory) for more details.\n\nRate limit: Requests to this endpoint are limited to 100 requests per minute per organization. For rate limit adjustments, please contact Upwind Support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "inventory",
+                "assets",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Specifies the maximum number of items to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor for pagination to retrieve the next set of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1706dc01-0664-4c5c-8fc6-b51fd40e2add",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"label\": \"string\",\n      \"id\": \"string\",\n      \"asset_category\": \"string\",\n      \"asset_sub_category\": \"string\",\n      \"arn\": \"string\",\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"string\",\n      \"cloud_resource_id\": \"string\",\n      \"created_time\": \"string\",\n      \"max_size\": 1722.567131082595,\n      \"min_size\": 2554.001327726839,\n      \"name\": \"string\",\n      \"region\": \"string\",\n      \"status\": \"string\",\n      \"uw_protected_by\": \"string\",\n      \"uw_risk_detections_severity_count_total\": 6235.711038371261,\n      \"uw_risk_network_internet_exposure_type\": \"string\",\n      \"uw_risk_network_last_application_layer_internet_ingress_time\": \"2019-05-31T08:15:36.067Z\",\n      \"uw_risk_network_last_imds_v1_at\": \"1983-02-28T12:54:16.947Z\",\n      \"uw_risk_network_last_imds_v2_at\": \"2024-02-15T19:06:14.389Z\",\n      \"uw_risk_network_last_time_being_accessed_from_internet\": \"1998-12-13T22:25:40.856Z\",\n      \"uw_risk_network_last_time_being_accessed_from_internet_in_ssh_or_rdp\": \"1993-09-16T22:34:48.223Z\",\n      \"uw_risk_network_last_time_communicating_with_database\": \"1986-08-17T05:02:27.521Z\",\n      \"uw_risk_network_last_time_communicating_with_internet\": \"1993-08-15T18:43:10.726Z\",\n      \"uw_risk_vulnerabilities_severity_count_total\": 8106.041231207676\n    },\n    {\n      \"label\": \"string\",\n      \"id\": \"string\",\n      \"asset_category\": \"string\",\n      \"asset_sub_category\": \"string\",\n      \"arn\": \"string\",\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"string\",\n      \"cloud_resource_id\": \"string\",\n      \"created_time\": \"string\",\n      \"max_size\": 9664.364749540226,\n      \"min_size\": 5605.325248137313,\n      \"name\": \"string\",\n      \"region\": \"string\",\n      \"status\": \"string\",\n      \"uw_protected_by\": \"string\",\n      \"uw_risk_detections_severity_count_total\": 4544.875764682596,\n      \"uw_risk_network_internet_exposure_type\": \"string\",\n      \"uw_risk_network_last_application_layer_internet_ingress_time\": \"1968-11-17T22:58:04.392Z\",\n      \"uw_risk_network_last_imds_v1_at\": \"1991-10-24T14:12:54.464Z\",\n      \"uw_risk_network_last_imds_v2_at\": \"1980-09-24T17:47:10.288Z\",\n      \"uw_risk_network_last_time_being_accessed_from_internet\": \"1999-12-16T04:34:07.911Z\",\n      \"uw_risk_network_last_time_being_accessed_from_internet_in_ssh_or_rdp\": \"1960-02-27T01:40:13.389Z\",\n      \"uw_risk_network_last_time_communicating_with_database\": \"1986-01-23T22:44:48.058Z\",\n      \"uw_risk_network_last_time_communicating_with_internet\": \"2021-07-14T11:32:03.124Z\",\n      \"uw_risk_vulnerabilities_severity_count_total\": 8834.439237604945\n    }\n  ],\n  \"metadata\": {\n    \"limit\": 6328,\n    \"next_cursor\": \"eyJvZmZzZXQiOjIwfQ\",\n    \"previous_cursor\": \"eyJvZmZzZXQiOjB9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d47b975-ed7c-4c20-80d4-107e8edd5600",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "048ffe51-7096-4b9a-b1ee-ad6acd8f8cd5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1c4ca74-2106-4f05-9df5-4e2182b43451",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc6fe094-a507-47fb-80cd-aab89f523761",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d5189c3-d6a4-474f-a9fc-6942bdea6c76",
+              "name": "Internal Server Error - An unexpected error occurred on the server",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"field\": \"cloud_resource_id\",\n      \"operator\": \"eq\",\n      \"value\": [\n        \"i-12345678\"\n      ],\n      \"conditions\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc45ef8d-d54a-4296-b896-a8b34474701d",
+          "name": "Get an asset",
+          "request": {
+            "name": "Get an asset",
+            "description": {
+              "content": "A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "inventory",
+                "catalog",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Upwind asset ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6334bf25-cc83-48b8-b606-da29780c3de4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"raw_data\": {},\n      \"resource_type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"raw_data\": {},\n      \"resource_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eac2dd78-e6a6-45a3-b056-1b2c0df9e1fe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8daed748-b786-496a-8dba-d569a6444581",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "513669a6-7afe-4601-8425-2b2befce07f0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54989219-3fd5-473e-a5e9-412d6427773c",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da7ef768-b171-4b9b-b69c-22cb82a9fb76",
+          "name": "Get asset schema",
+          "request": {
+            "name": "Get asset schema",
+            "description": {
+              "content": "Retrieves the schema for a specific asset label containing its searchable fields with their types. Use this endpoint to discover the queryable attributes for a specific asset label.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "inventory",
+                "schema",
+                ":label-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "label-name",
+                  "description": "(Required) The name of the asset label to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0156056-edd8-4eed-8c59-5163ed1eec7d",
+              "name": "The schema for the specified asset label",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema",
+                    ":label-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "label-name",
+                      "description": "(Required) The name of the asset label to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"label\": \"aws_ec2_instance\",\n      \"schema\": {\n        \"fields\": [\n          {\n            \"name\": \"cloud_account_id\",\n            \"type\": \"String\"\n          },\n          {\n            \"name\": \"clusters\",\n            \"type\": \"aws_eks_cluster\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3bc2cad-8d9b-443f-af9c-5fe95e5371b7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema",
+                    ":label-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "label-name",
+                      "description": "(Required) The name of the asset label to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "407a382a-f36d-49d5-82e2-69b938563a2e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema",
+                    ":label-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "label-name",
+                      "description": "(Required) The name of the asset label to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce95332e-3643-4b84-aa0d-2bc27523ba03",
+              "name": "Asset schema not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema",
+                    ":label-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "label-name",
+                      "description": "(Required) The name of the asset label to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"fields\": [\n        {\n          \"name\": \"cloud_account_id\",\n          \"type\": \"String\"\n        },\n        {\n          \"name\": \"clusters\",\n          \"type\": \"aws_eks_cluster\"\n        }\n      ],\n      \"label\": \"aws_ec2_instance\"\n    },\n    {\n      \"fields\": [\n        {\n          \"name\": \"cloud_account_id\",\n          \"type\": \"String\"\n        },\n        {\n          \"name\": \"clusters\",\n          \"type\": \"aws_eks_cluster\"\n        }\n      ],\n      \"label\": \"aws_ec2_instance\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "922f3d2f-cbd9-45aa-94cd-f0ab442283e1",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema",
+                    ":label-name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "label-name",
+                      "description": "(Required) The name of the asset label to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3946a969-a63e-4014-972a-a9743e337402",
+          "name": "List asset schemas",
+          "request": {
+            "name": "List asset schemas",
+            "description": {
+              "content": "Retrieves the inventory schema containing all asset labels and their searchable fields with their types. Use this endpoint to discover available asset labels and their queryable attributes for building search requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "inventory",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Specifies the maximum number of items to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor for pagination to retrieve the next set of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f1928ea-542e-4655-b5f5-e7e43d003f66",
+              "name": "The inventory schema containing all asset labels and their searchable fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"label\": \"aws_ec2_instance\",\n      \"schema\": {\n        \"fields\": [\n          {\n            \"name\": \"cloud_account_id\",\n            \"type\": \"String\"\n          },\n          {\n            \"name\": \"clusters\",\n            \"type\": \"aws_eks_cluster\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d04dc42-f32c-46cf-a8b1-323f87f13bd3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5e03956-1c9b-4189-942c-8de5835c9d25",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8289836a-b6e4-4775-8903-05d00fc895eb",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2416e073-6ace-4976-a039-23b561e834a3",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "543c9d73-ad1a-412b-8769-c9fd0c45b069",
+          "name": "Update an inventory asset",
+          "request": {
+            "name": "Update an inventory asset",
+            "description": {
+              "content": "A `PATCH` request sent to the endpoint updates fields on a specific inventory asset. The request body supports updating `custom_tags` only; additional patchable fields may be added in the future. The provided list of custom tags **replaces any existing custom tags on the asset**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "inventory",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Upwind asset ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8a2b45f-4f04-4830-9dd4-647c712bdafe",
+              "name": "The updated asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    },\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"category\": \"string\",\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"string\",\n      \"cloud_resource_id\": \"string\",\n      \"custom_tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": 1818,\n        \"high_count\": 6549,\n        \"low_count\": 5538,\n        \"medium_count\": 3184,\n        \"total_count\": 4048\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": true\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"string\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"1947-09-17T00:49:02.200Z\",\n        \"last_access_from_internet_time\": \"1994-01-07T23:57:41.833Z\",\n        \"last_application_layer_internet_ingress_time\": \"1976-01-18T17:12:08.857Z\",\n        \"last_communication_with_database_time\": \"1953-07-13T01:15:19.837Z\",\n        \"last_communication_with_internet_time\": \"1991-11-15T16:35:36.209Z\",\n        \"last_imds_v1_access_time\": \"1966-05-25T15:07:14.923Z\",\n        \"last_imds_v2_access_time\": \"2000-09-04T14:00:53.524Z\"\n      },\n      \"private_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"protected_by\": \"string\",\n      \"public_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"region\": \"string\",\n      \"resource_type\": \"string\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": false,\n        \"has_phi\": false,\n        \"has_pii\": false\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": true,\n        \"has_phi\": false,\n        \"has_pii\": true\n      },\n      \"status\": \"string\",\n      \"sub_category\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1994-03-24T21:36:04.794Z\",\n          \"end_of_support_time\": \"1972-06-10T07:01:59.277Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1962-07-05T12:48:45.574Z\",\n          \"end_of_support_time\": \"1953-05-17T05:19:07.676Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": 9951,\n        \"high_count\": 5493,\n        \"low_count\": 4186,\n        \"medium_count\": 4942,\n        \"total_count\": 6423,\n        \"unclassified_count\": 5629\n      }\n    },\n    {\n      \"category\": \"string\",\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"string\",\n      \"cloud_resource_id\": \"string\",\n      \"custom_tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": 6277,\n        \"high_count\": 903,\n        \"low_count\": 6422,\n        \"medium_count\": 4406,\n        \"total_count\": 5512\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": true\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"string\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"1988-11-18T02:05:45.320Z\",\n        \"last_access_from_internet_time\": \"2010-01-07T05:56:34.345Z\",\n        \"last_application_layer_internet_ingress_time\": \"1966-01-07T09:24:08.880Z\",\n        \"last_communication_with_database_time\": \"1959-06-02T13:47:33.288Z\",\n        \"last_communication_with_internet_time\": \"1981-10-14T01:38:33.637Z\",\n        \"last_imds_v1_access_time\": \"1979-10-13T23:15:41.289Z\",\n        \"last_imds_v2_access_time\": \"2021-09-28T13:40:58.892Z\"\n      },\n      \"private_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"protected_by\": \"string\",\n      \"public_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"region\": \"string\",\n      \"resource_type\": \"string\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": false,\n        \"has_phi\": false,\n        \"has_pii\": false\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": true,\n        \"has_phi\": true,\n        \"has_pii\": false\n      },\n      \"status\": \"string\",\n      \"sub_category\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1951-02-04T00:34:38.015Z\",\n          \"end_of_support_time\": \"1993-02-21T06:05:40.187Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1994-11-26T09:52:18.804Z\",\n          \"end_of_support_time\": \"1953-03-02T05:28:35.358Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": 1103,\n        \"high_count\": 2323,\n        \"low_count\": 8838,\n        \"medium_count\": 8271,\n        \"total_count\": 4910,\n        \"unclassified_count\": 6459\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6431e4e8-356a-4f96-b6e2-72b7d9da9c8f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    },\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4498c327-065e-4b91-880b-af9a607aab5c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    },\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3385e430-389a-447f-8154-91b2584dddff",
+              "name": "Asset not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    },\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f854e736-e9fd-4a9c-8bb6-c36c3f37ec8e",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Upwind asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_tags\": [\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    },\n    {\n      \"key\": \"env\",\n      \"value\": \"production\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccb9d5a9-9a6f-496c-af42-36dc95ebfb24",
+          "name": "Search catalog assets",
+          "request": {
+            "name": "Search catalog assets",
+            "description": {
+              "content": "A `POST` request sent to the search endpoint retrieves a comprehensive list of assets based on the direct attributes described below. It is purpose-built for high-volume inventory queries, allowing you to filter the catalog by specific properties, tags, or security posture.\n\n**When to Use This API**\n\nUse this endpoint for flat searches where the filtering criteria are contained within the asset itself. This is the ideal tool for:\n- **Bulk Data Retrieval**: Generating large lists of resources across the entire environment.\n- **Attribute Filtering**: Narrowing down assets by status, type, etc.\n- **Risk Assessment**: Identifying assets based on specific vulnerability severity levels.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "organizations",
+                ":organization-id",
+                "inventory",
+                "catalog",
+                "assets",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Specifies the maximum number of items to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor for pagination to retrieve the next set of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization-id",
+                  "description": "(Required) The unique identifier for the Upwind organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth.upwind.io/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"<string>\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    },\n    {\n      \"operator\": \"<string>\",\n      \"value\": [],\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe1b510d-6f77-4934-93bd-5eae404dd5f0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"category\": \"string\",\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"string\",\n      \"cloud_resource_id\": \"string\",\n      \"custom_tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": 8414,\n        \"high_count\": 2240,\n        \"low_count\": 6546,\n        \"medium_count\": 8957,\n        \"total_count\": 4762\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": false\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"string\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"2017-09-10T13:20:14.313Z\",\n        \"last_access_from_internet_time\": \"1992-11-22T01:23:24.840Z\",\n        \"last_application_layer_internet_ingress_time\": \"2000-09-24T17:11:16.057Z\",\n        \"last_communication_with_database_time\": \"1993-11-06T17:12:49.655Z\",\n        \"last_communication_with_internet_time\": \"1985-12-11T20:43:53.787Z\",\n        \"last_imds_v1_access_time\": \"1971-12-19T16:42:06.841Z\",\n        \"last_imds_v2_access_time\": \"2025-05-26T23:43:58.930Z\"\n      },\n      \"private_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"protected_by\": \"string\",\n      \"public_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"region\": \"string\",\n      \"resource_type\": \"string\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": true,\n        \"has_phi\": false,\n        \"has_pii\": true\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": true,\n        \"has_phi\": true,\n        \"has_pii\": true\n      },\n      \"status\": \"string\",\n      \"sub_category\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1961-09-15T02:06:34.515Z\",\n          \"end_of_support_time\": \"2016-12-17T15:46:00.309Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1961-04-05T22:27:38.670Z\",\n          \"end_of_support_time\": \"1956-06-26T02:10:06.651Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": 6876,\n        \"high_count\": 6429,\n        \"low_count\": 8532,\n        \"medium_count\": 3702,\n        \"total_count\": 216,\n        \"unclassified_count\": 1040\n      }\n    },\n    {\n      \"category\": \"string\",\n      \"cloud_account_id\": \"string\",\n      \"cloud_provider\": \"string\",\n      \"cloud_resource_id\": \"string\",\n      \"custom_tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"detection_risk\": {\n        \"critical_count\": 3353,\n        \"high_count\": 2046,\n        \"low_count\": 9029,\n        \"medium_count\": 6014,\n        \"total_count\": 2356\n      },\n      \"high_privilege_risk\": {\n        \"has_elevated_privilege\": true\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"network_risk\": {\n        \"internet_exposure_type\": \"string\",\n        \"last_access_from_internet_in_ssh_or_rdp_time\": \"2014-07-25T04:47:45.857Z\",\n        \"last_access_from_internet_time\": \"1991-02-19T12:22:15.658Z\",\n        \"last_application_layer_internet_ingress_time\": \"2020-06-08T20:32:43.099Z\",\n        \"last_communication_with_database_time\": \"1969-06-09T07:29:36.572Z\",\n        \"last_communication_with_internet_time\": \"2019-01-01T04:07:44.148Z\",\n        \"last_imds_v1_access_time\": \"2012-11-29T16:12:45.613Z\",\n        \"last_imds_v2_access_time\": \"2019-08-04T06:51:37.259Z\"\n      },\n      \"private_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"protected_by\": \"string\",\n      \"public_ip_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"region\": \"string\",\n      \"resource_type\": \"string\",\n      \"sensitive_data_at_rest\": {\n        \"has_pci\": true,\n        \"has_phi\": true,\n        \"has_pii\": true\n      },\n      \"sensitive_data_in_transit\": {\n        \"has_pci\": false,\n        \"has_phi\": false,\n        \"has_pii\": false\n      },\n      \"status\": \"string\",\n      \"sub_category\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"technologies\": [\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1951-11-04T10:02:35.492Z\",\n          \"end_of_support_time\": \"1984-01-13T00:14:53.460Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"category\": \"string\",\n          \"end_of_life_time\": \"1991-10-08T21:52:13.260Z\",\n          \"end_of_support_time\": \"2004-04-13T20:15:27.541Z\",\n          \"name\": \"string\",\n          \"sub_category\": \"string\",\n          \"version\": \"string\"\n        }\n      ],\n      \"vulnerability_risk\": {\n        \"critical_count\": 8032,\n        \"high_count\": 6698,\n        \"low_count\": 1055,\n        \"medium_count\": 2593,\n        \"total_count\": 5878,\n        \"unclassified_count\": 2543\n      }\n    }\n  ],\n  \"metadata\": {\n    \"limit\": 20,\n    \"next_cursor\": \"eyJvZmZzZXQiOjIwfQ\",\n    \"previous_cursor\": \"eyJvZmZzZXQiOjB9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d27c043-557d-4056-9b49-08e2da071ce4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b80e22b4-e48a-4177-9ca3-9afbeae730c6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "252b929b-d3c5-44cc-abed-6dcfd139791d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "192c170c-ea3c-42d4-9a19-e5dd5d95f45f",
+              "name": "Rate Limit Exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "organizations",
+                    ":organization-id",
+                    "inventory",
+                    "catalog",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "eyJvZmZzZXQiOjIwfQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization-id",
+                      "description": "(Required) The unique identifier for the Upwind organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    },\n    {\n      \"operator\": \"eq\",\n      \"value\": [],\n      \"field\": \"category\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.upwind.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.upwind.io/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5be02c74-4f86-4fcd-8ad2-efac44b82e29",
+    "name": "Upwind Management REST API v1 access-management Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.\n\nContact Support:\n Name: Upwind Support\n Email: support@upwind.io",
+      "type": "text/plain"
+    }
+  }
+}
