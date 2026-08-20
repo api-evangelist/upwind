@@ -54,6 +54,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Access Management
+  tags_raw:
   - access-management
   properties:
   - type: OpenAPI
@@ -68,6 +70,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - API Security
+  tags_raw:
   - api-security
   properties:
   - type: OpenAPI
@@ -82,6 +86,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Cloud Accounts
+  tags_raw:
   - cloud-accounts
   properties:
   - type: OpenAPI
@@ -96,6 +102,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Configurations
+  tags_raw:
   - configurations
   properties:
   - type: OpenAPI
@@ -110,6 +118,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -124,6 +134,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Integration
+  tags_raw:
   - integrations
   properties:
   - type: OpenAPI
@@ -152,6 +164,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Packages
+  tags_raw:
   - packages
   properties:
   - type: OpenAPI
@@ -180,6 +194,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Threats
+  tags_raw:
   - threats
   properties:
   - type: OpenAPI
@@ -194,6 +210,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Vulnerabilities
+  tags_raw:
   - vulnerabilities
   properties:
   - type: OpenAPI
@@ -208,6 +226,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - Workflows
+  tags_raw:
   - workflows
   properties:
   - type: OpenAPI
