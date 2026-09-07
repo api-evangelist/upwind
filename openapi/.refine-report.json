@@ -31,6 +31,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "upwind-access-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-api-security-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-cloud-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-configurations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-integrations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-inventory-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-shiftleft-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-threats-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-vulnerabilities-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "upwind-workflows-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
