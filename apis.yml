@@ -186,20 +186,6 @@ apis:
     url: https://docs.upwind.io/restapi/v1/introduction
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
-- aid: upwind:upwind-shiftleft-api
-  name: Upwind shiftleft API
-  description: The shiftleft API from Upwind — 1 operation(s) for shiftleft.
-  humanURL: https://docs.upwind.io/restapi/v1/introduction
-  baseURL: https://api.upwind.io
-  tags:
-  - shiftleft
-  properties:
-  - type: OpenAPI
-    url: openapi/upwind-shiftleft-api-openapi.yml
-  - type: Documentation
-    url: https://docs.upwind.io/restapi/v1/introduction
-  - type: Documentation
-    url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-threats-api
   name: Upwind threats API
   description: The threats API from Upwind — 18 operation(s) for threats.
@@ -244,6 +230,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/upwind-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v1/introduction
+  - type: Documentation
+    url: https://docs.upwind.io/restapi/v2/introduction
+- aid: upwind:upwind-shift-left-api
+  name: Upwind Shift Left API
+  description: The Shift Left API from Upwind — 1 operation(s) for shift left.
+  humanURL: https://docs.upwind.io/restapi/v1/introduction
+  baseURL: https://api.upwind.io
+  tags:
+  - Shift Left
+  properties:
+  - type: OpenAPI
+    url: openapi/upwind-shift-left-api-openapi.yml
   - type: Documentation
     url: https://docs.upwind.io/restapi/v1/introduction
   - type: Documentation
