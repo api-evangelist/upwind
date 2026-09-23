@@ -1,16 +1,14 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Events API
-  version: '1.0'
-  description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
+  title: Upwind Events API
   contact:
     name: Upwind Support
     email: support@upwind.io
     url: https://docs.upwind.io/
-  x-apievangelist:
-    generated: '2026-07-21'
-    method: searched
-    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+  x-refined-note:
+  - x-apievangelist differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged events across 2 of this provider''s published API definitions: upwind-management-v1-openapi.yml, upwind-management-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.upwind.io
   description: Production endpoint (US)
@@ -21,15 +19,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: events
+- name: Events
 paths:
   /v1/organizations/{organization-id}/events:
     post:
       operationId: createEvent
       summary: Create an event
-      description: A `POST` request sent to the endpoint root creates an Event object that is associated with the specified organization. To learn more about Events, refer to the [Continuous Integration (CI)](/integrations/continuous-integration/overview) page.
+      description: A `POST` request sent to the endpoint root creates an Event object that is associated with the specified organization. To learn more about Events, refer to the Continuous Integration (CI) page.
       tags:
-      - events
+      - Events
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -232,13 +230,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/events/shift-left/search:
     post:
       operationId: searchShiftLeftEvents
       summary: Search ShiftLeft events
       description: A `POST` request sent to the endpoint searches for ShiftLeft Events between the start_time and end_time.
       tags:
-      - events
+      - Events
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -351,13 +356,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/events/shift-left/search:
     post:
       operationId: searchShiftLeftEvents
       summary: Search ShiftLeft events
       description: A POST request sent to the search endpoint returns a filtered list of ShiftLeft events that are associated with the specified organization based on the specified search criteria.
       tags:
-      - events
+      - Events
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -523,6 +535,13 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
 components:
   securitySchemes:
     OAuth2ClientCredentials:
@@ -532,6 +551,6 @@ components:
         clientCredentials:
           tokenUrl: https://auth.upwind.io/oauth/token
           scopes: {}
-externalDocs:
-  url: https://docs.upwind.io/restapi/v1/introduction
-  description: API Reference
+x-refined-from:
+- upwind-management-v1-openapi.yml
+- upwind-management-v2-openapi.yml

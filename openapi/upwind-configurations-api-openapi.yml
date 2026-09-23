@@ -1,16 +1,14 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Configurations API
-  version: '1.0'
-  description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
+  title: Upwind Configurations API
   contact:
     name: Upwind Support
     email: support@upwind.io
     url: https://docs.upwind.io/
-  x-apievangelist:
-    generated: '2026-07-21'
-    method: searched
-    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+  x-refined-note:
+  - x-apievangelist differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged configurations across 2 of this provider''s published API definitions: upwind-management-v1-openapi.yml, upwind-management-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.upwind.io
   description: Production endpoint (US)
@@ -21,15 +19,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: configurations
+- name: Configurations
 paths:
   /v1/organizations/{organization-id}/configuration-rules:
     post:
       operationId: createCustomRule
       summary: Create a rule
-      description: A `POST` request sent to this endpoint creates a Configuration Rule object that is associated with the specified organization. Configuration rules define custom compliance checks using Rego policy language to evaluate your cloud resources against security and governance requirements. To learn more about Configuration Rules, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      description: A `POST` request sent to this endpoint creates a Configuration Rule object that is associated with the specified organization. Configuration rules define custom compliance checks using Rego policy language to evaluate your cloud resources against security and governance requirements. To learn more about Configuration Rules, refer to the Configuration Rules page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -178,9 +176,9 @@ paths:
     get:
       operationId: getCustomRules
       summary: List rules
-      description: A `GET` request sent to the endpoint root returns a list of Configuration Rule objects that are associated with the specified organization. This endpoint allows you to search and filter configuration rules based on various criteria such as framework, name, and findings status. To learn more about Configurations, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      description: A `GET` request sent to the endpoint root returns a list of Configuration Rule objects that are associated with the specified organization. This endpoint allows you to search and filter configuration rules based on various criteria such as framework, name, and findings status. To learn more about Configurations, refer to the Configuration Rules page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -287,13 +285,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/configuration-frameworks:
     post:
       operationId: createFramework
       summary: Create a framework
       description: Creates a new compliance framework for the specified organization.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -434,9 +439,9 @@ paths:
     get:
       operationId: getAllFrameworks
       summary: List frameworks
-      description: A `GET` request sent to the endpoint root returns a list of Configuration Framework objects that are associated with the specified organization. This endpoint allows you to search and filter configuration frameworks based on various criteria such as framework IDs, cloud providers, and status. To learn more about Frameworks, refer to the [Frameworks](/configurations/frameworks) page.
+      description: A `GET` request sent to the endpoint root returns a list of Configuration Framework objects that are associated with the specified organization. This endpoint allows you to search and filter configuration frameworks based on various criteria such as framework IDs, cloud providers, and status. To learn more about Frameworks, refer to the Frameworks page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -617,13 +622,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/configuration-rules/{rule-id}:
     delete:
       operationId: deleteCustomRule
       summary: Delete a rule
-      description: A `DELETE` request sent to the endpoint deletes a Configuration Rule object that is associated with the specified organization. This action permanently removes the rule and cannot be undone. To learn more about Configuration Rules, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      description: A `DELETE` request sent to the endpoint deletes a Configuration Rule object that is associated with the specified organization. This action permanently removes the rule and cannot be undone. To learn more about Configuration Rules, refer to the Configuration Rules page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -654,9 +666,9 @@ paths:
     patch:
       operationId: editCustomRule
       summary: Update a rule
-      description: A `PATCH` request sent to the endpoint allows you to update an existing Configuration Rule object that is associated with the specified organization. You can modify properties such as name, category, severity, and Rego policy. To learn more about Configuration Rules, refer to the [Configuration Rules](/configurations/custom-configuration-rules) page.
+      description: A `PATCH` request sent to the endpoint allows you to update an existing Configuration Rule object that is associated with the specified organization. You can modify properties such as name, category, severity, and Rego policy. To learn more about Configuration Rules, refer to the Configuration Rules page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -794,13 +806,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/configuration-frameworks/{framework-id}:
     patch:
       operationId: editFramework
       summary: Update a framework
-      description: A `PATCH` request sent to the endpoint allows you to update an existing Configuration Framework object that is associated with the specified organization. You can modify properties such as title, description, and status. To learn more about Frameworks, refer to the [Frameworks](/configurations/frameworks) page.
+      description: A `PATCH` request sent to the endpoint allows you to update an existing Configuration Framework object that is associated with the specified organization. You can modify properties such as title, description, and status. To learn more about Frameworks, refer to the Frameworks page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1361,13 +1380,20 @@ paths:
           description: Internal Server Error
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/configuration-findings/{finding-id}:
     get:
       operationId: getComplianceResourceFindingById
       summary: Get a finding
-      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Configuration Finding. This endpoint provides access to comprehensive details such as the status, severity, framework information, and the associated resource. To learn more about Configuration Findings, refer to the [Configurations Overview](/configurations/overview) page.
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Configuration Finding. This endpoint provides access to comprehensive details such as the status, severity, framework information, and the associated resource. To learn more about Configuration Findings, refer to the Configurations Overview page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1548,13 +1574,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/configuration-findings:
     get:
       operationId: getComplianceResourceFindings
       summary: List findings
-      description: A `GET` request sent to the endpoint root returns a list of Configuration Finding objects that are associated with the specified organization. This endpoint allows you to search and filter configuration findings based on various criteria such as status, severity, resource name, and framework. By default, only findings with `FAIL` status are returned unless otherwise specified. To learn more about Configurations, refer to the [Configurations Overview](/configurations/overview) page.
+      description: A `GET` request sent to the endpoint root returns a list of Configuration Finding objects that are associated with the specified organization. This endpoint allows you to search and filter configuration findings based on various criteria such as status, severity, resource name, and framework. By default, only findings with `FAIL` status are returned unless otherwise specified. To learn more about Configurations, refer to the Configurations Overview page.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1851,13 +1884,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/frameworks:
     post:
       operationId: createFramework
       summary: Create a framework
       description: A POST request sent to the endpoint creates a new configuration framework for the specified organization.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1953,13 +1993,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/custom-rules:
     post:
       operationId: createRule
       summary: Create a configuration rule
       description: A `POST` request sent to this endpoint creates a configuration rule. Configuration rules define custom compliance checks using Rego policy language to evaluate cloud resources against security and governance requirements.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2105,13 +2152,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/asset-examples/{asset-kind}:
     get:
       operationId: getAssetExample
       summary: Get an asset example
       description: A GET request sent to the endpoint root followed by an asset kind returns an example of that asset. If a cloud account ID is specified, an asset is retrieved from that account as the example.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2209,13 +2263,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/findings/{finding-id}:
     get:
       operationId: getFinding
       summary: Get a finding
       description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Configuration Finding.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2424,6 +2485,13 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/findings/search:
     post:
       operationId: searchFindings
@@ -2431,12 +2499,9 @@ paths:
       description: 'A `POST` request sent to the search endpoint returns a list of Configuration Finding objects matching the supplied search conditions. Supported attributes are listed below.
 
 
-        **Filtering by `cloud_account_tags`**: values must be supplied in `key=value` format (e.g., `environment=production`).
-
-
-        '
+        **Filtering by `cloud_account_tags`**: values must be supplied in `key=value` format (e.g., `environment=production`).'
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2702,13 +2767,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/frameworks/search:
     post:
       operationId: searchFrameworks
       summary: Search frameworks
       description: A `POST` request sent to the search endpoint returns a list of Configuration Framework objects matching the supplied search conditions.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2892,13 +2964,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/frameworks/{framework-id}:
     patch:
       operationId: updateFramework
       summary: Update a framework
       description: A PATCH request sent to the endpoint root followed by a unique identifier updates the properties of a specific configuration framework.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2991,13 +3070,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/custom-rules/{rule-id}:
     patch:
       operationId: updateRule
       summary: Update a configuration rule
       description: A `PATCH` request sent to the endpoint root followed by a unique identifier updates an existing configuration rule. Only the fields provided in the request body are updated; other fields remain unchanged.
       tags:
-      - configurations
+      - Configurations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -3137,6 +3223,13 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
 components:
   securitySchemes:
     OAuth2ClientCredentials:
@@ -3146,6 +3239,6 @@ components:
         clientCredentials:
           tokenUrl: https://auth.upwind.io/oauth/token
           scopes: {}
-externalDocs:
-  url: https://docs.upwind.io/restapi/v1/introduction
-  description: API Reference
+x-refined-from:
+- upwind-management-v1-openapi.yml
+- upwind-management-v2-openapi.yml

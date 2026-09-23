@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Vulnerabilities API
+  title: Upwind Management REST API v1 Vulnerabilities API
   version: '1.0'
   description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
   contact:
@@ -21,15 +21,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: vulnerabilities
+- name: Vulnerabilities
 paths:
   /v1/organizations/{organization-id}/vulnerability-findings/{finding-id}:
     get:
       operationId: get-vulnerability-finding-by-id
       summary: Get a finding
-      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Vulnerability finding. This endpoint gives access to comprehensive details such as the CVE ID (Common Vulnerabilities and Exposures Identifier), the affected resource, severity, status, and runtime contextual information. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page.
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Vulnerability finding. This endpoint gives access to comprehensive details such as the CVE ID (Common Vulnerabilities and Exposures Identifier), the affected resource, severity, status, and runtime contextual information. To learn more about Vulnerabilities, refer to the Vulnerabilities Overview page.
       tags:
-      - vulnerabilities
+      - Vulnerabilities
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -367,9 +367,9 @@ paths:
     get:
       operationId: getVulnerabilityFindingList
       summary: List findings
-      description: A `GET` request sent to the endpoint root returns a list of Vulnerability finding objects that are associated with the specified organization. To learn more about Vulnerabilities, refer to the [Vulnerabilities Overview](/vulnerabilities/overview) page.
+      description: A `GET` request sent to the endpoint root returns a list of Vulnerability finding objects that are associated with the specified organization. To learn more about Vulnerabilities, refer to the Vulnerabilities Overview page.
       tags:
-      - vulnerabilities
+      - Vulnerabilities
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs

@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Inventory API
-  version: '1.0'
+  title: Upwind Management REST API v2 Inventory API
+  version: '2.0'
   description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
   contact:
     name: Upwind Support
@@ -10,7 +10,7 @@ info:
   x-apievangelist:
     generated: '2026-07-21'
     method: searched
-    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+    source: https://docs.upwind.io/restapi/v2/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
 servers:
 - url: https://api.upwind.io
   description: Production endpoint (US)
@@ -36,7 +36,7 @@ paths:
         Use this endpoint when your search criteria depend on relationships. For example, use this if you need to find all "Virtual Machines" that are "Connected To" a specific "Subnet" or "Part Of" a specific "EKS cluster".
 
 
-        For an introduction to the query guide and how to use nested conditions, see [graph introduction](inventory) for more details.
+        For an introduction to the query guide and how to use nested conditions, see graph introduction for more details.
 
 
         Rate limit: Requests to this endpoint are limited to 100 requests per minute per organization. For rate limit adjustments, please contact Upwind Support.'
@@ -9199,5 +9199,5 @@ components:
           tokenUrl: https://auth.upwind.io/oauth/token
           scopes: {}
 externalDocs:
-  url: https://docs.upwind.io/restapi/v1/introduction
+  url: https://docs.upwind.io/restapi/v2/introduction
   description: API Reference

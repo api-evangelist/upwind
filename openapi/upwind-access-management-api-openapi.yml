@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 Access Management API
-  version: '1.0'
+  title: Upwind Management REST API v2 Access Management API
+  version: '2.0'
   description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
   contact:
     name: Upwind Support
@@ -10,7 +10,7 @@ info:
   x-apievangelist:
     generated: '2026-07-21'
     method: searched
-    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+    source: https://docs.upwind.io/restapi/v2/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
 servers:
 - url: https://api.upwind.io
   description: Production endpoint (US)
@@ -21,7 +21,7 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: access-management
+- name: Access Management
 paths:
   /v2/organizations/{organization-id}/access-management/groups/{group-id}/members/bulk:
     post:
@@ -29,7 +29,7 @@ paths:
       summary: Add members to a group
       description: A POST request adds the specified members to an access-management group.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -82,7 +82,7 @@ paths:
       summary: Remove members from a group
       description: A DELETE request removes the specified members from an access-management group.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -136,7 +136,7 @@ paths:
       summary: Add a member
       description: A POST request sent to the endpoint root invites a new member to the organization with optional permissions and group assignments.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -243,7 +243,7 @@ paths:
       summary: Create a scope
       description: A POST request sent to the endpoint root creates a new access-management scope with the specified name, description, and resource filters.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -370,7 +370,7 @@ paths:
       summary: Delete a scope
       description: A DELETE request sent to the endpoint root followed by a unique identifier deletes a specific access-management scope.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -403,7 +403,7 @@ paths:
       summary: Get a scope
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific access-management scope.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -500,7 +500,7 @@ paths:
       summary: Update a scope
       description: A PATCH request sent to the endpoint root followed by a unique identifier updates an existing access-management scope's name, description, and/or resource filters.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -631,7 +631,7 @@ paths:
       summary: Get a group
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific access-management group.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -729,7 +729,7 @@ paths:
       summary: Update a group
       description: A PATCH request sent to the endpoint root followed by a unique identifier updates the properties of a specific access-management group.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -853,7 +853,7 @@ paths:
       summary: Get a role
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific access-management role.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -936,7 +936,7 @@ paths:
       summary: Search groups
       description: A POST request sent to the endpoint root's search path returns a paginated list of access-management groups matching the specified filter conditions.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1115,7 +1115,7 @@ paths:
       summary: Search members
       description: A POST request sent to the endpoint root's search path returns a paginated list of organization members matching the specified filter conditions.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1299,7 +1299,7 @@ paths:
       summary: Search roles
       description: A POST request sent to the endpoint returns a paginated list of access-management roles matching the specified filter conditions.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1440,7 +1440,7 @@ paths:
       summary: Search scopes
       description: A POST request sent to the endpoint returns a paginated list of access-management scopes matching the specified filter conditions.
       tags:
-      - access-management
+      - Access Management
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1619,5 +1619,5 @@ components:
           tokenUrl: https://auth.upwind.io/oauth/token
           scopes: {}
 externalDocs:
-  url: https://docs.upwind.io/restapi/v1/introduction
+  url: https://docs.upwind.io/restapi/v2/introduction
   description: API Reference

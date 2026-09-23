@@ -1,16 +1,14 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Threats API
-  version: '1.0'
-  description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
+  title: Upwind Threats API
   contact:
     name: Upwind Support
     email: support@upwind.io
     url: https://docs.upwind.io/
-  x-apievangelist:
-    generated: '2026-07-21'
-    method: searched
-    source: https://docs.upwind.io/restapi/v1/introduction (embedded docusaurus-plugin-openapi-docs operation JSON)
+  x-refined-note:
+  - x-apievangelist differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged threats across 2 of this provider''s published API definitions: upwind-management-v1-openapi.yml, upwind-management-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.upwind.io
   description: Production endpoint (US)
@@ -21,15 +19,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: threats
+- name: Threats
 paths:
   /v1/organizations/{organization-id}/threat-events:
     get:
       operationId: getEventsList
       summary: List events
-      description: A `GET` request sent to the endpoint root returns a list of Threat Events objects that are associated with the specified organization. To learn more about Threat Events, refer to the [Events Overview](/threats/events/overview) page.
+      description: A `GET` request sent to the endpoint root returns a list of Threat Events objects that are associated with the specified organization. To learn more about Threat Events, refer to the Events Overview page.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -362,13 +360,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/threat-detections/{detection-id}:
     get:
       operationId: get-threat-detection
       summary: Get a detection
-      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Threat Detection. This endpoint provides access to comprehensive details such as the triggers (policy violations) and attributes related to the associated resource. To learn more about Threat Detections, refer to the [Detections Overview](/threats/detections/overview) page.
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Threat Detection. This endpoint provides access to comprehensive details such as the triggers (policy violations) and attributes related to the associated resource. To learn more about Threat Detections, refer to the Detections Overview page.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -1773,9 +1778,9 @@ paths:
     patch:
       operationId: update-threat-detection
       summary: Update a detection
-      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Threat Detection. This endpoint facilitates the modification of attributes such the detection status. To modify a Threat Detection, provide the necessary changes in the request body. To learn more about Threat Detections, refer to the [Detections Overview](/threats/detections/overview) page.
+      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Threat Detection. This endpoint facilitates the modification of attributes such the detection status. To modify a Threat Detection, provide the necessary changes in the request body. To learn more about Threat Detections, refer to the Detections Overview page.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -3190,13 +3195,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/threat-detections:
     get:
       operationId: list-threat-detections
       summary: List detections
-      description: A `GET` request sent to the endpoint root returns a list of Threat Detection objects that are associated with the specified organization. To learn more about Threat Detections, refer to the [Detections Overview](/threats/detections/overview) page.
+      description: A `GET` request sent to the endpoint root returns a list of Threat Detection objects that are associated with the specified organization. To learn more about Threat Detections, refer to the Detections Overview page.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -4640,13 +4652,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/threat-policies:
     get:
       operationId: list-threat-policies
       summary: List policies
-      description: A `GET` request sent to the endpoint root returns a list of Threat Policy objects that are associated with the specified organization. To learn more about Threat Policies, refer to the [Policies Overview](/threats/policies/overview) page.
+      description: A `GET` request sent to the endpoint root returns a list of Threat Policy objects that are associated with the specified organization. To learn more about Threat Policies, refer to the Policies Overview page.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -4717,13 +4736,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v1/organizations/{organization-id}/threat-policies/{policy-id}:
     patch:
       operationId: updateThreatPolicy
       summary: Update a policy
-      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Threat Policy. This endpoint facilitates the modification of attributes such the enablement status. To modify a Threat Policy, provide the necessary changes in the request body. To learn more about Threat Policies, refer to the [Policies Overview](/threats/policies/overview) page.
+      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Threat Policy. This endpoint facilitates the modification of attributes such the enablement status. To modify a Threat Policy, provide the necessary changes in the request body. To learn more about Threat Policies, refer to the Policies Overview page.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -4805,13 +4831,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/bulk:
     post:
       operationId: bulkAttachRuleDefinitions
       summary: Bulk create policy rules
       description: A POST request sent to the bulk endpoint attaches multiple rule definitions to the policy. Returns 400 if any rule definition's category is incompatible with the policy source type, or if the rule definition and policy have mismatched management types. If any item in the request fails, no policy rules are created.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -12638,7 +12671,7 @@ paths:
       summary: Bulk delete policy rules
       description: A DELETE request sent to the bulk endpoint detaches multiple rule definitions from the policy. The rule definitions themselves are not affected. If any ID in the request is invalid, no policy rules are removed.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -12689,7 +12722,7 @@ paths:
       summary: Bulk edit policy rules
       description: A PATCH request sent to the bulk endpoint updates multiple policy rules. Each item must include id plus at least one of severity, scope, or is_enabled. If any item in the request is not found or fails validation, no updates are applied.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -20509,13 +20542,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/policies/bulk:
     post:
       operationId: bulkCreatePolicies
       summary: Bulk create policies
       description: A POST request sent to the bulk endpoint creates multiple policies. If any policy in the request fails validation, no policies are created.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -28356,7 +28396,7 @@ paths:
       summary: Bulk delete policies
       description: A DELETE request sent to the bulk endpoint removes multiple policies and their rule attachments. If any ID in the request is invalid, no policies are removed.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -28400,7 +28440,7 @@ paths:
       summary: Bulk edit policies
       description: A PATCH request sent to the bulk endpoint updates multiple policies. If any policy in the request is not found or fails validation, no updates are applied.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -36222,13 +36262,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/rule-definitions/bulk:
     post:
       operationId: bulkCreateRuleDefinitions
       summary: Bulk create rule definitions
       description: A POST request sent to the bulk endpoint creates multiple rule definitions. If any rule definition in the request fails validation, no rule definitions are created.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -36429,7 +36476,7 @@ paths:
       summary: Bulk delete rule definitions
       description: A DELETE request sent to the bulk endpoint removes multiple rule definitions and their policy attachments. If any ID in the request is invalid, no rule definitions are removed.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -36473,7 +36520,7 @@ paths:
       summary: Bulk edit rule definitions
       description: A PATCH request sent to the bulk endpoint updates multiple rule definitions. If any rule definition in the request is not found or fails validation, no updates are applied.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -36643,13 +36690,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/rule-definitions/{rule-definition-id}/policies:
     get:
       operationId: getAttachedPolicies
       summary: Get the policies a rule definition is attached to
       description: Returns the list of policies this rule definition is attached to, with per-attachment effective values (severity, scope, scope_type, is_enabled, is_suspended). An unknown or unattached rule-definition ID returns an empty items list with 200 OK, not 404 — the upstream service does not validate ID existence on this route.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -39290,13 +39344,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/{policy-rule-id}:
     get:
       operationId: getPolicyRule
       summary: Get a policy rule
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific policy rule.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -44532,13 +44593,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/policies/{policy-id}:
     get:
       operationId: getPolicy
       summary: Get a policy
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific policy.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -49758,13 +49826,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/rule-definitions/{rule-definition-id}:
     get:
       operationId: getRuleDefinition
       summary: Get a rule definition
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific rule definition.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -49879,13 +49954,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/stories/{story-id}:
     get:
       operationId: getStory
       summary: Get a story
       description: A GET request sent to the endpoint root followed by a unique identifier returns detailed information about a specific story.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -49966,13 +50048,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/stories:
     get:
       operationId: listStories
       summary: List stories
       description: A GET request sent to the endpoint root returns a list of threat stories objects that are associated with the specified organization.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -50085,13 +50174,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/policies/search:
     post:
       operationId: searchPolicies
       summary: Search policies
       description: A POST request sent to the search endpoint returns a filtered list of policy objects that are associated with the specified organization based on the specified search criteria.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -55394,13 +55490,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/policies/{policy-id}/rules/search:
     post:
       operationId: searchPolicyRules
       summary: Search policy rules
       description: A POST request sent to the search endpoint returns a filtered list of policy rule objects for the specified policy, based on the given search criteria.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -60720,13 +60823,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/rule-definitions/search:
     post:
       operationId: searchRuleDefinitions
       summary: Search rule definitions
       description: A POST request sent to the search endpoint returns a filtered list of rule definition objects that are associated with the specified organization based on the specified search criteria.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -60922,13 +61032,20 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
   /v2/organizations/{organization-id}/threats/stories/search:
     post:
       operationId: searchStories
       summary: Search stories
       description: A POST request sent to the search endpoint returns a filtered list of threat stories objects that are associated with the specified organization based on the specified search criteria.
       tags:
-      - threats
+      - Threats
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -61083,6 +61200,13 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+    servers:
+    - url: https://api.upwind.io
+      description: Production endpoint (US)
+    - url: https://api.eu.upwind.io
+      description: Production endpoint (EU)
+    - url: https://api.me.upwind.io
+      description: Production endpoint (ME)
 components:
   securitySchemes:
     OAuth2ClientCredentials:
@@ -61092,6 +61216,6 @@ components:
         clientCredentials:
           tokenUrl: https://auth.upwind.io/oauth/token
           scopes: {}
-externalDocs:
-  url: https://docs.upwind.io/restapi/v1/introduction
-  description: API Reference
+x-refined-from:
+- upwind-management-v1-openapi.yml
+- upwind-management-v2-openapi.yml

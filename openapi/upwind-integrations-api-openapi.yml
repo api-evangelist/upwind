@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Integrations API
+  title: Upwind Management REST API v1 Integrations API
   version: '1.0'
   description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
   contact:
@@ -21,15 +21,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: integrations
+- name: Integrations
 paths:
   /v1/organizations/{organization-id}/integration-webhooks:
     post:
       operationId: createWebhookIntegration
       summary: Create a webhook
-      description: A `POST` request sent to the endpoint root creates a integration webhook object that is associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      description: A `POST` request sent to the endpoint root creates a integration webhook object that is associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the Custom Webhook page.
       tags:
-      - integrations
+      - Integrations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -314,9 +314,9 @@ paths:
     get:
       operationId: getWebhookIntegrations
       summary: List webhooks
-      description: A `GET` request sent to the endpoint root returns a list of integration webhook objects that are associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      description: A `GET` request sent to the endpoint root returns a list of integration webhook objects that are associated with the specified organization. Integration Webhooks enable you to send notifications and data to external systems when specific events occur. To learn more about integration webhooks, refer to the Custom Webhook page.
       tags:
-      - integrations
+      - Integrations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -500,9 +500,9 @@ paths:
     delete:
       operationId: deleteWebhookIntegration
       summary: Delete a webhook
-      description: A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific integration webhook. This action permanently removes the integration webhook and cannot be undone. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      description: A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific integration webhook. This action permanently removes the integration webhook and cannot be undone. To learn more about integration webhooks, refer to the Custom Webhook page.
       tags:
-      - integrations
+      - Integrations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -535,9 +535,9 @@ paths:
     patch:
       operationId: updateWebhookIntegration
       summary: Update a webhook
-      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing integration webhook. This endpoint facilitates the modification of attributes such as the name, status, and configuration. To learn more about integration webhooks, refer to the [Custom Webhook](/integrations/monitoring-and-logging/custom-webhook) page.
+      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing integration webhook. This endpoint facilitates the modification of attributes such as the name, status, and configuration. To learn more about integration webhooks, refer to the Custom Webhook page.
       tags:
-      - integrations
+      - Integrations
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs

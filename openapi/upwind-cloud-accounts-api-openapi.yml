@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Cloud Accounts API
+  title: Upwind Management REST API v1 Cloud Accounts API
   version: '1.0'
   description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
   contact:
@@ -21,15 +21,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: cloud-accounts
+- name: Cloud Accounts
 paths:
   /v1/organizations/{organization-id}/cloud-accounts:
     post:
       operationId: createCloudAccount
       summary: Create a cloud account
-      description: A `POST` request sent to the endpoint root creates a Cloud Account object that is associated with the specified organization. This endpoint allows you to add new cloud accounts to your organization for monitoring and security analysis. To learn more about Cloud Accounts, refer to the [Connect Cloud Account Overview](/getting-started/connect-cloud-account/overview) page.
+      description: A `POST` request sent to the endpoint root creates a Cloud Account object that is associated with the specified organization. This endpoint allows you to add new cloud accounts to your organization for monitoring and security analysis. To learn more about Cloud Accounts, refer to the Connect Cloud Account Overview page.
       tags:
-      - cloud-accounts
+      - Cloud Accounts
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -223,9 +223,9 @@ paths:
     delete:
       operationId: deleteCloudAccount
       summary: Delete a cloud account
-      description: A `DELETE` request sent to the endpoint removes a Cloud Account object that is associated with the specified organization. This action permanently removes the cloud account and all associated data. To learn more about Cloud Accounts, refer to the [Connect Cloud Account Overview](/getting-started/connect-cloud-account/overview) page.
+      description: A `DELETE` request sent to the endpoint removes a Cloud Account object that is associated with the specified organization. This action permanently removes the cloud account and all associated data. To learn more about Cloud Accounts, refer to the Connect Cloud Account Overview page.
       tags:
-      - cloud-accounts
+      - Cloud Accounts
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -260,9 +260,9 @@ paths:
     patch:
       operationId: updateCloudAccount
       summary: Update a cloud account
-      description: A `PATCH` request sent to the endpoint updates an existing Cloud Account object that is associated with the specified organization. This endpoint allows you to modify the configuration of an existing cloud account. To learn more about Cloud Accounts, refer to the [Connect Cloud Account Overview](/getting-started/connect-cloud-account/overview) page.
+      description: A `PATCH` request sent to the endpoint updates an existing Cloud Account object that is associated with the specified organization. This endpoint allows you to modify the configuration of an existing cloud account. To learn more about Cloud Accounts, refer to the Connect Cloud Account Overview page.
       tags:
-      - cloud-accounts
+      - Cloud Accounts
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs

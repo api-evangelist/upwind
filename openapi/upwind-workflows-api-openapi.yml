@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Upwind Management REST API v1 access-management Workflows API
+  title: Upwind Management REST API v1 Workflows API
   version: '1.0'
   description: Upwind Management REST API — administrative and data endpoints for the Upwind cloud security platform (threats, vulnerabilities, configurations, inventory, API security, workflows, access management). Reconstructed faithfully from the embedded OpenAPI operation definitions published in the Upwind docs (docs.upwind.io) by the API Evangelist enrichment pipeline; operation content is verbatim from the provider.
   contact:
@@ -21,15 +21,15 @@ servers:
 security:
 - OAuth2ClientCredentials: []
 tags:
-- name: workflows
+- name: Workflows
 paths:
   /v1/organizations/{organization-id}/workflows:
     post:
       operationId: createWorkflow
       summary: Create a workflow
-      description: A `POST` request sent to the endpoint root creates a Workflow object that is associated with the specified organization. Workflows provide automation capabilities for responding to security events, vulnerabilities, and configuration findings. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page.
+      description: A `POST` request sent to the endpoint root creates a Workflow object that is associated with the specified organization. Workflows provide automation capabilities for responding to security events, vulnerabilities, and configuration findings. To learn more about Workflows, refer to the Workflows page.
       tags:
-      - workflows
+      - Workflows
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2086,9 +2086,9 @@ paths:
     get:
       operationId: listAllWorkflows
       summary: List workflows
-      description: A `GET` request sent to the endpoint root returns a list of Workflow objects that are associated with the specified organization. Workflows provide automation capabilities for responding to security events, vulnerabilities, and configuration findings. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page.
+      description: A `GET` request sent to the endpoint root returns a list of Workflow objects that are associated with the specified organization. Workflows provide automation capabilities for responding to security events, vulnerabilities, and configuration findings. To learn more about Workflows, refer to the Workflows page.
       tags:
-      - workflows
+      - Workflows
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2794,9 +2794,9 @@ paths:
     delete:
       operationId: deleteWorkflow
       summary: Delete a workflow
-      description: A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific Workflow. This action permanently removes the workflow and cannot be undone. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page.
+      description: A `DELETE` request sent to the endpoint root followed by a unique identifier deletes a specific Workflow. This action permanently removes the workflow and cannot be undone. To learn more about Workflows, refer to the Workflows page.
       tags:
-      - workflows
+      - Workflows
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -2827,9 +2827,9 @@ paths:
     get:
       operationId: getWorkflowById
       summary: Get a workflow
-      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Workflow. This endpoint provides access to comprehensive details such as triggers, actions, and selectors configured for the workflow. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page.
+      description: A `GET` request sent to the endpoint root followed by a unique identifier returns detailed information about a specific Workflow. This endpoint provides access to comprehensive details such as triggers, actions, and selectors configured for the workflow. To learn more about Workflows, refer to the Workflows page.
       tags:
-      - workflows
+      - Workflows
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
@@ -3540,9 +3540,9 @@ paths:
     patch:
       operationId: updateWorkflow
       summary: Update a workflow
-      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Workflow. This endpoint facilitates the modification of attributes such as the workflow name, status, and configuration. To learn more about Workflows, refer to the [Workflows](/settings/workflows) page.
+      description: A `PATCH` request sent to the endpoint root followed by a unique identifier allows for updating specific fields of an existing Workflow. This endpoint facilitates the modification of attributes such as the workflow name, status, and configuration. To learn more about Workflows, refer to the Workflows page.
       tags:
-      - workflows
+      - Workflows
       parameters:
       - description: The unique identifier for the Upwind organization.
         example: org_Xk9mPq7RtYwN2vLs
