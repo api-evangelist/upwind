@@ -1893,7 +1893,7 @@ paths:
       description: Production endpoint (ME)
   /v2/organizations/{organization-id}/configurations/frameworks:
     post:
-      operationId: createFramework
+      operationId: postV2OrganizationsByOrganizationIdConfigurationsFrameworks
       summary: Create a framework
       description: A POST request sent to the endpoint creates a new configuration framework for the specified organization.
       tags:
@@ -1993,6 +1993,8 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+      x-operation-id-source: normalized
+      x-operation-id-original: createFramework
     servers:
     - url: https://api.upwind.io
       description: Production endpoint (US)

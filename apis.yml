@@ -61,7 +61,7 @@ tags:
 - Data Security
 apis:
 - aid: upwind:upwind-access-management-api
-  name: Upwind access-management API
+  name: Upwind Access Management API
   description: The access-management API from Upwind — 10 operation(s) for access-management.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -77,7 +77,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-api-security-api
-  name: Upwind api-security API
+  name: Upwind API Security API
   description: The api-security API from Upwind — 2 operation(s) for api-security.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -93,7 +93,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-cloud-accounts-api
-  name: Upwind cloud-accounts API
+  name: Upwind Cloud Accounts API
   description: The cloud-accounts API from Upwind — 2 operation(s) for cloud-accounts.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -109,7 +109,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-configurations-api
-  name: Upwind configurations API
+  name: Upwind Configurations API
   description: The configurations API from Upwind — 14 operation(s) for configurations.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -125,7 +125,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-events-api
-  name: Upwind events API
+  name: Upwind Events API
   description: The events API from Upwind — 3 operation(s) for events.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -141,7 +141,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-integrations-api
-  name: Upwind integrations API
+  name: Upwind Integrations API
   description: The integrations API from Upwind — 2 operation(s) for integrations.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -171,7 +171,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-packages-api
-  name: Upwind packages API
+  name: Upwind Packages API
   description: The packages API from Upwind — 2 operation(s) for packages.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -187,7 +187,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-threats-api
-  name: Upwind threats API
+  name: Upwind Threats API
   description: The threats API from Upwind — 18 operation(s) for threats.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -203,7 +203,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-vulnerabilities-api
-  name: Upwind vulnerabilities API
+  name: Upwind Vulnerabilities API
   description: The vulnerabilities API from Upwind — 2 operation(s) for vulnerabilities.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -219,7 +219,7 @@ apis:
   - type: Documentation
     url: https://docs.upwind.io/restapi/v2/introduction
 - aid: upwind:upwind-workflows-api
-  name: Upwind workflows API
+  name: Upwind Workflows API
   description: The workflows API from Upwind — 2 operation(s) for workflows.
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
@@ -240,8 +240,6 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
-  - shiftleft
-  tags_raw:
   - Shift Left
   properties:
   - type: OpenAPI

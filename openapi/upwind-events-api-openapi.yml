@@ -365,7 +365,7 @@ paths:
       description: Production endpoint (ME)
   /v2/organizations/{organization-id}/events/shift-left/search:
     post:
-      operationId: searchShiftLeftEvents
+      operationId: postV2OrganizationsByOrganizationIdEventsShiftLeftSearch
       summary: Search ShiftLeft events
       description: A POST request sent to the search endpoint returns a filtered list of ShiftLeft events that are associated with the specified organization based on the specified search criteria.
       tags:
@@ -535,6 +535,8 @@ paths:
           description: Rate Limit Exceeded
       security:
       - OAuth2ClientCredentials: []
+      x-operation-id-source: normalized
+      x-operation-id-original: searchShiftLeftEvents
     servers:
     - url: https://api.upwind.io
       description: Production endpoint (US)
