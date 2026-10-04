@@ -240,6 +240,8 @@ apis:
   humanURL: https://docs.upwind.io/restapi/v1/introduction
   baseURL: https://api.upwind.io
   tags:
+  - shiftleft
+  tags_raw:
   - Shift Left
   properties:
   - type: OpenAPI
